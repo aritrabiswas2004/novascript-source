@@ -1,0 +1,43 @@
+import Parser from "./frontend/parser";
+import promptSync from 'prompt-sync';
+import {evaluate} from "./runtime/interpreter";
+import Environment, {createGlobalEnv} from "./runtime/environment";
+import {readFileSync} from "fs";
+
+// repl();
+run("./file.nv");
+
+function run(filename: string){
+    const parser = new Parser();
+    const env = createGlobalEnv();
+
+    const input = readFileSync(filename,  "utf-8");
+    const program = parser.produceAST(input);
+    const results = evaluate(program, env);
+
+    // console.log(results);
+}
+
+function repl() {
+    const parser = new Parser();
+    const env = createGlobalEnv();
+
+    const prompt = promptSync();
+
+    console.log("Repl v0.1");
+
+    while (true) {
+
+        const input = prompt("> ");
+
+        if (!input || input.includes("exit")){
+            process.exit(1);
+        }
+
+        const program = parser.produceAST(input);
+
+        const result = evaluate(program, env);
+        console.log(result)
+
+    }
+}

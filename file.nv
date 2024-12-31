@@ -1,0 +1,6 @@
+func add(x, y) {
+    const sum = x + y;
+    print(sum)
+
+    sum
+}
