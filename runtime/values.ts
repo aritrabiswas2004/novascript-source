@@ -51,7 +51,7 @@ export function MK_NATIVE_FN(call: FunctionCall): NativeFnValue {
 }
 
 export interface FunctionValue extends RuntimeVal {
-    type: "native-fn";
+    type: "function";
     name: string;
     parameters: string[];
     declarationEnv: Environment;

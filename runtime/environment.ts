@@ -12,14 +12,6 @@ export function createGlobalEnv() {
         return MK_NULL();
     }), true);
 
-    function maximum(num1: number, num2: number){
-        if (num1 > num2) {
-            return num1;
-        }
-
-        return MK_NUMBER(num2);
-    }
-
     function timeFunction(_args: RuntimeVal[], _env: Environment){
         return MK_NUMBER(Date.now());
     }

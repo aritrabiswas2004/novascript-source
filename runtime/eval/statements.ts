@@ -19,7 +19,7 @@ export function eval_var_declaration(declaration: VarDeclaration, env: Environme
 
 export function eval_function_declaration(declaration: FunctionDeclaration, env: Environment): RuntimeVal {
     const fn = {
-        type: "native-fn",
+        type: "function",
         name: declaration.name,
         parameters: declaration.parameters,
         declarationEnv: env,
