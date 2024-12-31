@@ -16,7 +16,7 @@ export enum TokenType {
 }
 
 const KEYWORDS: Record<string, TokenType> = {
-    "let": TokenType.Let,
+    "mut": TokenType.Let,
     "const" : TokenType.Const,
     "func": TokenType.Fn
 }

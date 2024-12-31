@@ -11,6 +11,10 @@ function run(filename: string){
     const parser = new Parser();
     const env = createGlobalEnv();
 
+    if (!filename.endsWith(".nv")){
+        console.error("File must end with a '.nv' extension.");
+    }
+
     const input = readFileSync(filename,  "utf-8");
     const program = parser.produceAST(input);
     const results = evaluate(program, env);
