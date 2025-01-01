@@ -31,6 +31,7 @@ to be added. The features to be included in the future are given in a TODO list 
 ### Variables
 
 Variables can be declared with the `mut` keyword. This makes the variable mutable and can be reassigned.
+They do not necessarily be assigned the same line that they are declared.
 
 ```javascript
 mut foo = 23;
@@ -47,4 +48,108 @@ foo = 34; // Throws error
 
 ### Binary Expression
 
+NovaScript supports Binary Expressions of `+`, `-`, `*`, `/` and `%`;
+
+```javascript
+const foo = 12 + 45;
+print(foo) // 57
+```
+
+### Objects
+
+NovaScript supports complex data structs and object creation. There in no current support for classes and all OOP features but
+a more C-like structs functionality.
+
+```javascript
+const foo = {
+  bar: 12,
+  firstVar: 13,
+  complex : {
+    insideVar: 14,
+    secondVar: 15
+  }
+};
+
+print(foo.complex.insideVar)
+```
+> The above returns an object token and not the core value yet.
+> ```text
+> This AST node has not yet been set for interpretation {
+> kind: 'MemberExpr',
+> object: {
+>   kind: 'MemberExpr',
+>   object: { kind: 'Identifier', symbol: 'foo' },
+>   property: { kind: 'Identifier', symbol: 'complex' },
+>   computed: false
+> },
+> property: { kind: 'Identifier', symbol: 'insideVar' },
+> computed: false
+> }
+> ```
+
+### Boolean Expressions
+
+Boolean Expression are part of global constants and can be assigned to variables.
+
+```javascript
+const foo = true;
+const bar = false;
+print(foo); // true
+print(bar); // false
+```
+
+### Null Expression
+
+Just like Boolean Expressions, Null Expressions can also be assigned to variables. Using a Binary Expression with a null value returns a null value.
+
+```javascript
+const foo = null;
+const bar = 2 + foo;
+
+print(foo) // null
+print(bar) // null
+```
+
+### Native Functions (Builtins)
+
+NovaScript has a builtin function support. Currently, there are two functions from the builtins that
+can be called. `print()` and `time()`.
+
+`print()` prints its arguments to the console (`stdout`).
+
+```javascript
+const foo = 1234;
+print(foo) // 1234
+```
+
+`time()` returns current time in milliseconds 
+
+```javascript
+print(time()) // time in ms
+```
+
+### User-defined Functions
+
+Functions can also be defined by the programmer using the `func` keyword. NovaScript supports taking function arguments and
+implementing them. A `return` keyword is unnecessary and simply writing the variable/object to be returned in the last line
+of the function is enough.
+
+```javascript
+func add(x, y) {
+    const value = x + y;
+    value // No need for return keyword
+}
+
+const res = add(10, 4);
+
+print(res) // 14
+```
+
+## TODOs
+
+The below items are TODOs that can be added to teh language to increase its support
+
+- Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.
+- `if-else` statements.
+- Include more native functions for basic math tasks like `sum()` or `pow()`.
 
