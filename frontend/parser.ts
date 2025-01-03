@@ -141,7 +141,7 @@ export default class Parser {
 
     private parse_object_expr(): Expr {
         if (this.at().type !== TokenType.OpenBrace){
-            return this.parse_additive_expr();
+            return this.parse_comparison_expr();
         }
 
         this.eat();
@@ -206,6 +206,26 @@ export default class Parser {
                 left,
                 right,
                 operator,
+            } as BinaryExpr;
+        }
+
+        return left;
+    }
+
+    private parse_comparison_expr(): Expr {
+        let left = this.parse_additive_expr();
+
+        while (this.at().value == ">" || this.at().value == "<" ||
+        this.at().value == "==" || this.at().value == ">=" || this.at().value == "<="){
+            const operator = this.eat().value;
+
+            const right = this.parse_additive_expr();
+
+            left = {
+                kind: "BinaryExpr",
+                left,
+                right,
+                operator
             } as BinaryExpr;
         }
 

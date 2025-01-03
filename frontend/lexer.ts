@@ -62,10 +62,28 @@ export function tokenize(sourceCode: string): Token[] {
             tokens.push(token(src.shift(), TokenType.OpenBracket));
         } else if (src[0] == ']') {
             tokens.push(token(src.shift(), TokenType.CloseBracket));
-        } else if (src[0] == '+' || src[0] == '-' || src[0] == '*' || src[0] == '/' || src[0] == '%'){
-            tokens.push(token(src.shift(), TokenType.BinaryOperator));
+        } else if (
+            src[0] == '+'
+            || src[0] == '-'
+            || src[0] == '*'
+            || src[0] == '/'
+            || src[0] == '%'
+            || src[0] == '>'
+            || src[0] == '<'
+        ){
+            if ((src[0] == ">" || src[0] == "<") && src[1] == "="){
+                const operation = src.shift() + src.shift();
+                tokens.push(token(operation, TokenType.BinaryOperator));
+            } else {
+                tokens.push(token(src.shift(), TokenType.BinaryOperator));
+            }
         } else if (src[0] == '='){
-            tokens.push(token(src.shift(), TokenType.Equals));
+            if (src[1] == '='){
+                const doubleEquals = src.shift() + src.shift();
+                tokens.push(token(doubleEquals, TokenType.BinaryOperator));
+            } else {
+                tokens.push(token(src.shift(), TokenType.Equals));
+            }
         } else if (src[0] == ';'){
             tokens.push(token(src.shift(), TokenType.Semicolon));
         } else if (src[0] == ':'){
@@ -96,7 +114,6 @@ export function tokenize(sourceCode: string): Token[] {
                 if (reserved == undefined) {
                     tokens.push(token(ident, TokenType.Identifier));
                 } else {
-                    // TODO: Check null viability
                     tokens.push(token(ident, reserved));
                 }
             } else if (isskippable(src[0])){

@@ -1,7 +1,27 @@
-import {FunctionValue, MK_NULL, NativeFnValue, NumberVal, ObjectVal, RuntimeVal} from "../values";
+import {BooleanVal, FunctionValue, MK_BOOL, MK_NULL, NativeFnValue, NumberVal, ObjectVal, RuntimeVal} from "../values";
 import {AssignmentExpr, BinaryExpr, CallExpr, Identifier, ObjectLiteral} from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
+
+function eval_comparison_binary_expr(lhs: NumberVal, rhs: NumberVal, operator: string): BooleanVal {
+    let resultBool: boolean;
+
+    if (operator == ">"){
+        resultBool = lhs.value > rhs.value;
+    } else if (operator == "<"){
+        resultBool = lhs.value < rhs.value;
+    } else if (operator == "=="){
+        resultBool = lhs.value == rhs.value;
+    } else if (operator == ">="){
+        resultBool = lhs.value >= rhs.value;
+    } else if (operator == "<="){
+        resultBool = lhs.value <= rhs.value;
+    } else {
+        throw "Unrecognised comparison operator";
+    }
+
+    return MK_BOOL(resultBool);
+}
 
 function eval_numeric_binary_expr(lhs: NumberVal, rhs: NumberVal, operator: string): NumberVal{
     let result: number;
@@ -25,8 +45,10 @@ export function eval_binary_expr(binop: BinaryExpr, env: Environment): RuntimeVa
     const lhs = evaluate(binop.left, env);
     const rhs = evaluate(binop.right, env);
 
-    if (lhs.type == "number" && rhs.type == "number"){
+    if (lhs.type == "number" && rhs.type == "number" && ["+", "-", "*", "/", "%"].includes(binop.operator)){
         return eval_numeric_binary_expr(lhs as NumberVal, rhs as NumberVal, binop.operator);
+    } else if ([">", "<", "==", ">=", "<="].includes(binop.operator)){
+        return eval_comparison_binary_expr(lhs as NumberVal, rhs as NumberVal, binop.operator);
     }
 
     return MK_NULL();

@@ -1,7 +1,7 @@
 import Parser from "./frontend/parser";
 import promptSync from 'prompt-sync';
 import {evaluate} from "./runtime/interpreter";
-import Environment, {createGlobalEnv} from "./runtime/environment";
+import {createGlobalEnv} from "./runtime/environment";
 import {readFileSync} from "fs";
 
 // repl();

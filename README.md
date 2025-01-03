@@ -48,11 +48,25 @@ foo = 34; // Throws error
 
 ### Binary Expression
 
-NovaScript supports Binary Expressions of `+`, `-`, `*`, `/` and `%`;
+NovaScript supports Numeric Binary Expressions of `+`, `-`, `*`, `/` and `%`;
 
 ```javascript
 const foo = 12 + 45;
 print(foo) // 57
+```
+
+As an extension of Binary Expressions, comparison expression are also handled such as
+`==`, `>=`, `<=`, `>`, `<`.
+
+```javascript
+const foo = 1 + 4;
+const bar = 2 + 1;
+
+print(foo == bar) // false
+print(foo >= bar) // true
+print(foo <= bar) // false
+print(foo > bar)  // true
+print(foo < bar)  // false
 ```
 
 ### Objects
@@ -72,7 +86,7 @@ const foo = {
 
 print(foo.complex.insideVar)
 ```
-> The above returns an object token and not the core value yet.
+> The above returns the Abstract Syntax Tree (AST) and not the core value yet.
 > ```text
 > This AST node has not yet been set for interpretation {
 > kind: 'MemberExpr',
@@ -147,9 +161,10 @@ print(res) // 14
 
 ## TODOs
 
-The below items are TODOs that can be added to teh language to increase its support
+The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
 
-- Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.
+- ~~Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.~~
 - `if-else` statements.
 - Include more native functions for basic math tasks like `sum()` or `pow()`.
+- `while` loop.
 
