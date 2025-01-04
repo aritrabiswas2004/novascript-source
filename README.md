@@ -30,8 +30,7 @@ to be added. The features to be included in the future are given in a TODO list 
 > The language prints the entire object to console. This will be changed when the object token parser is implemented.
 ### Variables
 
-Variables can be declared with the `mut` keyword. This makes the variable mutable and can be reassigned.
-They do not necessarily be assigned the same line that they are declared.
+Variables can be declared with the `mut` keyword. This makes the variable mutable and re-assignable.
 
 ```javascript
 mut foo = 23;
@@ -39,7 +38,15 @@ foo = 91
 print(foo); // 91
 ```
 
-By using the `const` keyword, the variable becomes immutable
+`mut` variables can be declared without assignment
+
+```javascript
+mut foo;
+foo = 12;
+print(foo) // 12
+```
+
+By using the `const` keyword, the variable becomes immutable. `const` variables cannot be declared without a value.
 
 ```javascript
 const foo = 23;
