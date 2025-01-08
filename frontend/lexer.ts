@@ -12,6 +12,7 @@ export enum TokenType {
     Const,
     If,
     Else,
+    While,
     Fn,
     EOF,
     Semicolon
@@ -22,7 +23,8 @@ const KEYWORDS: Record<string, TokenType> = {
     "const" : TokenType.Const,
     "func": TokenType.Fn,
     "if": TokenType.If,
-    "else": TokenType.Else
+    "else": TokenType.Else,
+    "while": TokenType.While
 }
 
 export interface Token {

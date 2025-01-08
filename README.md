@@ -29,7 +29,8 @@ an executable.
 > NovaScript already supports some basic features but more support for certain statements and expression are soon
 to be added. The features to be included in the future are given in a TODO list below.
 
-> The language prints the entire object to console. This will be changed when the object token parser is implemented.
+> Namespaces in NovaScript works the same way as JavaScript. All statements and expressions that are in a block are of a seperate
+> namespace or Environment from the global namespace.
 ### Variables
 
 Variables can be declared with the `mut` keyword. This makes the variable mutable and re-assignable.
@@ -189,14 +190,30 @@ if (foo < bar) {
 // Prints 200
 ```
 
+### While Loops
+
+`while` loops are supported in NovaScript. A boolean expression is repeated until a false Runtime Value is returned. The block of code
+under a while has its own namespace. 
+
+```javascript
+mut foo = 1;
+
+while (foo < 10){
+    foo = foo + 1
+}
+
+print(foo) // 10
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
 
 - ~~Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.~~
 - ~~`if-else` statements.~~
-- `while` loop.
+- ~~`while` loop.~~
 - `for` loop.
+- BinaryExpr update for `&&`, `||`, `!`.
 - Add support for comments
 - Include more native functions for basic math tasks like `sum()` or `pow()`.
 

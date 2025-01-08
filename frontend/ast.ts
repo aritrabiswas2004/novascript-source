@@ -11,6 +11,7 @@ export type NodeType =
     | "Identifier"
     | "BinaryExpr"
     | "IfStatement"
+    | "WhileStatement"
 
 export interface Stmt {
     kind: NodeType
@@ -40,6 +41,12 @@ export interface IfStatement extends Stmt {
     test: Expr;
     body: Stmt[];
     alternate?: Stmt[];
+}
+
+export interface WhileStatement extends Stmt {
+    kind: "WhileStatement";
+    test: Expr;
+    body: Stmt[];
 }
 
 export interface Expr extends Stmt {}

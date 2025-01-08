@@ -1,4 +1,4 @@
-import {FunctionDeclaration, IfStatement, Program, Stmt, VarDeclaration} from "../../frontend/ast";
+import {FunctionDeclaration, IfStatement, Program, Stmt, VarDeclaration, WhileStatement} from "../../frontend/ast";
 import Environment from "../environment";
 import {BooleanVal, FunctionValue, MK_NULL, RuntimeVal} from "../values";
 import {evaluate} from "../interpreter";
@@ -39,6 +39,19 @@ export function eval_if_statement(declaration: IfStatement, env: Environment): R
     } else {
         return MK_NULL();
     }
+}
+
+export function eval_while_statement(declaration: WhileStatement, env: Environment): RuntimeVal {
+    env = new Environment(env);
+
+    let test = evaluate(declaration.test, env);
+
+    while ((test as BooleanVal).value === true){
+        eval_if_body(declaration.body, new Environment(env), false);
+        test = evaluate(declaration.test, env);
+    }
+
+    return MK_NULL();
 }
 
 function eval_if_body(body: Stmt[], env: Environment, newEnv: boolean = true): RuntimeVal {

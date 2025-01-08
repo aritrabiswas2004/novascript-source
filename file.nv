@@ -1,10 +1,7 @@
-const foo = 3;
-const bar = 2;
+mut foo = 1;
 
-if (foo < bar) {
-    print(100)
-} else if (foo == bar) {
-    print(300)
-}  else {
-      print(200)
+while (foo < 10){
+    foo = foo + 1
 }
+
+print(foo) // 10
