@@ -2,7 +2,7 @@ import {
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
-    Expr,
+    Expr, ForStatement,
     FunctionDeclaration,
     Identifier,
     IfStatement,
@@ -12,7 +12,8 @@ import {
     Program,
     Property,
     Stmt,
-    VarDeclaration, WhileStatement
+    VarDeclaration,
+    WhileStatement
 } from "./ast";
 import {Token, tokenize, TokenType} from "./lexer";
 
@@ -70,6 +71,8 @@ export default class Parser {
                 return this.parse_if_statement();
             case TokenType.While:
                 return this.parse_while_statement();
+            case TokenType.For:
+                return this.parse_for_statement();
             default:
                 return this.parse_expr();
         }
@@ -87,6 +90,24 @@ export default class Parser {
         this.expect(TokenType.CloseBrace, "Expected '}' at end of block statement");
 
         return body;
+    }
+
+    private parse_for_statement(): Stmt {
+        this.eat();
+
+        this.expect(TokenType.OpenParen, "Expected '(' after for keyword");
+
+        const init = this.parse_var_declaration();
+        const test = this.parse_expr();
+
+        this.expect(TokenType.Semicolon, "Expected ';' after expression");
+
+        const update = this.parse_expr();
+        this.expect(TokenType.CloseParen, "Expected ')' to close for stmt");
+
+        const body = this.parse_block_statement();
+
+        return {kind: "ForStatement", init, test, update, body} as ForStatement;
     }
 
     private parse_while_statement(): Stmt {

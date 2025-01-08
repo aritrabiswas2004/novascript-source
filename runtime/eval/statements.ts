@@ -1,7 +1,16 @@
-import {FunctionDeclaration, IfStatement, Program, Stmt, VarDeclaration, WhileStatement} from "../../frontend/ast";
+import {
+    ForStatement,
+    FunctionDeclaration,
+    IfStatement,
+    Program,
+    Stmt,
+    VarDeclaration,
+    WhileStatement
+} from "../../frontend/ast";
 import Environment from "../environment";
 import {BooleanVal, FunctionValue, MK_NULL, RuntimeVal} from "../values";
 import {evaluate} from "../interpreter";
+import {eval_assignment} from "./expressions";
 
 export function eval_program(program: Program, env: Environment): RuntimeVal{
     let lastEvaluated: RuntimeVal = MK_NULL();
@@ -50,6 +59,28 @@ export function eval_while_statement(declaration: WhileStatement, env: Environme
         eval_if_body(declaration.body, new Environment(env), false);
         test = evaluate(declaration.test, env);
     }
+
+    return MK_NULL();
+}
+
+export function eval_for_statement(declaration: ForStatement, env: Environment): RuntimeVal {
+    env = new Environment(env);
+
+    eval_var_declaration(declaration.init, env);
+
+    const body = declaration.body;
+    const update = declaration.update;
+
+    let test = evaluate(declaration.test, env);
+
+    if ((test as BooleanVal).value !== true) return MK_NULL(); // The loop didn't start
+
+    do {
+        eval_if_body(body, new Environment(env), false);
+        eval_assignment(update, env);
+
+        test = evaluate(declaration.test, env);
+    } while ((test as BooleanVal).value);
 
     return MK_NULL();
 }

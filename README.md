@@ -205,6 +205,20 @@ while (foo < 10){
 print(foo) // 10
 ```
 
+### For Loops
+
+`for` loops are counting loops and the iterations of the loop are independent of any other variables outside the
+loop scope. For loops are declared in the order of - [var declaration, boolean condition, update statement]. A `for` loop will
+iterate with the update as long as the condition remains true.
+
+```javascript
+for (mut i = 1; i <= 10; i = i + 1){
+    print(i)
+}
+
+// Outputs numbers 1 ... 10
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
@@ -212,7 +226,7 @@ The below items are TODOs that can be added to the language to increase its supp
 - ~~Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.~~
 - ~~`if-else` statements.~~
 - ~~`while` loop.~~
-- `for` loop.
+- ~~`for` loop.~~
 - BinaryExpr update for `&&`, `||`, `!`.
 - Add support for comments
 - Include more native functions for basic math tasks like `sum()` or `pow()`.

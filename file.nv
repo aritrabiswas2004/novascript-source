@@ -1,7 +1,5 @@
-mut foo = 1;
-
-while (foo < 10){
-    foo = foo + 1
+for (mut i = 1; i <= 10; i = i + 1){
+    print(i)
 }
 
-print(foo) // 10
+// Outputs numbers 1 ... 10

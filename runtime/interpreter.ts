@@ -1,9 +1,8 @@
-import {ValueType, RuntimeVal, NumberVal, MK_NULL} from "./values";
+import {RuntimeVal, NumberVal} from "./values";
 import {
     AssignmentExpr,
-    BinaryExpr, CallExpr, FunctionDeclaration,
+    BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
     Identifier, IfStatement,
-    NodeType,
     NumericLiteral, ObjectLiteral,
     Program,
     Stmt,
@@ -16,7 +15,7 @@ import {
     eval_var_declaration,
     eval_function_declaration,
     eval_if_statement,
-    eval_while_statement
+    eval_while_statement, eval_for_statement
 } from "./eval/statements";
 
 
@@ -57,6 +56,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "WhileStatement":
             return eval_while_statement(astNode as WhileStatement, env);
+
+        case "ForStatement":
+            return eval_for_statement(astNode as ForStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);
