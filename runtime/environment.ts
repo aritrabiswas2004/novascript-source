@@ -54,10 +54,21 @@ export function createGlobalEnv() {
         return MK_NUMBER(Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled));
     }
 
+    function sumFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+        let total: number = 0;
+
+        for (const nval of _args){
+            total += (nval as NumberVal).value;
+        }
+
+        return MK_NUMBER(total);
+    }
+
     env.declareVar("time", MK_NATIVE_FN(timeFunction), true);
     env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
     env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);
     env.declareVar("randInt", MK_NATIVE_FN(randInt), true);
+    env.declareVar("sum", MK_NATIVE_FN(sumFunction), true);
 
     return env;
 }
