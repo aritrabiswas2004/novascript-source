@@ -3,7 +3,7 @@ import {
     FunctionDeclaration,
     IfStatement,
     Program,
-    Stmt,
+    Stmt, UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "../../frontend/ast";
@@ -56,6 +56,19 @@ export function eval_while_statement(declaration: WhileStatement, env: Environme
     let test = evaluate(declaration.test, env);
 
     while ((test as BooleanVal).value === true){
+        eval_if_body(declaration.body, new Environment(env), false);
+        test = evaluate(declaration.test, env);
+    }
+
+    return MK_NULL();
+}
+
+export function eval_until_statement(declaration: UntilStatement, env: Environment): RuntimeVal {
+    env = new Environment(env);
+
+    let test = evaluate(declaration.test, env);
+
+    while ((test as BooleanVal).value === false){
         eval_if_body(declaration.body, new Environment(env), false);
         test = evaluate(declaration.test, env);
     }

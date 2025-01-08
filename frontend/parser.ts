@@ -11,7 +11,7 @@ import {
     ObjectLiteral,
     Program,
     Property,
-    Stmt,
+    Stmt, UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "./ast";
@@ -73,6 +73,8 @@ export default class Parser {
                 return this.parse_while_statement();
             case TokenType.For:
                 return this.parse_for_statement();
+            case TokenType.Until:
+                return this.parse_until_statement();
             default:
                 return this.parse_expr();
         }
@@ -90,6 +92,20 @@ export default class Parser {
         this.expect(TokenType.CloseBrace, "Expected '}' at end of block statement");
 
         return body;
+    }
+
+    private parse_until_statement(): Stmt {
+        this.eat();
+
+        this.expect(TokenType.OpenParen, "Expected '(' after until statement");
+
+        const test = this.parse_expr();
+
+        this.expect(TokenType.CloseParen, "Expected closing ')' after expression");
+
+        const body = this.parse_block_statement();
+
+        return {kind: "UntilStatement", test, body} as UntilStatement;
     }
 
     private parse_for_statement(): Stmt {

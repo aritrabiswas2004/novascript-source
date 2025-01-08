@@ -192,7 +192,7 @@ if (foo < bar) {
 
 ### While Loops
 
-`while` loops are supported in NovaScript. A boolean expression is repeated until a false Runtime Value is returned. The block of code
+`while` loops are supported in NovaScript. A block statement is repeated until the condition given in the while loop is `false`. The block of code
 under a while has its own namespace. 
 
 ```javascript
@@ -219,6 +219,22 @@ for (mut i = 1; i <= 10; i = i + 1){
 // Outputs numbers 1 ... 10
 ```
 
+### Until Loops
+
+Just like the Ruby Programming language, NovaScript has `until` loops. In this loop a block of code loops until the expression after the until statement
+becomes `true`. It is basically the opposite of the `while` loop.
+
+```javascript
+mut i = 1;
+
+until (i == 10) {
+    print(i)
+    i = i + 1
+}
+
+// Prints 1 ... 9
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
@@ -227,6 +243,7 @@ The below items are TODOs that can be added to the language to increase its supp
 - ~~`if-else` statements.~~
 - ~~`while` loop.~~
 - ~~`for` loop.~~
+- ~~`until` loop~~
 - BinaryExpr update for `&&`, `||`, `!`.
 - Add support for comments
 - Include more native functions for basic math tasks like `sum()` or `pow()`.

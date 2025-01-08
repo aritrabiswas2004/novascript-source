@@ -10,10 +10,8 @@ export enum TokenType {
     BinaryOperator,
     Let,
     Const,
-    If,
-    Else,
-    While,
-    For,
+    If, Else,
+    While, For, Until,
     Fn,
     EOF,
     Semicolon
@@ -26,7 +24,8 @@ const KEYWORDS: Record<string, TokenType> = {
     "if": TokenType.If,
     "else": TokenType.Else,
     "while": TokenType.While,
-    "for": TokenType.For
+    "for": TokenType.For,
+    "until": TokenType.Until
 }
 
 export interface Token {

@@ -13,6 +13,7 @@ export type NodeType =
     | "IfStatement"
     | "WhileStatement"
     | "ForStatement"
+    | "UntilStatement"
 
 export interface Stmt {
     kind: NodeType
@@ -56,6 +57,12 @@ export interface ForStatement extends Stmt {
     test: Expr;
     update: AssignmentExpr;
     body: Stmt[]
+}
+
+export interface UntilStatement extends Stmt {
+    kind: "UntilStatement";
+    test: Expr;
+    body: Stmt[];
 }
 
 export interface Expr extends Stmt {}

@@ -5,7 +5,7 @@ import {
     Identifier, IfStatement,
     NumericLiteral, ObjectLiteral,
     Program,
-    Stmt,
+    Stmt, UntilStatement,
     VarDeclaration, WhileStatement
 } from "../frontend/ast";
 import Environment from "./environment";
@@ -15,7 +15,7 @@ import {
     eval_var_declaration,
     eval_function_declaration,
     eval_if_statement,
-    eval_while_statement, eval_for_statement
+    eval_while_statement, eval_for_statement, eval_until_statement
 } from "./eval/statements";
 
 
@@ -59,6 +59,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "ForStatement":
             return eval_for_statement(astNode as ForStatement, env);
+
+        case "UntilStatement":
+            return eval_until_statement(astNode as UntilStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);
