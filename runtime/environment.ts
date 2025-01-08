@@ -1,4 +1,4 @@
-import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, RuntimeVal} from "./values";
+import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, NumberVal, RuntimeVal} from "./values";
 
 // creating lang bultins
 export function createGlobalEnv() {
@@ -12,11 +12,52 @@ export function createGlobalEnv() {
         return MK_NULL();
     }), true);
 
-    function timeFunction(_args: RuntimeVal[], _env: Environment){
+    function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
         return MK_NUMBER(Date.now());
     }
 
-    env.declareVar("check", MK_NATIVE_FN(timeFunction), true);
+    function powFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+        if (_args.length != 2){
+            console.error("pow() function only takes two args: (base, power)");
+            process.exit(1);
+        }
+
+        const base: number = (_args[0] as NumberVal).value;
+        const power: number = (_args[1] as NumberVal).value;
+
+        const result = Math.pow(base, power);
+
+        return MK_NUMBER(result);
+    }
+
+    function floorFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+        if (_args.length != 1){
+            console.error("floor() function takes two args: (base, power)");
+            process.exit(1);
+        }
+
+        const num: number = (_args[0] as NumberVal).value;
+        const result = Math.floor(num);
+
+        return MK_NUMBER(result);
+    }
+
+    function randInt(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+        if (_args.length != 2){
+            console.error("randInt() function takes two args: (min, max)");
+            process.exit(1);
+        }
+
+        const minCeiled = Math.ceil((_args[0] as NumberVal).value);
+        const maxFloored = Math.floor((_args[1] as NumberVal).value);
+
+        return MK_NUMBER(Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled));
+    }
+
+    env.declareVar("time", MK_NATIVE_FN(timeFunction), true);
+    env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
+    env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);
+    env.declareVar("randInt", MK_NATIVE_FN(randInt), true);
 
     return env;
 }

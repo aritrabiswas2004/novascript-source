@@ -96,18 +96,18 @@ const foo = {
 
 print(foo.complex.insideVar)
 ```
-> The above returns the Abstract Syntax Tree (AST) and not the core value yet.
+> The above returns the Abstract Syntax Tree (AST) and not the Runtime Val yet.
 > ```text
 > This AST node has not yet been set for interpretation {
-> kind: 'MemberExpr',
-> object: {
 >   kind: 'MemberExpr',
->   object: { kind: 'Identifier', symbol: 'foo' },
->   property: { kind: 'Identifier', symbol: 'complex' },
+>   object: {
+>       kind: 'MemberExpr',
+>       object: { kind: 'Identifier', symbol: 'foo' },
+>       property: { kind: 'Identifier', symbol: 'complex' },
+>       computed: false
+>   },
+>   property: { kind: 'Identifier', symbol: 'insideVar' },
 >   computed: false
-> },
-> property: { kind: 'Identifier', symbol: 'insideVar' },
-> computed: false
 > }
 > ```
 
@@ -136,21 +136,18 @@ print(bar) // null
 
 ### Native Functions (Builtins)
 
+> This documentation for this portion will soon be shifted with more detail to a `BULTINS.md` file.
+
 NovaScript has a builtin function support. Currently, there are two functions from the builtins that
 can be called. `print()` and `time()`.
 
 `print()` prints its arguments to the console (`stdout`).
 
-```javascript
-const foo = 1234;
-print(foo) // 1234
-```
-
 `time()` returns current time in milliseconds 
 
-```javascript
-print(time()) // time in ms
-```
+`pow(x, y)` returns x raised to the power of y. Takes only 2 args and no more.
+
+`randInt(min, max)` returns a random integer between min and max.
 
 ### User-defined Functions
 

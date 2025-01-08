@@ -1,6 +1,1 @@
-mut i = 1;
-
-until (i == 10) {
-    print(i)
-    i = i + 1
-}
+print(randInt(3, 10))
