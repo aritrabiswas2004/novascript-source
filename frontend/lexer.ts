@@ -10,6 +10,8 @@ export enum TokenType {
     BinaryOperator,
     Let,
     Const,
+    If,
+    Else,
     Fn,
     EOF,
     Semicolon
@@ -18,7 +20,9 @@ export enum TokenType {
 const KEYWORDS: Record<string, TokenType> = {
     "mut": TokenType.Let,
     "const" : TokenType.Const,
-    "func": TokenType.Fn
+    "func": TokenType.Fn,
+    "if": TokenType.If,
+    "else": TokenType.Else
 }
 
 export interface Token {

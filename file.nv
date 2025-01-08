@@ -1,8 +1,10 @@
-const foo = 1 + 4;
-const bar = 2 + 1;
+const foo = 3;
+const bar = 2;
 
-print(foo == bar)
-print(foo >= bar)
-print(foo <= bar)
-print(foo > bar)
-print(foo < bar)
+if (foo < bar) {
+    print(100)
+} else if (foo == bar) {
+    print(300)
+}  else {
+      print(200)
+}

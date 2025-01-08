@@ -2,7 +2,7 @@ import {ValueType, RuntimeVal, NumberVal, MK_NULL} from "./values";
 import {
     AssignmentExpr,
     BinaryExpr, CallExpr, FunctionDeclaration,
-    Identifier,
+    Identifier, IfStatement,
     NodeType,
     NumericLiteral, ObjectLiteral,
     Program,
@@ -11,7 +11,7 @@ import {
 } from "../frontend/ast";
 import Environment from "./environment";
 import {eval_assignment, eval_binary_expr, eval_call_expr, eval_identifier, eval_object_expr} from "./eval/expressions";
-import {eval_program, eval_var_declaration, eval_function_declaration} from "./eval/statements";
+import {eval_program, eval_var_declaration, eval_function_declaration, eval_if_statement} from "./eval/statements";
 
 
 export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
@@ -45,6 +45,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "FunctionDeclaration":
             return eval_function_declaration(astNode as FunctionDeclaration, env);
+
+        case "IfStatement":
+            return eval_if_statement(astNode as IfStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

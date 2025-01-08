@@ -17,8 +17,10 @@ an executable.
   - This can be activated by uncommenting the `repl()` function in the `main.ts` file.
     It executes a single line of NovaScript at a time.
 - **Script Mode**
-  - This is when an entire file of code is read an executed by the interpreter. A `file.nv` is given as a test script. All NovaScript files must have a `.nv` extension.
+  - This is when an entire file of code is read an executed by the interpreter. All NovaScript files must have a `.nv` extension.
     This is done by passing a NovaScript file to the `run()` function in `main.ts`.
+
+> A `file.nv` is included in this repo for convenience. It usually contains sample code for the latest feature added to NovaScript.
 
 ---
 
@@ -166,12 +168,35 @@ const res = add(10, 4);
 print(res) // 14
 ```
 
+### If-Else Statements
+
+NovaScript has `if-else` statements functionality similar to those of JavaScript. Since block statements are now simplified,
+a block will only be read if the expression passed returns a boolean value of true. If a non-boolean expression is 
+entered after the `if` statement then the default value is evaluated as `false`.
+
+```javascript
+const foo = 3;
+const bar = 2;
+
+if (foo < bar) {
+    print(100)
+} else if (foo == bar) {
+    print(300)
+} else {
+    print(200)
+}
+
+// Prints 200
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
 
 - ~~Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.~~
-- `if-else` statements.
-- Include more native functions for basic math tasks like `sum()` or `pow()`.
+- ~~`if-else` statements.~~
 - `while` loop.
+- `for` loop.
+- Add support for comments
+- Include more native functions for basic math tasks like `sum()` or `pow()`.
 

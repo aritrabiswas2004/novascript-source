@@ -10,6 +10,7 @@ export type NodeType =
     | "NumericLiteral"
     | "Identifier"
     | "BinaryExpr"
+    | "IfStatement"
 
 export interface Stmt {
     kind: NodeType
@@ -32,6 +33,13 @@ export interface FunctionDeclaration extends Stmt {
     parameters: string[];
     name: string;
     body: Stmt[];
+}
+
+export interface IfStatement extends Stmt {
+    kind: "IfStatement";
+    test: Expr;
+    body: Stmt[];
+    alternate?: Stmt[];
 }
 
 export interface Expr extends Stmt {}

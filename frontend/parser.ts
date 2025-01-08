@@ -2,8 +2,10 @@ import {
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
-    Expr, FunctionDeclaration,
+    Expr,
+    FunctionDeclaration,
     Identifier,
+    IfStatement,
     MemberExpr,
     NumericLiteral,
     ObjectLiteral,
@@ -64,9 +66,51 @@ export default class Parser {
                 return this.parse_var_declaration();
             case TokenType.Fn:
                 return this.parse_fn_declaration();
+            case TokenType.If:
+                return this.parse_if_statement();
             default:
                 return this.parse_expr();
         }
+    }
+
+    private parse_block_statement(): Stmt[] {
+        this.expect(TokenType.OpenBrace, "Expected '{' for block statement");
+
+        const body: Stmt[] = [];
+
+        while (this.at().type !== TokenType.EOF && this.at().type !== TokenType.CloseBrace){
+            body.push(this.parse_stmt());
+        }
+
+        this.expect(TokenType.CloseBrace, "Expected '}' at end of block statement");
+
+        return body;
+    }
+
+    private parse_if_statement(): Stmt {
+        this.eat();
+
+        this.expect(TokenType.OpenParen, "Expected '(' after if statement");
+
+        const test = this.parse_expr();
+
+        this.expect(TokenType.CloseParen, "Expected closing ')' after expression");
+
+        const body = this.parse_block_statement();
+
+        let alternate: Stmt[] = [];
+
+        if (this.at().type == TokenType.Else){
+            this.eat();
+
+            if (this.at().type == TokenType.If){
+                alternate = [this.parse_if_statement()]
+            } else {
+                alternate = this.parse_block_statement();
+            }
+        }
+
+        return {kind: "IfStatement", test, body, alternate} as IfStatement;
     }
 
     private parse_fn_declaration(): Stmt {
@@ -86,15 +130,7 @@ export default class Parser {
             params.push((arg as Identifier).symbol);
         }
 
-        this.expect(TokenType.OpenBrace, "Expected '{' after function decl");
-
-        const body: Stmt[] = [];
-
-        while (this.at().type !== TokenType.EOF && this.at().type !== TokenType.CloseBrace){
-            body.push(this.parse_stmt());
-        }
-
-        this.expect(TokenType.CloseBrace, "Expected '}' after function defn");
+        const body = this.parse_block_statement();
 
         const fn = {body, name, parameters: params, kind: "FunctionDeclaration"} as FunctionDeclaration;
 
