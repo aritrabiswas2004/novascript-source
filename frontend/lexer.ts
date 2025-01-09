@@ -81,6 +81,16 @@ export function tokenize(sourceCode: string): Token[] {
             if ((src[0] == ">" || src[0] == "<") && src[1] == "="){
                 const operation = src.shift() + src.shift();
                 tokens.push(token(operation, TokenType.BinaryOperator));
+            } else if (src[0] == '/' && src[1] == '/'){
+                do {
+                    src.shift();
+                } while (src.length > 0 && (src[0] as string) != "\n");
+                src.shift();
+            } else if (src[0] == '/' && src[1] == '('){
+                do {
+                    src.shift();
+                } while (src.length > 0 && (src[0] as string) != ")" && (src[1] as string) != "/");
+                src.shift();
             } else {
                 tokens.push(token(src.shift(), TokenType.BinaryOperator));
             }

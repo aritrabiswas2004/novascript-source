@@ -149,6 +149,8 @@ can be called. `print()` and `time()`.
 
 `randInt(min, max)` returns a random integer between min and max.
 
+`sum()` returns the sum of all numbers passed in the args. More support for this is soon to be added.
+
 ### User-defined Functions
 
 Functions can also be defined by the programmer using the `func` keyword. NovaScript supports taking function arguments and
@@ -164,6 +166,27 @@ func add(x, y) {
 const res = add(10, 4);
 
 print(res) // 14
+```
+
+### Comments
+
+Comments on NovaScript are single lined or multi-lined. Comments are not included in parsing and are thrown out by the lexer itself.
+As seen on the code-block above and below, the use of comments can be in any place. Single line comments begin with the `//` symbol and multi-line comments
+begin with the `/(` token and end with the `)/` token.
+
+```javascript
+/(
+
+this is
+a multi-line
+comment
+
+)/
+
+// this is a single line comment
+// this is another comment
+
+print(10000) // ignore this
 ```
 
 ### If-Else Statements
@@ -241,7 +264,9 @@ The below items are TODOs that can be added to the language to increase its supp
 - ~~`while` loop.~~
 - ~~`for` loop.~~
 - ~~`until` loop~~
+- ~~Include more native functions for basic math tasks like `sum()` or `pow()`.~~
+- ~~Add comments~~
 - BinaryExpr update for `&&`, `||`, `!`.
-- Add support for comments
-- Include more native functions for basic math tasks like `sum()` or `pow()`.
+
+
 
