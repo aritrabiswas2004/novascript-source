@@ -14,6 +14,7 @@ export type NodeType =
     | "WhileStatement"
     | "ForStatement"
     | "UntilStatement"
+    | "StringLiteral"
 
 export interface Stmt {
     kind: NodeType
@@ -101,6 +102,11 @@ export interface Identifier extends Expr {
 export interface NumericLiteral extends Expr {
     kind: "NumericLiteral";
     value: number;
+}
+
+export interface StringLiteral extends Expr {
+    kind: "StringLiteral";
+    value: string;
 }
 
 export interface Property extends Expr {

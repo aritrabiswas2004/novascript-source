@@ -14,7 +14,8 @@ export enum TokenType {
     While, For, Until,
     Fn,
     EOF,
-    Semicolon
+    Semicolon,
+    String
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -109,6 +110,22 @@ export function tokenize(sourceCode: string): Token[] {
             tokens.push(token(src.shift(), TokenType.Comma));
         } else if (src[0] == '.') {
             tokens.push(token(src.shift(), TokenType.Dot));
+        } else if (src[0] == '"'){
+            src.shift();
+
+            let str = "";
+
+            /*do {
+                str += src.shift();
+            } while (src.length > 0 && src[0] != '"')*/
+
+            while (src.length > 0 && src[0] != '"'){
+                str += src.shift();
+            }
+
+            src.shift(); // get rid of trailing double quotes ' " '
+
+            tokens.push(token(str, TokenType.String));
         } else {
 
             if (isint(src[0])){

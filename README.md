@@ -143,7 +143,7 @@ can be called. `print()` and `time()`.
 
 `print()` prints its arguments to the console (`stdout`).
 
-`time()` returns current time in milliseconds 
+`datetime()` returns current date and time of local timezone.
 
 `pow(x, y)` returns x raised to the power of y. Takes only 2 args and no more.
 
@@ -255,6 +255,20 @@ until (i == 10) {
 // Prints 1 ... 9
 ```
 
+### Strings
+
+There is now strings support in NovaScript. Strings are sequences of alphanumeric ASCII characters. Currently, there is no
+support for escape sequences but that is soon to change in the future. The maximum length of a string is 2147483647 characters
+(`2^53 - 1`), the same as JavaScript. Strings are declared with the double quotation mark (`"`).
+
+```javascript
+const foo = "foo";
+const bar = "bar";
+const result = concat(foo, bar);
+
+print(result) // prints "foobar"
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
@@ -266,7 +280,6 @@ The below items are TODOs that can be added to the language to increase its supp
 - ~~`until` loop~~
 - ~~Include more native functions for basic math tasks like `sum()` or `pow()`.~~
 - ~~Add comments~~
+- ~~Add strings~~
+- Add escape sequences for strings.
 - BinaryExpr update for `&&`, `||`, `!`.
-
-
-

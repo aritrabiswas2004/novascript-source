@@ -11,7 +11,7 @@ import {
     ObjectLiteral,
     Program,
     Property,
-    Stmt, UntilStatement,
+    Stmt, StringLiteral, UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "./ast";
@@ -411,6 +411,8 @@ export default class Parser {
                 );
                 return value;
             }
+            case TokenType.String:
+                return { kind: "StringLiteral", value: this.eat().value } as StringLiteral;
 
             default:
                 console.error("Unexpected Token Found during parsing: ", this.at());

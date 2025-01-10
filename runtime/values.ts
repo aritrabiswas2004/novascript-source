@@ -1,7 +1,7 @@
 import Environment from "./environment";
 import {Stmt} from "../frontend/ast";
 
-export type ValueType = "null" | "number" | "boolean" | "object" | "native-fn" | "function";
+export type ValueType = "null" | "number" | "boolean" | "object" | "native-fn" | "function" | "string";
 
 export interface RuntimeVal {
     type: ValueType;
@@ -31,7 +31,16 @@ export interface NumberVal extends RuntimeVal {
 }
 
 export function MK_NUMBER(n:number = 0){
-    return {type: "number", value: n} as NumberVal;
+    return {value: n, type: "number"} as NumberVal;
+}
+
+export interface StringVal extends RuntimeVal {
+    type: "string";
+    value: string;
+}
+
+export function MK_STRING(str: string = ""): StringVal {
+    return { value: str, type: "string" } as StringVal;
 }
 
 export interface ObjectVal extends RuntimeVal {

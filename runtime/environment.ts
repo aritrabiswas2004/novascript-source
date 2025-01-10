@@ -1,4 +1,4 @@
-import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, NumberVal, RuntimeVal} from "./values";
+import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
 
 // creating lang bultins
 export function createGlobalEnv() {
@@ -13,7 +13,7 @@ export function createGlobalEnv() {
     }), true);
 
     function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        return MK_NUMBER(Date.now());
+        return MK_STRING(Date());
     }
 
     function powFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
@@ -64,11 +64,22 @@ export function createGlobalEnv() {
         return MK_NUMBER(total);
     }
 
-    env.declareVar("time", MK_NATIVE_FN(timeFunction), true);
+    function strConcatFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+        let finalString = "";
+
+        for (const rtval of _args){
+            finalString += (rtval as StringVal).value;
+        }
+
+        return MK_STRING(finalString);
+    }
+
+    env.declareVar("datetime", MK_NATIVE_FN(timeFunction), true);
     env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
     env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);
     env.declareVar("randInt", MK_NATIVE_FN(randInt), true);
     env.declareVar("sum", MK_NATIVE_FN(sumFunction), true);
+    env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
 
     return env;
 }
