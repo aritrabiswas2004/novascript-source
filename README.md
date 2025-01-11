@@ -259,15 +259,23 @@ print(result) // prints "foobar"
 
 ## TODOs
 
-The below items are TODOs that can be added to the language to increase its support. (Items with strikethrough are completed.)
+The below items are TODOs that can be added to the language to increase its support.
 
-- ~~Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.~~
-- ~~`if-else` statements.~~
-- ~~`while` loop.~~
-- ~~`for` loop.~~
-- ~~`until` loop~~
-- ~~Include more native functions for basic math tasks like `sum()` or `pow()`.~~
-- ~~Add comments~~
-- ~~Add strings~~
-- Add escape sequences for strings.
-- BinaryExpr update for `&&`, `||`, `!`.
+#### Legend
+
+| Symbol | Definition                 |
+|--------|----------------------------|
+| ✅      | Task Completed             |
+| ❌      | Facing Errors (Incomplete) |
+| 🔥     | Work-in-progress           |
+
+- ✅ Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.
+- ✅ `if-else` statements.
+- ✅ `while` loop.
+- ✅ `for` loop.
+- ✅ `until` loop
+- ✅ Include more native functions for basic math tasks like `sum()` or `pow()`.
+- ✅ Add comments
+- ✅ Add strings
+- 🔥Add escape sequences for strings.
+- 🔥BinaryExpr update for `&&`, `||`, `!`.
