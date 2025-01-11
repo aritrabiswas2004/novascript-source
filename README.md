@@ -137,22 +137,7 @@ print(bar) // null
 
 ### Native Functions (Builtins)
 
-> This documentation for this portion will soon be shifted with more detail to a `BULTINS.md` file.
-
-NovaScript has a builtin function support. Currently, there are two functions from the builtins that
-can be called. `print()` and `time()`.
-
-`print()` prints its arguments to the console (`stdout`).
-
-`datetime()` returns current date and time of local timezone.
-
-`pow(x, y)` returns x raised to the power of y. Takes only 2 args and no more.
-
-`randInt(min, max)` returns a random integer between min and max.
-
-`concat(strA, strB)` concatenates string A and string B and returns value.
-
-`sum()` returns the sum of all numbers passed in the args. More support for this is soon to be added.
+This documentation for this portion is in the `BUILTINS.md` file which can be found [here](https://github.com/Repositoir/novascript-source/blob/master/BUIILTINS.md).
 
 ### User-defined Functions
 

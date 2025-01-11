@@ -1,12 +1,1 @@
-print("hello world")
-print(100)
-
-const str = "hernfkerg";
-
-if (3 > 2) {
-    print(str)
-}
-
-const check = concat("abcd", 2);
-
-print(check)
+print(datetime())
