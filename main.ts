@@ -12,7 +12,8 @@ function run(filename: string){
     const env = createGlobalEnv();
 
     if (!filename.endsWith(".nv")){
-        console.error("File must end with a '.nv' extension.");
+        console.error("File name must end with a '.nv' extension.");
+        process.exit(1);
     }
 
     const input = readFileSync(filename,  "utf-8");

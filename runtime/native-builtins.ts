@@ -2,8 +2,8 @@ import {MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from ".
 import Environment from "./environment";
 
 export function printFunction(_args, _env: Environment): RuntimeVal {
-    console.log(..._args.map(arg => arg.value)); // Release
-    // console.log(..._args); // Debug
+    // console.log(..._args.map(arg => arg.value)); // Release
+    console.log(..._args); // Debug
     return MK_NULL();
 }
 
