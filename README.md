@@ -34,6 +34,7 @@ to be added. The features to be included in the future are given in a TODO list 
 ### Variables
 
 Variables can be declared with the `mut` keyword. This makes the variable mutable and re-assignable.
+Variable names must have only letters a-z or A-Z and cannot have numeric values or special characters.
 
 ```javascript
 mut foo = 23;
@@ -148,6 +149,8 @@ can be called. `print()` and `time()`.
 `pow(x, y)` returns x raised to the power of y. Takes only 2 args and no more.
 
 `randInt(min, max)` returns a random integer between min and max.
+
+`concat(strA, strB)` concatenates string A and string B and returns value.
 
 `sum()` returns the sum of all numbers passed in the args. More support for this is soon to be added.
 

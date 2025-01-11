@@ -1,4 +1,13 @@
-import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
+import {MK_BOOL, MK_NATIVE_FN, MK_NULL, RuntimeVal} from "./values";
+import {
+    floorFunc,
+    powFunction,
+    printFunction,
+    randInt,
+    strConcatFunc,
+    sumFunction,
+    timeFunction
+} from "./native-builtins";
 
 // creating lang bultins
 export function createGlobalEnv() {
@@ -6,74 +15,7 @@ export function createGlobalEnv() {
     env.declareVar("true", MK_BOOL(true), true);
     env.declareVar("false", MK_BOOL(false), true);
     env.declareVar("null", MK_NULL(), true);
-
-    env.declareVar("print", MK_NATIVE_FN((args, scope) => {
-        console.log(...args);
-        return MK_NULL();
-    }), true);
-
-    function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        return MK_STRING(Date());
-    }
-
-    function powFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        if (_args.length != 2){
-            console.error("pow() function only takes two args: (base, power)");
-            process.exit(1);
-        }
-
-        const base: number = (_args[0] as NumberVal).value;
-        const power: number = (_args[1] as NumberVal).value;
-
-        const result = Math.pow(base, power);
-
-        return MK_NUMBER(result);
-    }
-
-    function floorFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        if (_args.length != 1){
-            console.error("floor() function takes two args: (base, power)");
-            process.exit(1);
-        }
-
-        const num: number = (_args[0] as NumberVal).value;
-        const result = Math.floor(num);
-
-        return MK_NUMBER(result);
-    }
-
-    function randInt(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        if (_args.length != 2){
-            console.error("randInt() function takes two args: (min, max)");
-            process.exit(1);
-        }
-
-        const minCeiled = Math.ceil((_args[0] as NumberVal).value);
-        const maxFloored = Math.floor((_args[1] as NumberVal).value);
-
-        return MK_NUMBER(Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled));
-    }
-
-    function sumFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        let total: number = 0;
-
-        for (const nval of _args){
-            total += (nval as NumberVal).value;
-        }
-
-        return MK_NUMBER(total);
-    }
-
-    function strConcatFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-        let finalString = "";
-
-        for (const rtval of _args){
-            finalString += (rtval as StringVal).value;
-        }
-
-        return MK_STRING(finalString);
-    }
-
+    env.declareVar("print", MK_NATIVE_FN(printFunction), true);
     env.declareVar("datetime", MK_NATIVE_FN(timeFunction), true);
     env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
     env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);

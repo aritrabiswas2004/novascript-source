@@ -115,10 +115,6 @@ export function tokenize(sourceCode: string): Token[] {
 
             let str = "";
 
-            /*do {
-                str += src.shift();
-            } while (src.length > 0 && src[0] != '"')*/
-
             while (src.length > 0 && src[0] != '"'){
                 str += src.shift();
             }

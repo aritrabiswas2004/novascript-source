@@ -1,4 +1,4 @@
-import {RuntimeVal, NumberVal, MK_STRING, StringVal, MK_NUMBER} from "./values";
+import {RuntimeVal, MK_STRING, MK_NUMBER} from "./values";
 import {
     AssignmentExpr,
     BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
