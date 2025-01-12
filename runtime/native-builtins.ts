@@ -1,4 +1,4 @@
-import {MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
+import {ArrayVal, MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
 import Environment from "./environment";
 
 export function printFunction(_args, _env: Environment): RuntimeVal {
@@ -67,4 +67,46 @@ export function strConcatFunc(_args: RuntimeVal[], _env: Environment): RuntimeVa
     }
 
     return MK_STRING(finalString);
+}
+
+export function maxFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args[0].type == "array") {
+        if (_args.length > 1) {
+            console.error("Only 1 array supported in max function");
+            process.exit(1);
+        }
+
+        const arrayToCompareMax: number[] = [];
+
+        const valArray = _args[0] as ArrayVal;
+
+        for (const num of valArray.values){
+            arrayToCompareMax.push((num as NumberVal).value);
+        }
+
+        const maxValue = Math.max(...arrayToCompareMax);
+
+        return MK_NUMBER(maxValue);
+    }
+}
+
+export function minFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args[0].type == "array") {
+        if (_args.length > 1) {
+            console.error("Only 1 array supported in max function");
+            process.exit(1);
+        }
+
+        const arrayToCompareMin: number[] = [];
+
+        const valArray = _args[0] as ArrayVal;
+
+        for (const num of valArray.values){
+            arrayToCompareMin.push((num as NumberVal).value);
+        }
+
+        const minValue = Math.min(...arrayToCompareMin);
+
+        return MK_NUMBER(minValue);
+    }
 }

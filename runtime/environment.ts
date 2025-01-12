@@ -1,6 +1,6 @@
 import {MK_BOOL, MK_NATIVE_FN, MK_NULL, RuntimeVal} from "./values";
 import {
-    floorFunc,
+    floorFunc, maxFunc, minFunc,
     powFunction,
     printFunction,
     randInt,
@@ -22,6 +22,8 @@ export function createGlobalEnv() {
     env.declareVar("randInt", MK_NATIVE_FN(randInt), true);
     env.declareVar("sum", MK_NATIVE_FN(sumFunction), true);
     env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
+    env.declareVar("max", MK_NATIVE_FN(maxFunc), true);
+    env.declareVar("min", MK_NATIVE_FN(minFunc), true);
 
     return env;
 }
