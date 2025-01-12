@@ -89,6 +89,34 @@ print(randInt(3, 10))
 6
 ```
 
+- ### `max(arr | (valA, valB))`
+
+This function takes either two number parameters and returns the maximum value between the two or takes an array and returns the maximum value.
+
+```javascript
+print(max(3, 10))
+print(max([1,2,33,4,5]))
+```
+**Output:**
+```text
+10
+33
+```
+
+- ### `min(arr | (valA, valB))`
+
+This function takes either two number parameters and returns the minimum value between the two or takes an array and returns the minimum value.
+
+```javascript
+print(min(3, 10))
+print(min([1,2,33,4,5]))
+```
+**Output:**
+```text
+3
+1
+```
+
 ---
 
 ## Strings
