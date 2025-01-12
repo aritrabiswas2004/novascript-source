@@ -68,3 +68,29 @@ export function strConcatFunc(_args: RuntimeVal[], _env: Environment): RuntimeVa
 
     return MK_STRING(finalString);
 }
+
+export function maxFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args.length != 2){
+        console.error("Max function has more that 2 args");
+        process.exit(1);
+    }
+
+    if ((_args[0] as NumberVal).value > (_args[1] as NumberVal).value){
+        return _args[0];
+    }
+
+    return _args[1];
+}
+
+export function minFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args.length != 2){
+        console.error("Max function has more that 2 args");
+        process.exit(1);
+    }
+
+    if ((_args[0] as NumberVal).value < (_args[1] as NumberVal).value){
+        return _args[0];
+    }
+
+    return _args[1];
+}
