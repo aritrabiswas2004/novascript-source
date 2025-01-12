@@ -1,1 +1,3 @@
-print(datetime())
+const foo = [1, 2, 3, 555, 54, 64];
+
+print(min(foo))

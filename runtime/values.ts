@@ -1,7 +1,7 @@
 import Environment from "./environment";
 import {Stmt} from "../frontend/ast";
 
-export type ValueType = "null" | "number" | "boolean" | "object" | "native-fn" | "function" | "string";
+export type ValueType = "null" | "number" | "boolean" | "object" | "native-fn" | "function" | "string" | "array";
 
 export interface RuntimeVal {
     type: ValueType;
@@ -67,4 +67,11 @@ export interface FunctionValue extends RuntimeVal {
     body: Stmt[];
 }
 
+export interface ArrayVal extends RuntimeVal {
+    type: "array";
+    values: RuntimeVal[];
+}
 
+export function MK_ARRAY(arr: RuntimeVal[]): ArrayVal {
+    return { type: "array", values: arr } as ArrayVal;
+}
