@@ -1,4 +1,5 @@
 import {
+    ArrayLiteral,
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
@@ -78,6 +79,24 @@ export default class Parser {
             default:
                 return this.parse_expr();
         }
+    }
+
+    private parse_array_expr(): Expr {
+        this.eat();
+
+        const values = new Array<Expr>;
+
+        while (this.not_eof() && this.at().type != TokenType.CloseBracket) {
+            values.push(this.parse_expr());
+
+            if (this.at().type != TokenType.CloseBracket) {
+                this.expect(TokenType.Comma, "Expected ',' after value.");
+            }
+        }
+
+        this.expect(TokenType.CloseBracket, "Closing Bracket (\"]\") expected at the end of \"Array\" expression.");
+
+        return {kind: "ArrayLiteral", values: values} as ArrayLiteral;
     }
 
     private parse_block_statement(): Stmt[] {
@@ -413,6 +432,9 @@ export default class Parser {
             }
             case TokenType.String:
                 return { kind: "StringLiteral", value: this.eat().value } as StringLiteral;
+
+            case TokenType.OpenBracket:
+                return this.parse_array_expr();
 
             default:
                 console.error("Unexpected Token Found during parsing: ", this.at());

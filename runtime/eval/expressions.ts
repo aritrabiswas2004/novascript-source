@@ -1,5 +1,15 @@
-import {BooleanVal, FunctionValue, MK_BOOL, MK_NULL, NativeFnValue, NumberVal, ObjectVal, RuntimeVal} from "../values";
-import {AssignmentExpr, BinaryExpr, CallExpr, Identifier, ObjectLiteral} from "../../frontend/ast";
+import {
+    ArrayVal,
+    BooleanVal,
+    FunctionValue,
+    MK_BOOL,
+    MK_NULL,
+    NativeFnValue,
+    NumberVal,
+    ObjectVal,
+    RuntimeVal
+} from "../values";
+import {ArrayLiteral, AssignmentExpr, BinaryExpr, CallExpr, Identifier, ObjectLiteral} from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
 
@@ -109,4 +119,16 @@ export function eval_call_expr(expr: CallExpr, env: Environment): RuntimeVal {
     }
 
     throw "Cannot call value that is not a function: " + JSON.stringify(fn);
+}
+
+export function eval_array_expr(arr: ArrayLiteral, env: Environment): RuntimeVal {
+    const array = { type: "array", values: [] } as ArrayVal;
+
+    for(const value of arr.values) {
+        const runtimeVal = evaluate(value, env);
+
+        array.values.push(runtimeVal);
+    }
+
+    return array;
 }

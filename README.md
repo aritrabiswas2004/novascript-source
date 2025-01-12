@@ -257,6 +257,17 @@ const result = concat(foo, bar);
 print(result) // prints "foobar"
 ```
 
+### Arrays
+
+Arrays are a sequences of primary expressions which can be useful to store organised data whose values are needed to constantly be looked-up and used. Syntactically, NovaScript
+arrays are the same as JavaScript arrays. Arrays begin with the opening bracket `[` and end with `]` with primary expression values seperated by commas `,`.
+
+```javascript
+const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
+
+print(foo) // [1, 2, 3, "bar", ["foobar", "true"], true]
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support.
@@ -278,4 +289,5 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Add comments
 - ✅ Add strings
 - 🔥Add escape sequences for strings.
+- 🔥Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.

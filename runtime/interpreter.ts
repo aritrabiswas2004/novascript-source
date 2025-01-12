@@ -1,5 +1,6 @@
 import {RuntimeVal, MK_STRING, MK_NUMBER} from "./values";
 import {
+    ArrayLiteral,
     AssignmentExpr,
     BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
     Identifier, IfStatement,
@@ -9,7 +10,14 @@ import {
     VarDeclaration, WhileStatement
 } from "../frontend/ast";
 import Environment from "./environment";
-import {eval_assignment, eval_binary_expr, eval_call_expr, eval_identifier, eval_object_expr} from "./eval/expressions";
+import {
+    eval_array_expr,
+    eval_assignment,
+    eval_binary_expr,
+    eval_call_expr,
+    eval_identifier,
+    eval_object_expr
+} from "./eval/expressions";
 import {
     eval_program,
     eval_var_declaration,
@@ -62,6 +70,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "UntilStatement":
             return eval_until_statement(astNode as UntilStatement, env);
+
+        case "ArrayLiteral":
+            return eval_array_expr(astNode as ArrayLiteral, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

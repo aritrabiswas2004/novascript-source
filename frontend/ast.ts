@@ -15,6 +15,7 @@ export type NodeType =
     | "ForStatement"
     | "UntilStatement"
     | "StringLiteral"
+    | "ArrayLiteral"
 
 export interface Stmt {
     kind: NodeType
@@ -120,3 +121,7 @@ export interface ObjectLiteral extends Expr {
     properties: Property[];
 }
 
+export interface ArrayLiteral extends Expr {
+    kind: "ArrayLiteral";
+    values: Array<Expr>;
+}
