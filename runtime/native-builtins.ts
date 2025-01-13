@@ -52,6 +52,17 @@ export function randInt(_args: RuntimeVal[], _env: Environment): RuntimeVal {
 export function sumFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     let total: number = 0;
 
+    if (_args[0].type == "array"){
+        const numArray: RuntimeVal[] = (_args[0] as ArrayVal).values;
+
+        for (const rVal of numArray){
+            const nVal = rVal as NumberVal;
+            total += nVal.value;
+        }
+
+        return MK_NUMBER(total);
+    }
+
     for (const nval of _args){
         total += (nval as NumberVal).value;
     }
