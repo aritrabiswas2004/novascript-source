@@ -29,6 +29,12 @@ const KEYWORDS: Record<string, TokenType> = {
     "until": TokenType.Until
 }
 
+const ESCAPED: Record<string, string> = {
+    n: "\n",
+    t: "\t",
+    r: "\r"
+}
+
 export interface Token {
     value: string,
     type: TokenType
@@ -114,9 +120,29 @@ export function tokenize(sourceCode: string): Token[] {
             src.shift();
 
             let str = "";
+            let raw = "";
+
+            let escaped = false;
 
             while (src.length > 0 && src[0] != '"'){
-                str += src.shift();
+                const key = src.shift();
+                raw += key;
+
+                if (key == "\\"){
+                    escaped = !escaped
+                    if (escaped) continue;
+                } else if (escaped){
+                    escaped = false;
+
+                    if (ESCAPED[key]){
+                        str += ESCAPED[key];
+                        continue;
+                    } else {
+                        str += `\\`;
+                    }
+                }
+
+                str += key;
             }
 
             src.shift(); // get rid of trailing double quotes ' " '

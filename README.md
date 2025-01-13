@@ -245,9 +245,9 @@ until (i == 10) {
 
 ### Strings
 
-There is now strings support in NovaScript. Strings are sequences of alphanumeric ASCII characters. Currently, there is no
-support for escape sequences but that is soon to change in the future. The maximum length of a string is 2147483647 characters
-(`2^53 - 1`), the same as JavaScript. Strings are declared with the double quotation mark (`"`).
+There is now strings support in NovaScript. Strings are sequences of alphanumeric ASCII characters. The maximum length of a string is 2147483647 characters
+(`2^53 - 1`), the same as JavaScript. Strings are declared with the double quotation mark (`"`). Strings now also support ASCII escape sequences such as `\n` as newline,
+`\t` for tab whitespaces and `\r` for end of line.
 
 ```javascript
 const foo = "foo";
@@ -256,6 +256,8 @@ const result = concat(foo, bar);
 
 print(result) // prints "foobar"
 ```
+
+> ⚠️ Escape sequences only can be observed in Release print and not Debug print. See `native-builtins.ts` for more.
 
 ### Arrays
 
@@ -288,6 +290,6 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Include more native functions for basic math tasks like `sum()` or `pow()`.
 - ✅ Add comments
 - ✅ Add strings
-- 🔥Add escape sequences for strings.
+- ✅ Add escape sequences for strings.
 - 🔥Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
