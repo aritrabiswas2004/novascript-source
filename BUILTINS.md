@@ -53,8 +53,7 @@ Sat Jan 11 2025 16:01:04 GMT+0100 (Central European Standard Time)
 - ### `sum(numA, numB, ...)`
 
 The `sum()` function returns the calculated sum of all args passed in the function.
-Works only for numeric literals. When arrays are supported in NovaScript, the function definition
-will be modified.
+Works only for numeric literals.
 
 ```javascript
 print(sum(1,2,3,4))
