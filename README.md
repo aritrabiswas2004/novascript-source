@@ -257,6 +257,8 @@ const result = concat(foo, bar);
 print(result) // prints "foobar"
 ```
 
+> ⚠️ Escape sequences only can be observed in Release print and not Debug print. See `native-builtins.ts` for more.
+
 ### Arrays
 
 Arrays are a sequences of primary expressions which can be useful to store organised data whose values are needed to constantly be looked-up and used. Syntactically, NovaScript
