@@ -257,7 +257,9 @@ const result = concat(foo, bar);
 print(result) // prints "foobar"
 ```
 
-> ⚠️ Escape sequences only can be observed in Release print and not Debug print. See `native-builtins.ts` for more.
+> [!CAUTION]
+> Escape sequences only can be observed in Release print and not Debug print. 
+> See `native-builtins.ts` for more.
 
 ### Arrays
 
