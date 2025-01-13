@@ -2,6 +2,7 @@
 
 NovaScript has many builtin functions that offer easier usage of general functions in everyday programming.
 
+> [!WARNING]
 > All outputs displayed here are outputs in Release print. If you are creating outputs in Debug print, then the outputs will
 > be the entire runtime value object. See the below output example for `print("hello world")`.
 > 
@@ -50,18 +51,22 @@ Sat Jan 11 2025 16:01:04 GMT+0100 (Central European Standard Time)
 
 ## Math
 
-- ### `sum(numA, numB, ...)`
+- ### `sum(numA, numB, ... | numArr[])`
 
 The `sum()` function returns the calculated sum of all args passed in the function.
-Works only for numeric literals. When arrays are supported in NovaScript, the function definition
-will be modified.
+Works only for numeric literals. Calculates the sum of Numeric Literals in the array if passed
+as an arg.
 
 ```javascript
 print(sum(1,2,3,4))
+
+const foo = [5,5,5,5,5];
+print(sum(foo))
 ```
 **Output:**
 ```text
 10
+25
 ```
 
 - ### `pow(base, power)`
