@@ -16,6 +16,7 @@ export type NodeType =
     | "UntilStatement"
     | "StringLiteral"
     | "ArrayLiteral"
+    | "TryCatchStatement"
 
 export interface Stmt {
     kind: NodeType
@@ -65,6 +66,12 @@ export interface UntilStatement extends Stmt {
     kind: "UntilStatement";
     test: Expr;
     body: Stmt[];
+}
+
+export interface TryCatchStatement extends Stmt {
+    kind: "TryCatchStatement";
+    body: Stmt[];
+    alternate: Stmt[];
 }
 
 export interface Expr extends Stmt {}
