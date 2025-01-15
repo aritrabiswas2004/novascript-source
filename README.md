@@ -278,11 +278,11 @@ The below items are TODOs that can be added to the language to increase its supp
 
 #### Legend
 
-| Symbol | Definition                 |
-|--------|----------------------------|
-| ✅      | Task Completed             |
-| ❌      | Facing Errors (Incomplete) |
-| 🔥     | Work-in-progress           |
+| Symbol | Definition                        |
+|--------|-----------------------------------|
+| ✅      | Task Completed                    |
+| ❌      | Facing Errors (see GitHub issues) |
+| 🔥     | Work-in-progress                  |
 
 - ✅ Implement a `BooleanExpr` interface and support for more operators like `>`, `<`, `==`.
 - ✅ `if-else` statements.
@@ -293,6 +293,7 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Add comments
 - ✅ Add strings
 - ✅ Add escape sequences for strings.
-- 🔥Add import statements from other NovaScript files.
+- ❌ Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
+- 🔥 Try Catch statements.
