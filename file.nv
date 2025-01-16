@@ -1,4 +1,8 @@
-const foo = [1,2,3,4,5];
-
-print(foo)
-print(sum(foo))
+try {
+    print("The code below throws an error")
+    const foo = "foo";
+    foo = "bar"
+    print("this will not get printed")
+} catch {
+    print("Error occurred, exception thrown")
+}

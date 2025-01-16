@@ -3,7 +3,8 @@ import {
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
-    Expr, ForStatement,
+    Expr,
+    ForStatement,
     FunctionDeclaration,
     Identifier,
     IfStatement,
@@ -12,7 +13,10 @@ import {
     ObjectLiteral,
     Program,
     Property,
-    Stmt, StringLiteral, UntilStatement,
+    Stmt,
+    StringLiteral,
+    TryCatchStatement,
+    UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "./ast";
@@ -61,6 +65,24 @@ export default class Parser {
         return program;
     }
 
+    private parse_try_catch(): Expr {
+        this.eat();
+
+        const body = this.parse_block_statement();
+
+        if (this.at().type != TokenType.Identifier || this.at().type !== TokenType.Catch) throw "\"try\" statement must be followed by a \"catch\" statement."
+
+        this.eat();
+
+        const alternate = this.parse_block_statement();
+
+        return {
+            kind: "TryCatchStatement",
+            body,
+            alternate,
+        } as TryCatchStatement
+    } // Doesnt work
+
     private parse_stmt(): Stmt {
         switch (this.at().type){
             case TokenType.Let:
@@ -76,9 +98,27 @@ export default class Parser {
                 return this.parse_for_statement();
             case TokenType.Until:
                 return this.parse_until_statement();
+            case TokenType.Try:
+                return this.parse_try_catch_statement();
             default:
                 return this.parse_expr();
         }
+    }
+
+    private parse_try_catch_statement(): Stmt {
+        this.eat(); // try
+
+        const body = this.parse_block_statement();
+
+        this.expect(TokenType.Catch, "Expected 'catch' after 'try' stmt");
+
+        const alternate = this.parse_block_statement();
+
+        return {
+            kind: "TryCatchStatement",
+            body,
+            alternate
+        } as TryCatchStatement;
     }
 
     private parse_array_expr(): Expr {

@@ -3,7 +3,7 @@ import {
     FunctionDeclaration,
     IfStatement,
     Program,
-    Stmt, UntilStatement,
+    Stmt, TryCatchStatement, UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "../../frontend/ast";
@@ -116,3 +116,19 @@ function eval_if_body(body: Stmt[], env: Environment, newEnv: boolean = true): R
     return result;
 }
 
+export function eval_try_catch(declaration: TryCatchStatement, env: Environment): RuntimeVal {
+    const try_env = new Environment(env);
+    const catch_env = new Environment(env);
+
+    try {
+        const result = eval_if_body(declaration.body, try_env, false);
+        return result ?? MK_NULL();
+    } catch (e) {
+        try {
+            const result = eval_if_body(declaration.alternate, catch_env, false);
+            return result ?? MK_NULL();
+        } catch (innerError) {
+            throw new Error("Unhandled error in catch block: " + innerError);
+        }
+    }
+}

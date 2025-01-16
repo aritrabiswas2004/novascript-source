@@ -56,8 +56,7 @@ export default class Environment {
     public assignVar(varname: string, value: RuntimeVal): RuntimeVal {
         const env = this.resolve(varname);
         if (env.constants.has(varname)){
-            console.error(`Cannot write to var '${varname}' since its a constant.`);
-            process.exit(1);
+            throw new Error(`Cannot write to var '${varname}' since its a constant.`);
         }
         env.variables.set(varname, value);
         return value;
