@@ -273,6 +273,27 @@ const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
 print(foo) // [1, 2, 3, "bar", ["foobar", "true"], true]
 ```
 
+### Try-Catch Statements
+
+NovaScript now has `try-catch` statements. These are used for error handling just like JavaScript. Any error in the `try` block statement
+automatically triggers the block statement in `catch` to occur. `try` and `catch` keywords
+compliment each other and cannot be used separately.
+
+```javascript
+try {
+    print("The code below throws an error")
+    const foo = "foo";
+    foo = "bar"
+    print("this will not get printed")
+} catch {
+    print("Error occurred, exception thrown")
+}
+
+// Output:
+// The code below throws an error
+// Error occurred, exception thrown
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support.
@@ -294,7 +315,7 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Add comments
 - ✅ Add strings
 - ✅ Add escape sequences for strings.
+- ✅ Try Catch statements.
 - ❌ Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
-- 🔥 Try Catch statements.
