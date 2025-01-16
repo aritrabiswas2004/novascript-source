@@ -6,7 +6,7 @@ import {
     Identifier, IfStatement,
     NumericLiteral, ObjectLiteral,
     Program,
-    Stmt, StringLiteral, UntilStatement,
+    Stmt, StringLiteral, TryCatchStatement, UntilStatement,
     VarDeclaration, WhileStatement
 } from "../frontend/ast";
 import Environment from "./environment";
@@ -23,7 +23,10 @@ import {
     eval_var_declaration,
     eval_function_declaration,
     eval_if_statement,
-    eval_while_statement, eval_for_statement, eval_until_statement
+    eval_while_statement,
+    eval_for_statement,
+    eval_until_statement,
+    eval_try_catch
 } from "./eval/statements";
 
 
@@ -73,6 +76,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "ArrayLiteral":
             return eval_array_expr(astNode as ArrayLiteral, env);
+
+        case "TryCatchStatement":
+            return eval_try_catch(astNode as TryCatchStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);
