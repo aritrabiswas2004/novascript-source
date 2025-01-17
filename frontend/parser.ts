@@ -78,24 +78,6 @@ export default class Parser {
         return program;
     }
 
-    private parse_try_catch(): Expr {
-        this.eat();
-
-        const body = this.parse_block_statement();
-
-        if (this.at().type != TokenType.Identifier || this.at().type !== TokenType.Catch) throw "\"try\" statement must be followed by a \"catch\" statement."
-
-        this.eat();
-
-        const alternate = this.parse_block_statement();
-
-        return {
-            kind: "TryCatchStatement",
-            body,
-            alternate,
-        } as TryCatchStatement
-    } // Doesnt work
-
     private parse_stmt(): Stmt {
         switch (this.at().type){
             case TokenType.Let:
@@ -441,26 +423,10 @@ export default class Parser {
     private parse_member_expr(): Expr {
         let object = this.parse_primary_expr();
 
-        while (this.at().type == TokenType.Dot || this.at().type == TokenType.OpenBracket){
-            const operator = this.eat();
-
-            let property: Expr;
-            let computed: boolean;
-
-            if (operator.type == TokenType.Dot){
-                computed = false;
-                property = this.parse_primary_expr();
-
-                if (property.kind != "Identifier"){
-                    throw "Dot operator without rhs being identifier."
-                }
-            } else {
-                computed = true;
-                property = this.parse_expr();
-                this.expect(TokenType.CloseBracket, "Missing closing bracket");
-            }
-
-            object = {kind: "MemberExpr", object, property, computed} as MemberExpr;
+        while (this.at().type === TokenType.Dot) {
+            this.eat();
+            const property = this.expect(TokenType.Identifier, "Expected property name after '.'").value;
+            object = { kind: "MemberExpr", object, property } as MemberExpr;
         }
 
         return object;

@@ -16,7 +16,7 @@ import {
     ArrayLiteral,
     AssignmentExpr,
     BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
-    Identifier, IfStatement,
+    Identifier, IfStatement, MemberExpr,
     NumericLiteral, ObjectLiteral,
     Program,
     Stmt, StringLiteral, TryCatchStatement, UntilStatement,
@@ -28,7 +28,7 @@ import {
     eval_assignment,
     eval_binary_expr,
     eval_call_expr,
-    eval_identifier,
+    eval_identifier, eval_member_expr,
     eval_object_expr
 } from "./eval/expressions";
 import {
@@ -92,6 +92,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "TryCatchStatement":
             return eval_try_catch(astNode as TryCatchStatement, env);
+
+        case "MemberExpr":
+            return eval_member_expr(astNode as MemberExpr, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

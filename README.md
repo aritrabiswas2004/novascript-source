@@ -27,11 +27,15 @@ an executable.
 
 ## Syntax and Features
 
-> NovaScript already supports some basic features but more support for certain statements and expression are soon
+NovaScript already supports some basic features but more support for certain statements and expression are soon
 to be added. The features to be included in the future are given in a TODO list below.
 
-> Namespaces in NovaScript works the same way as JavaScript. All statements and expressions that are in a block are of a seperate
-> namespace or Environment from the global namespace.
+> [!WARNING]
+> In version v0.1.0, all outputs to the console print in Debug print. To print in
+> Release print check the [builtins docs](./BUILTINS.md) for more information.
+> As of the latest version, it is not advised to use Release print other than for testing
+> purposes.
+
 ### Variables
 
 Variables can be declared with the `mut` keyword. This makes the variable mutable and re-assignable.
@@ -83,12 +87,12 @@ print(foo < bar)  // false
 
 ### Objects
 
-NovaScript supports complex data structs and object creation. There in no current support for classes and all OOP features but
-a more C-like structs functionality.
+NovaScript supports complex data objects but no direct casting it into types. It combines simple
+literals paired with an identifier name to create these complex objects.
 
 ```javascript
 const foo = {
-  bar: 12,
+  bar: "hello world",
   firstVar: 13,
   complex : {
     insideVar: 14,
@@ -96,22 +100,9 @@ const foo = {
   }
 };
 
-print(foo.complex.insideVar)
+print(foo.bar) // hello world
+print(foo.complex.insideVar) // 14
 ```
-> The above returns the Abstract Syntax Tree (AST) and not the Runtime Val yet.
-> ```text
-> This AST node has not yet been set for interpretation {
->   kind: 'MemberExpr',
->   object: {
->       kind: 'MemberExpr',
->       object: { kind: 'Identifier', symbol: 'foo' },
->       property: { kind: 'Identifier', symbol: 'complex' },
->       computed: false
->   },
->   property: { kind: 'Identifier', symbol: 'insideVar' },
->   computed: false
-> }
-> ```
 
 ### Boolean Expressions
 
