@@ -2,7 +2,7 @@
 
 NovaScript has many builtin functions that offer easier usage of general functions in everyday programming.
 
-> [!WARNING]
+> [!IMPORTANT]
 > All outputs displayed here are outputs in Release print. If you are creating outputs in Debug print, then the outputs will
 > be the entire runtime value object. See the below output example for `print("hello world")`.
 > 
@@ -14,6 +14,9 @@ NovaScript has many builtin functions that offer easier usage of general functio
 > ```text
 > hello world
 > ``` 
+> ## How to Change?
+> Modify the `printFunction()` args by uncommenting the first line of the function and subsequently
+> comment the following line to turn off debug print.
 
 ---
 
