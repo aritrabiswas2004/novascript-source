@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Lexer
+ *
+ * Creates tokens based on individual characters or keywords.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
+
 export enum TokenType {
     Number,
     Identifier,

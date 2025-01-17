@@ -1,3 +1,15 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Environment
+ *
+ * Describes scope and assigns macros.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {MK_BOOL, MK_NATIVE_FN, MK_NULL, RuntimeVal} from "./values";
 import {
     floorFunc, maxFunc, minFunc,

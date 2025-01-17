@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Parser
+ *
+ * Parses tokens for syntactical accuracy and converts
+ * tokens to AST nodes.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {
     ArrayLiteral,
     AssignmentExpr,

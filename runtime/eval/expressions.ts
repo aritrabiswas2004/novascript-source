@@ -1,3 +1,15 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Expressions Evaluation (Interpreter)
+ *
+ * Evaluates expressions after parsing.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {
     ArrayVal,
     BooleanVal,

@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Interpreter
+ *
+ * Collective interpretation of statements and
+ * expressions.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {RuntimeVal, MK_STRING, MK_NUMBER} from "./values";
 import {
     ArrayLiteral,

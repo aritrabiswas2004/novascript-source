@@ -1,3 +1,15 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Native Functions
+ *
+ * Defines a set of builtin functions.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {ArrayVal, MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
 import Environment from "./environment";
 

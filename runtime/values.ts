@@ -1,3 +1,16 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Data Types
+ *
+ * Converts TypeScript data types to NovaScript
+ * runtime values.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import Environment from "./environment";
 import {Stmt} from "../frontend/ast";
 

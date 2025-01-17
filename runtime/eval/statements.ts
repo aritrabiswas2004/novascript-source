@@ -1,3 +1,15 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Statements Evaluation (Interpreter)
+ *
+ * Evaluates statements after parsing.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 import {
     ForStatement,
     FunctionDeclaration,

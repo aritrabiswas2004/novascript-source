@@ -1,3 +1,15 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Abstract Syntax Tree (AST)
+ *
+ * Types of Literals, Statements and Expressions
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
+
 export type NodeType =
     "Program"
     | "VarDeclaration"
