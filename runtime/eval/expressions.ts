@@ -7,9 +7,17 @@ import {
     NativeFnValue,
     NumberVal,
     ObjectVal,
-    RuntimeVal
+    RuntimeVal, StringVal
 } from "../values";
-import {ArrayLiteral, AssignmentExpr, BinaryExpr, CallExpr, Identifier, ObjectLiteral} from "../../frontend/ast";
+import {
+    ArrayLiteral,
+    AssignmentExpr,
+    BinaryExpr,
+    CallExpr,
+    Identifier,
+    MemberExpr,
+    ObjectLiteral, StringLiteral
+} from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
 
@@ -131,4 +139,20 @@ export function eval_array_expr(arr: ArrayLiteral, env: Environment): RuntimeVal
     }
 
     return array;
+}
+
+export function eval_member_expr(expr: MemberExpr, env: Environment): RuntimeVal {
+    const object = evaluate(expr.object, env) as ObjectVal;
+
+    if (object.type !== "object") {
+        throw new Error(`Cannot access property '${expr.property}' on non-object type.`);
+    }
+
+    const propertyValue = object.properties.get(expr.property);
+
+    if (propertyValue === undefined) {
+        throw new Error(`Property '${expr.property}' does not exist on the object.`);
+    }
+
+    return propertyValue;
 }

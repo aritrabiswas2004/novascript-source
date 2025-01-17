@@ -98,8 +98,7 @@ export interface CallExpr extends Expr {
 export interface MemberExpr extends Expr {
     kind: "MemberExpr";
     object: Expr;
-    property: Expr;
-    computed: boolean;
+    property: string;
 }
 
 export interface Identifier extends Expr {
