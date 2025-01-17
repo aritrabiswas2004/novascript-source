@@ -32,7 +32,7 @@ to be added. The features to be included in the future are given in a TODO list 
 
 > [!WARNING]
 > In version v0.1.0, all outputs to the console print in Debug print. To print in
-> Release print check the [builtins docs]() for more information
+> Release print check the [builtins docs](./BUILTINS.md) for more information
 
 ### Variables
 
