@@ -319,3 +319,4 @@ The below items are TODOs that can be added to the language to increase its supp
 - ❌ Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
+- 🔥 Add array indexing.
