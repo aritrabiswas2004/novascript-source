@@ -19,16 +19,17 @@ import {
     NativeFnValue,
     NumberVal,
     ObjectVal,
-    RuntimeVal, StringVal
+    RuntimeVal
 } from "../values";
 import {
+    ArrayIndexExpr,
     ArrayLiteral,
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
     Identifier,
     MemberExpr,
-    ObjectLiteral, StringLiteral
+    ObjectLiteral
 } from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
@@ -167,4 +168,27 @@ export function eval_member_expr(expr: MemberExpr, env: Environment): RuntimeVal
     }
 
     return propertyValue;
+}
+
+export function eval_array_index_expr(expr: ArrayIndexExpr, env: Environment): RuntimeVal {
+    const object = evaluate(expr.object, env);
+
+    if (object.type != "array"){
+        throw new Error("Indexing [] passed to non-array object");
+    }
+
+    const array = object as ArrayVal;
+    const index = evaluate(expr.index, env);
+
+    if (index.type !== "number") {
+        throw new Error(`Index is of type'${index.type}', expected type 'number'`);
+    }
+
+    const indexNum = (index as NumberVal).value;
+
+    if (indexNum < 0 || indexNum >= array.values.length) {
+        throw new Error("Index out of bounds");
+    }
+
+    return array.values[indexNum];
 }

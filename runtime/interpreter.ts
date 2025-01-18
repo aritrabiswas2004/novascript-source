@@ -13,6 +13,7 @@
 
 import {RuntimeVal, MK_STRING, MK_NUMBER} from "./values";
 import {
+    ArrayIndexExpr,
     ArrayLiteral,
     AssignmentExpr,
     BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
@@ -24,7 +25,7 @@ import {
 } from "../frontend/ast";
 import Environment from "./environment";
 import {
-    eval_array_expr,
+    eval_array_expr, eval_array_index_expr,
     eval_assignment,
     eval_binary_expr,
     eval_call_expr,
@@ -95,6 +96,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "MemberExpr":
             return eval_member_expr(astNode as MemberExpr, env);
+
+        case "ArrayIndexExpr":
+            return eval_array_index_expr(astNode as ArrayIndexExpr, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

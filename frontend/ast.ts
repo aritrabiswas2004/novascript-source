@@ -17,6 +17,7 @@ export type NodeType =
     | "AssignmentExpr"
     | "MemberExpr"
     | "CallExpr"
+    | "ArrayIndexExpr"
     | "Property"
     | "ObjectLiteral"
     | "NumericLiteral"
@@ -142,4 +143,10 @@ export interface ObjectLiteral extends Expr {
 export interface ArrayLiteral extends Expr {
     kind: "ArrayLiteral";
     values: Array<Expr>;
+}
+
+export interface ArrayIndexExpr extends Expr {
+    kind: "ArrayIndexExpr";
+    object: Expr;
+    index: Expr;
 }
