@@ -12,6 +12,7 @@
  */
 
 import {
+    ArrayIndexExpr,
     ArrayLiteral,
     AssignmentExpr,
     BinaryExpr,
@@ -427,6 +428,16 @@ export default class Parser {
             this.eat();
             const property = this.expect(TokenType.Identifier, "Expected property name after '.'").value;
             object = { kind: "MemberExpr", object, property } as MemberExpr;
+        }
+
+        while (this.at().type === TokenType.OpenBracket){
+            this.eat();
+
+            const index = this.parse_expr();
+
+            this.expect(TokenType.CloseBracket, "Expected ']' in indexing");
+
+            object = {kind: "ArrayIndexExpr", object, index} as ArrayIndexExpr;
         }
 
         return object;
