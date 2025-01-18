@@ -10,7 +10,7 @@
  * Author: Aritra Biswas <aritrabb@gmail.com>
  */
 
-import {MK_BOOL, MK_NATIVE_FN, MK_NULL, RuntimeVal} from "./values";
+import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal, StringVal} from "./values";
 import {
     floorFunc, maxFunc, minFunc,
     powFunction,
@@ -38,6 +38,14 @@ export function createGlobalEnv() {
     env.declareVar("min", MK_NATIVE_FN(minFunc), true);
     env.declareVar("split", MK_NATIVE_FN(splitFunction), true);
     env.declareVar("type", MK_NATIVE_FN(typeFunction), true);
+
+    env.declareVar("constants", MK_OBJECT(
+        new Map()
+            .set("pi", MK_NUMBER(Math.PI))
+            .set("e", MK_NUMBER(Math.E))
+            .set("nova", MK_STRING("https://xkcd.com/927/"))
+    ), true);
+
 
     return env;
 }
