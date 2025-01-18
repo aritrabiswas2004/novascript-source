@@ -263,6 +263,15 @@ const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
 
 print(foo) // [1, 2, 3, "bar", ["foobar", "true"], true]
 ```
+Arrays can also be indexed with indexing starting at 0. Array indexing can also be used
+simultaneously to access nested literals.
+
+```javascript
+const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
+
+print(foo[0]) // 1
+print(foo[4][0]) // "foobar"
+```
 
 ### Try-Catch Statements
 
@@ -307,7 +316,9 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Add strings
 - ✅ Add escape sequences for strings.
 - ✅ Try Catch statements.
+- ✅Add array indexing.
 - ❌ Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
-- 🔥 Add array indexing.
+- 🔥 Add statistics and regression function. (Hi Arnav!)
+- 
