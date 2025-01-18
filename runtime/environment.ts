@@ -15,7 +15,7 @@ import {
     floorFunc, maxFunc, minFunc,
     powFunction,
     printFunction,
-    randInt,
+    randInt, splitFunction,
     strConcatFunc,
     sumFunction,
     timeFunction
@@ -36,6 +36,7 @@ export function createGlobalEnv() {
     env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
     env.declareVar("max", MK_NATIVE_FN(maxFunc), true);
     env.declareVar("min", MK_NATIVE_FN(minFunc), true);
+    env.declareVar("split", MK_NATIVE_FN(splitFunction), true);
 
     return env;
 }

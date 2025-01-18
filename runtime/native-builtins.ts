@@ -10,14 +10,46 @@
  * Author: Aritra Biswas <aritrabb@gmail.com>
  */
 
-import {ArrayVal, MK_NULL, MK_NUMBER, MK_STRING, NumberVal, RuntimeVal, StringVal} from "./values";
+import {
+    ArrayVal,
+    BooleanVal,
+    MK_ARRAY,
+    MK_NULL,
+    MK_NUMBER,
+    MK_STRING, NullVal,
+    NumberVal,
+    RuntimeVal,
+    StringVal
+} from "./values";
 import Environment from "./environment";
 
-export function printFunction(_args, _env: Environment): RuntimeVal {
-    // console.log(..._args.map(arg => arg.value)); // Release
-    console.log(..._args); // Debug
-    return MK_NULL();
+export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    // console.log(..._args); // For debug purposes
+    function formatValue(value: RuntimeVal): string {
+        switch (value.type) {
+            case "number":
+                return (value as NumberVal).value.toString();
+            case "string":
+                return `"${(value as StringVal).value}"`;
+            case "boolean":
+                return (value as BooleanVal).value.toString();
+            case "null":
+                return "null";
+            case "array":
+                const arr = (value as ArrayVal).values;
+                const formattedItems = arr.map(formatValue); // Recursively format each item
+                return `[${formattedItems.join(", ")}]`;
+            default:
+                throw new Error(`Unrecognized runtime value: ${value.type}`);
+        }
+    }
+
+    const output = _args.map(formatValue).join(", ");
+    console.log(output);
+
+    return MK_STRING(output);
 }
+
 
 export function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     return MK_STRING(Date());
@@ -155,3 +187,31 @@ export function minFunc(_args: RuntimeVal[], _env: Environment): RuntimeVal {
       return _args[1];
     }
 }
+
+export function splitFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args[0].type == "string" && _args[1].type == "string"){
+        const mainStr = (_args[0] as StringVal).value;
+        const splitChar = (_args[1] as StringVal).value;
+
+        const splitArr = mainStr.split(splitChar);
+
+        const runtimeStringVals = new Array<RuntimeVal>;
+
+        for (const item of splitArr){
+            runtimeStringVals.push(MK_STRING(item));
+        }
+
+        return MK_ARRAY(runtimeStringVals);
+    } else {
+        throw new Error("Both args of be strings");
+    }
+}
+
+export function countCharsFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    return MK_NULL();
+}
+
+export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    return MK_NULL();
+}
+
