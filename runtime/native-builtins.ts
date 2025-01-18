@@ -23,6 +23,22 @@ import {
 } from "./values";
 import Environment from "./environment";
 
+
+function runtimeToJs(runtime: RuntimeVal){
+    switch (runtime.type){
+        case "string":
+            return (runtime as StringVal).value;
+        case "boolean":
+            return (runtime as BooleanVal).value;
+        case "null":
+            return (runtime as NullVal).value;
+        case "number":
+            return (runtime as NumberVal).value;
+        default:
+            throw new Error(`Expected types [string | boolean | number] but got ${runtime}`)
+    }
+}
+
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     // console.log(..._args); // For debug purposes
     function formatValue(value: RuntimeVal): string {
@@ -215,7 +231,13 @@ export function typeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal
 }
 
 export function countCharsFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-    return MK_NULL();
+    if (_args.length > 1){
+        throw new Error("countChars() has more than 1 argument");
+    } else if (_args[0].type != "string"){
+        throw new Error(`countChars() function expected type 'string' but got '${_args[0].type}'`);
+    }
+
+    return MK_NUMBER((_args[0] as StringVal).value.length);
 }
 
 export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
