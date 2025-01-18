@@ -50,7 +50,6 @@ export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVa
     return MK_STRING(output);
 }
 
-
 export function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     return MK_STRING(Date());
 }
@@ -205,6 +204,14 @@ export function splitFunction(_args: RuntimeVal[], _env: Environment): RuntimeVa
     } else {
         throw new Error("Both args of be strings");
     }
+}
+
+export function typeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args.length > 1){
+        throw new Error("Cannot identify type for more than 2 Runtime Values. type() takes only 1 arg");
+    }
+
+    return MK_STRING(_args[0].type);
 }
 
 export function countCharsFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {

@@ -18,7 +18,7 @@ import {
     randInt, splitFunction,
     strConcatFunc,
     sumFunction,
-    timeFunction
+    timeFunction, typeFunction
 } from "./native-builtins";
 
 // creating lang bultins
@@ -37,6 +37,7 @@ export function createGlobalEnv() {
     env.declareVar("max", MK_NATIVE_FN(maxFunc), true);
     env.declareVar("min", MK_NATIVE_FN(minFunc), true);
     env.declareVar("split", MK_NATIVE_FN(splitFunction), true);
+    env.declareVar("type", MK_NATIVE_FN(typeFunction), true);
 
     return env;
 }
