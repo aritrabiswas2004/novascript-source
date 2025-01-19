@@ -16,7 +16,7 @@ NovaScript has many builtin functions that offer easier usage of general functio
 > ``` 
 > ## How to Change?
 > Modify the `printFunction()` args by uncommenting the first line of the function and subsequently
-> comment the following line to turn off debug print.
+> comment the remainder of the function to turn off release print.
 
 ---
 
@@ -48,6 +48,25 @@ print(datetime())
 
 ```text
 Sat Jan 11 2025 16:01:04 GMT+0100 (Central European Standard Time)
+```
+
+- ### `type(dataVal)`
+
+Returns String Literal of type of argument passed to the string. Takes only 1 argument.
+The argument must be a valid NovaScript NodeType.
+
+```javascript
+print(type(123))
+print(type("string"))
+print(type([1,2,3]))
+```
+
+**Output:**
+
+```text
+number
+string
+array
 ```
 
 ---
