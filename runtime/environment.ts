@@ -33,11 +33,14 @@ export function createGlobalEnv() {
     env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
     env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);
     env.declareVar("sum", MK_NATIVE_FN(sumFunction), true);
-    env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
     env.declareVar("max", MK_NATIVE_FN(maxFunc), true);
     env.declareVar("min", MK_NATIVE_FN(minFunc), true);
-    env.declareVar("splitStr", MK_NATIVE_FN(splitFunction), true);
     env.declareVar("type", MK_NATIVE_FN(typeFunction), true);
+
+
+    // string
+    env.declareVar("splitStr", MK_NATIVE_FN(splitFunction), true);
+    env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
     env.declareVar("countChars", MK_NATIVE_FN(countCharsFunction), true);
 
     // random
@@ -53,7 +56,6 @@ export function createGlobalEnv() {
             .set("e", MK_NUMBER(Math.E))
             .set("nova", MK_STRING("https://xkcd.com/927/"))
     ), true);
-
 
     /*env.declareVar("stats", MK_OBJECT(
         new Map()

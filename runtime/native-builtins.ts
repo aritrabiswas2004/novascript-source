@@ -41,17 +41,23 @@ function runtimeToJs(runtime: RuntimeVal){
 
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     // console.log(..._args); // For debug purposes
+    let isPartOfArray: boolean = false
     function formatValue(value: RuntimeVal): string {
         switch (value.type) {
             case "number":
                 return (value as NumberVal).value.toString();
             case "string":
-                return `"${(value as StringVal).value}"`;
+                if (isPartOfArray) return `"${(value as StringVal).value}"`;
+                else {
+                    isPartOfArray = false;
+                    return `${(value as StringVal).value}`;
+                }
             case "boolean":
                 return (value as BooleanVal).value.toString();
             case "null":
                 return "null";
             case "array":
+                isPartOfArray = true;
                 const arr = (value as ArrayVal).values;
                 const formattedItems = arr.map(formatValue); // Recursively format each item
                 return `[${formattedItems.join(", ")}]`;
