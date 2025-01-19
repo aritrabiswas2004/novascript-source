@@ -1,5 +1,9 @@
 # NovaScript Builtins
 
+> [!CAUTION]
+> This `BUILTINS.md` file is due for modification. The documentation here is outdated.
+> When the modifications of bultins ends, this docs page will be with the latest information.
+
 NovaScript has many builtin functions that offer easier usage of general functions in everyday programming.
 
 > [!IMPORTANT]
