@@ -30,6 +30,7 @@ export type NodeType =
     | "StringLiteral"
     | "ArrayLiteral"
     | "TryCatchStatement"
+    | "ImportStatement"
 
 export interface Stmt {
     kind: NodeType

@@ -22,6 +22,7 @@ import {
     StringVal
 } from "./values";
 import Environment from "./environment";
+import * as fs from "node:fs";
 
 
 function runtimeToJs(runtime: RuntimeVal){
@@ -40,8 +41,8 @@ function runtimeToJs(runtime: RuntimeVal){
 }
 
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-    console.log(..._args); // For debug purposes
-    /*let isPartOfArray: boolean = false
+    // console.log(..._args); // For debug purposes
+    let isPartOfArray: boolean = false
     function formatValue(value: RuntimeVal): string {
         switch (value.type) {
             case "number":
@@ -59,7 +60,7 @@ export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVa
             case "array":
                 isPartOfArray = true;
                 const arr = (value as ArrayVal).values;
-                const formattedItems = arr.map(formatValue); // Recursively format each item
+                const formattedItems = arr.map(formatValue);
                 return `[${formattedItems.join(", ")}]`;
             default:
                 throw new Error(`Unrecognized runtime value: ${value.type}`);
@@ -69,8 +70,8 @@ export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVa
     const output = _args.map(formatValue).join(", ");
     console.log(output);
 
-    return MK_STRING(output);*/
-    return MK_NULL();
+    return MK_STRING(output);
+    // return MK_NULL();
 }
 
 export function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
@@ -258,6 +259,11 @@ export function lengthFunction(_args: RuntimeVal[], _env: Environment): RuntimeV
         case "string":
             return MK_NUMBER((_args[0] as StringVal).value.length);
     }
+}
+
+export function openFileFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    const fileContents = fs.readFileSync((_args[0] as StringVal).value, "utf-8");
+    return MK_STRING(fileContents);
 }
 
 export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {

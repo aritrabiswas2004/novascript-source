@@ -1,1 +1,5 @@
-console.log(parseFloat("3.4"));
+import * as fs from "node:fs";
+
+const fileContents = fs.readFileSync("../testing.nv", "utf-8");
+
+console.log(fileContents);

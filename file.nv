@@ -1,3 +1,3 @@
-const foo = 3.4 + 5.1;
+const fileContents = file.read("./testing.nv");
 
-print(foo)
+print(fileContents)

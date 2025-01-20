@@ -13,7 +13,7 @@
 import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal, StringVal} from "./values";
 import {
     countCharsFunction,
-    floorFunc, lengthFunction, maxFunc, minFunc,
+    floorFunc, lengthFunction, maxFunc, minFunc, openFileFunction,
     powFunction,
     printFunction,
     randInt, splitFunction,
@@ -56,6 +56,12 @@ export function createGlobalEnv() {
             .set("pi", MK_NUMBER(Math.PI))
             .set("e", MK_NUMBER(Math.E))
             .set("nova", MK_STRING("https://xkcd.com/927/"))
+    ), true);
+
+    // file
+    env.declareVar("file", MK_OBJECT(
+        new Map()
+            .set("read", MK_NATIVE_FN(openFileFunction))
     ), true);
 
     /*env.declareVar("stats", MK_OBJECT(
