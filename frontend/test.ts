@@ -1,1 +1,1 @@
-console.log(new Date().getFullYear());
+console.log(parseFloat("3.4"));

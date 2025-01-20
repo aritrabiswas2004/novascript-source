@@ -131,7 +131,9 @@ export function tokenize(sourceCode: string): Token[] {
         } else if (src[0] == ','){
             tokens.push(token(src.shift(), TokenType.Comma));
         } else if (src[0] == '.') {
-            tokens.push(token(src.shift(), TokenType.Dot));
+            if (!isint(src[1])){
+                tokens.push(token(src.shift(), TokenType.Dot));
+            }
         } else if (src[0] == '"'){
             src.shift();
 
@@ -169,7 +171,7 @@ export function tokenize(sourceCode: string): Token[] {
             if (isint(src[0])){
                 let num = "";
 
-                while (src.length > 0 && isint(src[0])){
+                while (src.length > 0 && (isint(src[0]) || src[0] == ".")){
                     num += src.shift();
                 }
 

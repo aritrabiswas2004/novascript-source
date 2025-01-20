@@ -40,8 +40,8 @@ function runtimeToJs(runtime: RuntimeVal){
 }
 
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
-    // console.log(..._args); // For debug purposes
-    let isPartOfArray: boolean = false
+    console.log(..._args); // For debug purposes
+    /*let isPartOfArray: boolean = false
     function formatValue(value: RuntimeVal): string {
         switch (value.type) {
             case "number":
@@ -69,7 +69,8 @@ export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVa
     const output = _args.map(formatValue).join(", ");
     console.log(output);
 
-    return MK_STRING(output);
+    return MK_STRING(output);*/
+    return MK_NULL();
 }
 
 export function timeFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {

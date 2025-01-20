@@ -1,5 +1,3 @@
-const arr = [1, 2, "hello", "world", ["foo", "bar"]];
+const foo = 3.4 + 5.1;
 
-print("hello world")
-print(arr)
-
+print(foo)
