@@ -1,3 +1,1 @@
-const str = "this is a string";
-
-console.log(str.split(" "));
+console.log(new Date().getFullYear());

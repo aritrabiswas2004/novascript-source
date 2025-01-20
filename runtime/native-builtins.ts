@@ -246,6 +246,19 @@ export function countCharsFunction(_args: RuntimeVal[], _env: Environment): Runt
     return MK_NUMBER((_args[0] as StringVal).value.length);
 }
 
+export function lengthFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args.length != 1){
+        throw new Error(`length() takes only 1 parameter, got ${_args.length}`);
+    }
+
+    switch (_args[0].type) {
+        case "array":
+            return MK_NUMBER((_args[0] as ArrayVal).values.length);
+        case "string":
+            return MK_NUMBER((_args[0] as StringVal).value.length);
+    }
+}
+
 export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     return MK_NULL();
 }

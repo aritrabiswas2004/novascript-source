@@ -1,3 +1,14 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/*
+ * NovaScript - Main
+ *
+ * Runs scripts or repls.
+ *
+ * Copyright (c) 2025 Aritra Biswas
+ * All Rights Reserved.
+ *
+ * Author: Aritra Biswas <aritrabb@gmail.com>
+ */
 import Parser from "./frontend/parser";
 import promptSync from 'prompt-sync';
 import {evaluate} from "./runtime/interpreter";
