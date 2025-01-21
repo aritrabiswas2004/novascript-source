@@ -292,6 +292,28 @@ try {
 // Error occurred, exception thrown
 ```
 
+### Import Statements
+
+`import` statements are used to import values from other NovaScript files. These values can be Variables or Function Call Expressions. 
+The syntax for import statements the `import` keyword followed by the variable/function names
+which is finally followed by the path to filename. The syntax is identical to that of JavaScript.
+The `*` wildcard can be used to import all statements, variables and functions from a module NovaScript file.
+
+- `module.nv`
+```javascript
+// module.nv
+func squareNum(num){
+    num * num // returns square of a number
+}
+```
+
+- `main.nv`
+```javascript
+import {squareNum} from "./path/to/module.nv"
+
+print(squareNum(4)) // 16
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support.
@@ -315,8 +337,7 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Add escape sequences for strings.
 - ✅ Try Catch statements.
 - ✅Add array indexing.
-- ❌ Add import statements from other NovaScript files.
+- ✅Add import statements from other NovaScript files.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
 - 🔥 Add statistics and regression function. (Hi Arnav!)
-- 

@@ -25,7 +25,7 @@ import {
 
 // creating lang bultins
 export function createGlobalEnv() {
-    const env = new Environment();
+    const env = new Environment(undefined, "C:\\Users\\Aritra\\Desktop\\programming\\interpreted-lisp-ts\\file.nv");
     env.declareVar("true", MK_BOOL(true), true);
     env.declareVar("false", MK_BOOL(false), true);
     env.declareVar("null", MK_NULL(), true);
@@ -80,12 +80,14 @@ export default class Environment {
     private parent?: Environment;
     private variables: Map<string, RuntimeVal>;
     private constants: Set<string>;
+    public currentFile?: string;
 
-    constructor(parentENV?:Environment) {
+    constructor(parentENV?:Environment, currentFile?: string) {
         const global = parentENV ? true : false;
         this.parent = parentENV;
         this.variables = new Map();
         this.constants = new Set();
+        this.currentFile = currentFile;
     }
 
     public declareVar(varname: string, value: RuntimeVal, constant: boolean): RuntimeVal {

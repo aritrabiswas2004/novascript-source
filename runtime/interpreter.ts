@@ -17,7 +17,7 @@ import {
     ArrayLiteral,
     AssignmentExpr,
     BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
-    Identifier, IfStatement, MemberExpr,
+    Identifier, IfStatement, ImportStatement, MemberExpr,
     NumericLiteral, ObjectLiteral,
     Program,
     Stmt, StringLiteral, TryCatchStatement, UntilStatement,
@@ -40,7 +40,7 @@ import {
     eval_while_statement,
     eval_for_statement,
     eval_until_statement,
-    eval_try_catch
+    eval_try_catch, eval_import_statement
 } from "./eval/statements";
 
 
@@ -99,6 +99,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "ArrayIndexExpr":
             return eval_array_index_expr(astNode as ArrayIndexExpr, env);
+
+        case "ImportStatement":
+            return eval_import_statement(astNode as ImportStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

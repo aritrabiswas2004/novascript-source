@@ -13,7 +13,7 @@
 import {
     ForStatement,
     FunctionDeclaration,
-    IfStatement,
+    IfStatement, ImportStatement,
     Program,
     Stmt, TryCatchStatement, UntilStatement,
     VarDeclaration,
@@ -23,6 +23,9 @@ import Environment from "../environment";
 import {BooleanVal, FunctionValue, MK_NULL, RuntimeVal} from "../values";
 import {evaluate} from "../interpreter";
 import {eval_assignment} from "./expressions";
+import { resolve, dirname } from "path";
+import {readFileSync} from "fs";
+import Parser from "../../frontend/parser";
 
 export function eval_program(program: Program, env: Environment): RuntimeVal{
     let lastEvaluated: RuntimeVal = MK_NULL();
@@ -143,4 +146,38 @@ export function eval_try_catch(declaration: TryCatchStatement, env: Environment)
             throw new Error("Unhandled error in catch block: " + innerError);
         }
     }
+}
+
+export function eval_import_statement(node: ImportStatement, env: Environment): RuntimeVal {
+    const sourcePath = resolve(dirname(env.currentFile || ""), node.source);
+
+    let fileContent: string;
+
+    try {
+        fileContent = readFileSync(sourcePath, "utf-8");
+    } catch (e){
+        throw new Error(`Cannot import file: ${node.source}`);
+    }
+
+    const newParse = new Parser();
+    const newAST = newParse.produceAST(fileContent);
+
+    const moduleEnv = new Environment(env, sourcePath);
+
+    evaluate(newAST, moduleEnv);
+
+    if (node.names.includes("*")) {
+        // @ts-ignore
+        // Error due to es2015 syntax
+        for (const [key, value] of moduleEnv.variables.entries()) {
+            env.declareVar(key, value, true);
+        }
+    } else {
+        for (const name of node.names) {
+            const value = moduleEnv.lookupVar(name);
+            env.declareVar(name, value, true);
+        }
+    }
+
+    return MK_NULL();
 }

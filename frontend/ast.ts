@@ -88,6 +88,12 @@ export interface TryCatchStatement extends Stmt {
     alternate: Stmt[];
 }
 
+export interface ImportStatement extends Stmt {
+    kind: "ImportStatement";
+    names: string[];
+    source: string;
+}
+
 export interface Expr extends Stmt {}
 
 export interface AssignmentExpr extends Expr {
