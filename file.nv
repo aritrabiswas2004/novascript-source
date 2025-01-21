@@ -1,5 +1,3 @@
-const foo = 3;
-const bar = 4;
+import {square} from "./testing.nv"
 
-assert(foo == bar, "foo is not bar")
-print("hi")
+print(square(4))

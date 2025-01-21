@@ -29,7 +29,8 @@ export enum TokenType {
     EOF,
     Semicolon,
     String,
-    Try, Catch
+    Try, Catch,
+    Import, From
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -42,7 +43,9 @@ const KEYWORDS: Record<string, TokenType> = {
     "for": TokenType.For,
     "until": TokenType.Until,
     "try": TokenType.Try,
-    "catch": TokenType.Catch
+    "catch": TokenType.Catch,
+    "import": TokenType.Import,
+    "from": TokenType.From
 }
 
 const ESCAPED: Record<string, string> = {

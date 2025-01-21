@@ -22,6 +22,7 @@ import {
     FunctionDeclaration,
     Identifier,
     IfStatement,
+    ImportStatement,
     MemberExpr,
     NumericLiteral,
     ObjectLiteral,
@@ -96,9 +97,45 @@ export default class Parser {
                 return this.parse_until_statement();
             case TokenType.Try:
                 return this.parse_try_catch_statement();
+            case TokenType.Import:
+                return this.parse_import_statement();
             default:
                 return this.parse_expr();
         }
+    }
+
+    private parse_import_statement(): Stmt {
+        this.eat();
+
+        const names: string[] = [];
+        let wildcard = false;
+
+        if (this.at().type == TokenType.OpenBrace){
+            this.eat();
+
+            while (this.at().type != TokenType.CloseBrace){
+                names.push(this.expect(TokenType.Identifier, "Expected identifier").value);
+                if (this.at().type === TokenType.Comma) {
+                    this.eat();
+                }
+            }
+
+            this.expect(TokenType.CloseBrace, "Expected '}' after imports");
+        } else if (this.at().type == TokenType.BinaryOperator){
+            this.eat();
+            wildcard = true;
+        } else {
+            names.push(this.expect(TokenType.Identifier, "Expected identifier").value);
+        }
+
+        this.expect(TokenType.From, "Expected 'from' after import identifiers");
+        const source = this.expect(TokenType.String, "Expected filename as a 'string'");
+
+        return {
+            kind: "ImportStatement",
+            names: wildcard ? ["*"] : names,
+            source: source.value,
+        } as ImportStatement;
     }
 
     private parse_try_catch_statement(): Stmt {
