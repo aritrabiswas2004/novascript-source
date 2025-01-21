@@ -1,3 +1,5 @@
-const fileContents = file.read("./testing.nv");
+const foo = 3;
+const bar = 4;
 
-print(fileContents)
+assert(foo == bar)
+print("hi")

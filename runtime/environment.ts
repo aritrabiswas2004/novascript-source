@@ -12,6 +12,7 @@
 
 import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal, StringVal} from "./values";
 import {
+    assertFunction,
     countCharsFunction,
     floorFunc, lengthFunction, maxFunc, minFunc, openFileFunction,
     powFunction,
@@ -30,13 +31,15 @@ export function createGlobalEnv() {
     env.declareVar("null", MK_NULL(), true);
     env.declareVar("print", MK_NATIVE_FN(printFunction), true);
     env.declareVar("datetime", MK_NATIVE_FN(timeFunction), true);
+    env.declareVar("type", MK_NATIVE_FN(typeFunction), true);
+    env.declareVar("assert", MK_NATIVE_FN(assertFunction), true);
+
+    // math
     env.declareVar("pow", MK_NATIVE_FN(powFunction), true);
     env.declareVar("floor", MK_NATIVE_FN(floorFunc), true);
     env.declareVar("sum", MK_NATIVE_FN(sumFunction), true);
     env.declareVar("max", MK_NATIVE_FN(maxFunc), true);
     env.declareVar("min", MK_NATIVE_FN(minFunc), true);
-    env.declareVar("type", MK_NATIVE_FN(typeFunction), true);
-
 
     // string
     env.declareVar("splitStr", MK_NATIVE_FN(splitFunction), true);

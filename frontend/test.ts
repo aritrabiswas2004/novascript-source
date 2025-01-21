@@ -1,5 +1,4 @@
-import * as fs from "node:fs";
+const foo = 3;
+const bar = 3 + 3 - 3;
 
-const fileContents = fs.readFileSync("../testing.nv", "utf-8");
-
-console.log(fileContents);
+console.assert(foo == bar);

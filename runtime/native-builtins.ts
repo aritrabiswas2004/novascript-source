@@ -13,7 +13,7 @@
 import {
     ArrayVal,
     BooleanVal,
-    MK_ARRAY,
+    MK_ARRAY, MK_BOOL,
     MK_NULL,
     MK_NUMBER,
     MK_STRING, NullVal,
@@ -264,6 +264,18 @@ export function lengthFunction(_args: RuntimeVal[], _env: Environment): RuntimeV
 export function openFileFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     const fileContents = fs.readFileSync((_args[0] as StringVal).value, "utf-8");
     return MK_STRING(fileContents);
+}
+
+export function assertFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {
+    if (_args.length != 1){
+        throw new Error(`Expected 1 argument but got ${_args.length}`);
+    }
+
+    console.assert((_args[0] as BooleanVal).value);
+
+    if (!(_args[0] as BooleanVal).value) throw new Error("assert failed...");
+
+    return MK_NULL();
 }
 
 export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
