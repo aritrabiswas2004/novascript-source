@@ -13,32 +13,16 @@
 import {
     ArrayVal,
     BooleanVal,
-    MK_ARRAY, MK_BOOL,
+    MK_ARRAY,
     MK_NULL,
     MK_NUMBER,
-    MK_STRING, NullVal,
+    MK_STRING,
     NumberVal,
     RuntimeVal,
     StringVal
 } from "./values";
 import Environment from "./environment";
 import * as fs from "node:fs";
-
-
-function runtimeToJs(runtime: RuntimeVal){
-    switch (runtime.type){
-        case "string":
-            return (runtime as StringVal).value;
-        case "boolean":
-            return (runtime as BooleanVal).value;
-        case "null":
-            return (runtime as NullVal).value;
-        case "number":
-            return (runtime as NumberVal).value;
-        default:
-            throw new Error(`Expected types [string | boolean | number] but got ${runtime}`)
-    }
-}
 
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     // console.log(..._args); // For debug purposes
@@ -278,10 +262,6 @@ export function assertFunction(_args: RuntimeVal[], _env: Environment):RuntimeVa
         process.exit(1);
     }
 
-    return MK_NULL();
-}
-
-export function stdDevFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     return MK_NULL();
 }
 
