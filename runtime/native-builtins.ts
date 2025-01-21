@@ -267,13 +267,16 @@ export function openFileFunction(_args: RuntimeVal[], _env: Environment): Runtim
 }
 
 export function assertFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {
-    if (_args.length != 1){
+    if (_args.length > 2 || _args.length < 1){
         throw new Error(`Expected 1 argument but got ${_args.length}`);
     }
 
-    console.assert((_args[0] as BooleanVal).value);
+    const msg = _args.length > 1 ? (_args[1] as StringVal).value: "";
+    console.assert((_args[0] as BooleanVal).value, msg);
 
-    if (!(_args[0] as BooleanVal).value) throw new Error("assert failed...");
+    if (!(_args[0] as BooleanVal).value) {
+        process.exit(1);
+    }
 
     return MK_NULL();
 }

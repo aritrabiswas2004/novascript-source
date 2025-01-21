@@ -1,5 +1,5 @@
 const foo = 3;
 const bar = 4;
 
-assert(foo == bar)
+assert(foo == bar, "foo is not bar")
 print("hi")
