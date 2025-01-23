@@ -17,7 +17,7 @@ import {
     floorFunc, lengthFunction, maxFunc, minFunc, openFileFunction,
     powFunction,
     printFunction,
-    randInt, splitFunction,
+    randInt, sortFunction, splitFunction,
     strConcatFunc,
     sumFunction,
     timeFunction, typeFunction
@@ -46,6 +46,9 @@ export function createGlobalEnv() {
     env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
     env.declareVar("countChars", MK_NATIVE_FN(countCharsFunction), true);
     env.declareVar("length", MK_NATIVE_FN(lengthFunction), true);
+
+    // array
+    env.declareVar("sortArray", MK_NATIVE_FN(sortFunction), true);
 
     // random
     env.declareVar("random", MK_OBJECT(
