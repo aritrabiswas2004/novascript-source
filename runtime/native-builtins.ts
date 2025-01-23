@@ -265,3 +265,25 @@ export function assertFunction(_args: RuntimeVal[], _env: Environment):RuntimeVa
     return MK_NULL();
 }
 
+export function sortFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {
+    if (_args.length != 1){
+        throw new Error("sort takes only 1 arg");
+    }
+
+    const numArr: number[] = new Array<number>();
+
+    const runtimeArr = (_args[0] as ArrayVal).values;
+
+    for (const rtval of runtimeArr){
+        numArr.push((rtval as NumberVal).value);
+    }
+
+    const sortedArr = numArr.sort();
+    const sortedRuntime = new Array<RuntimeVal>();
+
+    for (const num of sortedArr){
+        sortedRuntime.push(MK_NUMBER(num));
+    }
+
+    return MK_ARRAY(sortedRuntime);
+}
