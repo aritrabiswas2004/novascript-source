@@ -73,6 +73,22 @@ string
 array
 ```
 
+- ### `assert(stmt, msgString)`
+
+Quits program if it assesses `stmt` as a `false` boolean value.
+`msgString` is an optional parameter for displaying a fail message.
+
+```javascript
+const foo = 3;
+assert(foo == 5, "foo is 3");
+```
+
+**Output:**
+
+```text
+Assertion failed: foo is 3
+```
+
 ---
 
 ## Math
