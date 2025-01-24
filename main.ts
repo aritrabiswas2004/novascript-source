@@ -29,7 +29,7 @@ function run(filename: string){
         process.exit(1);
     }
 
-    console.log("===================== OUTPUT ========================"); // comment in dev
+    console.log("===================== NOVA v0.2.0 ========================"); // comment in dev
 
     const input = readFileSync(filename,  "utf-8");
     const program = parser.produceAST(input);
