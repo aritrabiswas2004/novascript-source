@@ -17,7 +17,8 @@ import {createGlobalEnv} from "./runtime/environment";
 import {readFileSync} from "fs";
 
 // repl();
-run("./file.nv");
+run(process.argv.slice(2)[0] as string);
+// run("./file.nv"); // development
 
 function run(filename: string){
     const parser = new Parser();
@@ -27,6 +28,8 @@ function run(filename: string){
         console.error("File name must end with a '.nv' extension.");
         process.exit(1);
     }
+
+    console.log("===================== OUTPUT ========================"); // comment in dev
 
     const input = readFileSync(filename,  "utf-8");
     const program = parser.produceAST(input);

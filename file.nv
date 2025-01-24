@@ -1,3 +1,7 @@
 import {square} from "./testing.nv"
 
 print(square(4))
+
+print("helo")
+
+print("project has shifted to development run")

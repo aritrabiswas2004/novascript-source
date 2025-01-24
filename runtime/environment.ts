@@ -10,7 +10,7 @@
  * Author: Aritra Biswas <aritrabb@gmail.com>
  */
 
-import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal, StringVal} from "./values";
+import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal} from "./values";
 import {
     assertFunction,
     countCharsFunction,
@@ -70,10 +70,10 @@ export function createGlobalEnv() {
             .set("read", MK_NATIVE_FN(openFileFunction))
     ), true);
 
-    /*env.declareVar("stats", MK_OBJECT(
+    env.declareVar("ml", MK_OBJECT(
         new Map()
-            .set("variance", MK_NATIVE_FN(varianceFunction))
-    ), true);*/
+            .set("linearRegression", )
+    ), true);
 
 
     return env;
