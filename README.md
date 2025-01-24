@@ -8,7 +8,9 @@ the [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main) (
 
 This README file contains documentation for the language and of the extent of its support at a given moment.
 
-### Running
+## Running
+
+### **`v0.2.0` now has a public [Docker Image](./configdocs/DOCKER.md)**
 
 NovaScript can be explored by two different modes just like other interpreted languages like JavaScript using Node.js or Python.
 As of now running the language requires Node.js to be installed on your system. This is subject to change when the project is compiled to
@@ -31,7 +33,7 @@ NovaScript already supports some basic features but more support for certain sta
 to be added. The features to be included in the future are given in a TODO list below.
 
 > [!WARNING]
-> IN NovaScript version v0.1.0, all outputs to the console print in Debug print. To print in
+> In NovaScript version v0.1.0, all outputs to the console print in Debug print. To print in
 > Release print check the [builtins docs](./BUILTINS.md) for more information.
 
 ### Variables
