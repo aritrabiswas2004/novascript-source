@@ -66,7 +66,17 @@ To set up the Novascript development environment:
     ```bash
    npm install
     ```
-3. Run `main.ts` for running scripts from any NovaScript file
+3. For running and debugging using the `repl()`, just run the development
+
+   ```shell
+   npm run rev
+   ```
+   
+   For running in Script mode, add the NovaScript file as program arguments.
+
+   ```shell
+   npm run dev -- filename.nv
+   ```
 4. Run your tests.
 
 ## Contact

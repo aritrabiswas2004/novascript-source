@@ -17,7 +17,7 @@ import {createGlobalEnv} from "./runtime/environment";
 import {readFileSync} from "fs";
 
 // repl();
-run(process.argv.slice(2)[0] as string);
+main();
 // run("./file.nv"); // development
 
 function run(filename: string){
@@ -29,7 +29,7 @@ function run(filename: string){
         process.exit(1);
     }
 
-    console.log("===================== NOVA v0.2.0 ========================"); // comment in dev
+    // console.log("===================== NOVA v0.2.0 ========================"); // comment in dev
 
     const input = readFileSync(filename,  "utf-8");
     const program = parser.produceAST(input);
@@ -44,11 +44,11 @@ function repl() {
 
     const prompt = promptSync();
 
-    console.log("Repl v0.1");
+    console.log("Repl v0.2.0");
 
     while (true) {
 
-        const input = prompt("> ");
+        const input = prompt(">>> ");
 
         if (!input || input.includes("exit")){
             process.exit(1);
@@ -59,5 +59,15 @@ function repl() {
         const result = evaluate(program, env);
         console.log(result)
 
+    }
+}
+
+function main(){
+    const argv = process.argv.slice(2);
+
+    if (argv.length != 0){
+        run(process.argv.slice(2)[0] as string);
+    } else {
+        repl();
     }
 }
