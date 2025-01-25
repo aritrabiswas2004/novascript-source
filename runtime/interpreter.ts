@@ -16,8 +16,8 @@ import {
     ArrayIndexExpr,
     ArrayLiteral,
     AssignmentExpr,
-    BinaryExpr, CallExpr, ForStatement, FunctionDeclaration,
-    Identifier, IfStatement, ImportStatement, MemberExpr,
+    BinaryExpr, CallExpr, ClassDeclaration, ForStatement, FunctionDeclaration,
+    Identifier, IfStatement, ImportStatement, MemberExpr, NewExpr,
     NumericLiteral, ObjectLiteral,
     Program,
     Stmt, StringLiteral, TryCatchStatement, UntilStatement,
@@ -29,7 +29,7 @@ import {
     eval_assignment,
     eval_binary_expr,
     eval_call_expr,
-    eval_identifier, eval_member_expr,
+    eval_identifier, eval_member_expr, eval_new_expr,
     eval_object_expr
 } from "./eval/expressions";
 import {
@@ -40,7 +40,7 @@ import {
     eval_while_statement,
     eval_for_statement,
     eval_until_statement,
-    eval_try_catch, eval_import_statement
+    eval_try_catch, eval_import_statement, eval_class_declaration
 } from "./eval/statements";
 
 
@@ -59,6 +59,7 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
             return eval_object_expr(astNode as ObjectLiteral, env);
 
         case "CallExpr":
+            // console.log(astNode);
             return eval_call_expr(astNode as CallExpr, env);
 
         case "AssignmentExpr":
@@ -102,6 +103,12 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "ImportStatement":
             return eval_import_statement(astNode as ImportStatement, env);
+
+        case "ClassDeclaration":
+            return eval_class_declaration(astNode as ClassDeclaration, env);
+
+        case "NewExpr":
+            return eval_new_expr(astNode as NewExpr, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

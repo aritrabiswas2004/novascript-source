@@ -1,6 +1,17 @@
-import {square} from "./testing.nv"
+class Sample {
+
+    const varDec = 10;
+
+    func helloWorld(){
+        const return = "njhbjh";
+        return
+    }
+}
+
+const hey = new Sample();
+const prop = hey.varDec;
+print(prop)
 
 print("hello")
 
-mut foo = 4;
 

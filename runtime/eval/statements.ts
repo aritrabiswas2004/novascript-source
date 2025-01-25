@@ -11,6 +11,7 @@
  */
 
 import {
+    ClassDeclaration,
     ForStatement,
     FunctionDeclaration,
     IfStatement, ImportStatement,
@@ -20,7 +21,7 @@ import {
     WhileStatement
 } from "../../frontend/ast";
 import Environment from "../environment";
-import {BooleanVal, FunctionValue, MK_NULL, RuntimeVal} from "../values";
+import {BooleanVal, ClassValue, FunctionValue, MK_NULL, RuntimeVal} from "../values";
 import {evaluate} from "../interpreter";
 import {eval_assignment} from "./expressions";
 import { resolve, dirname } from "path";
@@ -51,6 +52,28 @@ export function eval_function_declaration(declaration: FunctionDeclaration, env:
     } as FunctionValue;
 
     return env.declareVar(declaration.name, fn, true);
+}
+
+export function eval_class_declaration(declaration: ClassDeclaration, env: Environment): RuntimeVal {
+    const newEnv = new Environment(env);
+
+    for (const method of declaration.methods) {
+        eval_function_declaration(method, newEnv);
+    }
+
+    for (const prop of declaration.properties) {
+        eval_var_declaration(prop, newEnv);
+    }
+
+    const cls = {
+        type: "class",
+        name: declaration.name,
+        declarationEnv: newEnv,
+        methods: declaration.methods,
+        properties: declaration.properties,
+    } as ClassValue;
+
+    return env.declareVar(declaration.name, cls, true);
 }
 
 export function eval_if_statement(declaration: IfStatement, env: Environment): RuntimeVal {

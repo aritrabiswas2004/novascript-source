@@ -70,10 +70,10 @@ export function createGlobalEnv() {
             .set("read", MK_NATIVE_FN(openFileFunction))
     ), true);
 
-    env.declareVar("ml", MK_OBJECT(
+    /*env.declareVar("ml", MK_OBJECT(
         new Map()
             .set("linearRegression", )
-    ), true);
+    ), true);*/
 
 
     return env;
