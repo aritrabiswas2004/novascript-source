@@ -322,6 +322,31 @@ import {squareNum} from "./path/to/module.nv"
 print(squareNum(4)) // 16
 ```
 
+### Classes
+
+> [!NOTE] This portion may be soon moved to a `CLASSES.md` file.
+
+NovaScript now supports limited OOP features, specifically those of classes and its 
+properties. Classes are declared by the `class` keyword and contain scoped variables
+(known as properties) and scoped function (known as methods).
+
+A new class is always instantiated by the `new` keyword.
+
+```javascript
+class Person {
+    const name = "foo";
+    
+    func sayName(){
+        const internalName = name;
+        internalName
+    }
+}
+
+const bar = new Person();
+
+print(bar.name); // "foo"
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the language to increase its support.
@@ -346,6 +371,8 @@ The below items are TODOs that can be added to the language to increase its supp
 - ✅ Try Catch statements.
 - ✅Add array indexing.
 - ✅Add import statements from other NovaScript files.
+- ✅Classes and static properties.
+- ❌ Methods and CallExpr related to classes.
 - 🔥BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
 - 🔥 Add statistics and regression function. (Hi Arnav!)
