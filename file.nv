@@ -1,7 +1,6 @@
 import {square} from "./testing.nv"
 
-print(square(4))
+print("hello")
 
-print("helo")
+mut foo = 4;
 
-print("project has shifted to development run")
