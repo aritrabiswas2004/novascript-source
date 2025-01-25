@@ -31,6 +31,8 @@ export type NodeType =
     | "ArrayLiteral"
     | "TryCatchStatement"
     | "ImportStatement"
+    | "ClassDeclaration"
+    | "NewExpr"
 
 export interface Stmt {
     kind: NodeType
@@ -53,6 +55,13 @@ export interface FunctionDeclaration extends Stmt {
     parameters: string[];
     name: string;
     body: Stmt[];
+}
+
+export interface ClassDeclaration extends Stmt {
+    kind: "ClassDeclaration";
+    name: string;
+    methods: FunctionDeclaration[];
+    properties: VarDeclaration[];
 }
 
 export interface IfStatement extends Stmt {
@@ -156,4 +165,10 @@ export interface ArrayIndexExpr extends Expr {
     kind: "ArrayIndexExpr";
     object: Expr;
     index: Expr;
+}
+
+export interface NewExpr extends Expr {
+    kind: "NewExpr";
+    className: string;
+    args: Expr[];
 }

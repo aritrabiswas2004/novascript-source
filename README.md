@@ -1,7 +1,13 @@
 # NovaScript Source
 
+[![Latest Release](https://img.shields.io/badge/latest_release-v0.2.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
+[![version](https://img.shields.io/badge/build-passing-bl)](./CONTRIBUTING.md)
+[![Docker](https://img.shields.io/badge/docker-v0.2.0-bl)](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
+![version](https://img.shields.io/badge/npm_package-10.8.2-bl)
+[![version](https://img.shields.io/badge/License-Apache_2.0-blue)](./LICENSE)
+
 Inspired by the [XKCD comic 927](https://xkcd.com/927/), NovaScript is a dynamically-typed and interpreted language with support for objects creation.
-The language lexer and parser is written in TypeScript. The syntax for NovaScript is similar to JavaScript and retains most of the keywords.
+The language interpreter is written in TypeScript. The syntax for NovaScript is similar to JavaScript and is clean and easy to understand and implement.
 
 This project was done with help from the [Tyler Laceby YouTube tutorial](https://www.youtube.com/watch?v=8VB5TY1sIRo&list=PL_2VhOvlMk4UHGqYCLWc6GO8FaPl8fQTh) on creating a programming language from scratch and also
 the [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main) (yes that's the name of the language).

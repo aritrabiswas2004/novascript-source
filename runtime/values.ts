@@ -12,9 +12,18 @@
  */
 
 import Environment from "./environment";
-import {Stmt} from "../frontend/ast";
+import {FunctionDeclaration, Stmt, VarDeclaration} from "../frontend/ast";
 
-export type ValueType = "null" | "number" | "boolean" | "object" | "native-fn" | "function" | "string" | "array";
+export type ValueType = "null"
+    | "number"
+    | "boolean"
+    | "object"
+    | "native-fn"
+    | "function"
+    | "string"
+    | "array"
+    | "class"
+    | "class-obj";
 
 export interface RuntimeVal {
     type: ValueType;
@@ -91,4 +100,18 @@ export interface ArrayVal extends RuntimeVal {
 
 export function MK_ARRAY(arr: RuntimeVal[]): ArrayVal {
     return { type: "array", values: arr } as ArrayVal;
+}
+
+export interface ClassValue extends RuntimeVal {
+    type: "class";
+    name: string;
+    declarationEnv: Environment;
+    methods: FunctionDeclaration[];
+    properties: VarDeclaration[];
+}
+
+export interface ClassObjectValue extends RuntimeVal {
+    type: "class-obj";
+    className: string;
+    properties: Map<string, RuntimeVal>;
 }

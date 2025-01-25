@@ -12,7 +12,7 @@
 
 import {
     ArrayVal,
-    BooleanVal,
+    BooleanVal, ClassObjectValue, ClassValue,
     FunctionValue,
     MK_BOOL,
     MK_NULL,
@@ -28,11 +28,12 @@ import {
     BinaryExpr,
     CallExpr,
     Identifier,
-    MemberExpr,
-    ObjectLiteral
+    MemberExpr, NewExpr,
+    ObjectLiteral, VarDeclaration
 } from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
+import {eval_var_declaration} from "./statements";
 
 function eval_comparison_binary_expr(lhs: NumberVal, rhs: NumberVal, operator: string): BooleanVal {
     let resultBool: boolean;
@@ -155,13 +156,28 @@ export function eval_array_expr(arr: ArrayLiteral, env: Environment): RuntimeVal
 }
 
 export function eval_member_expr(expr: MemberExpr, env: Environment): RuntimeVal {
-    const object = evaluate(expr.object, env) as ObjectVal;
+
+    const object = evaluate(expr.object, env);
+
+    if (object.type === "class-obj"){
+        const classObj = object as ClassObjectValue;
+
+        const values = classObj.properties.get(expr.property);
+
+        if (values === undefined){
+            throw new Error(`Property '${expr.property}' does not exist on the class ${classObj.className}.`)
+        }
+
+        return values;
+    }
 
     if (object.type !== "object") {
         throw new Error(`Cannot access property '${expr.property}' on non-object type.`);
     }
 
-    const propertyValue = object.properties.get(expr.property);
+    const obj = object as ObjectVal;
+
+    const propertyValue = obj.properties.get(expr.property);
 
     if (propertyValue === undefined) {
         throw new Error(`Property '${expr.property}' does not exist on the object.`);
@@ -191,4 +207,26 @@ export function eval_array_index_expr(expr: ArrayIndexExpr, env: Environment): R
     }
 
     return array.values[indexNum];
+}
+
+export function eval_new_expr(expr: NewExpr, env: Environment): RuntimeVal {
+    const classVal = env.lookupVar(expr.className) as ClassValue;
+    const newerEnv = new Environment(classVal.declarationEnv);
+
+    if (!classVal || classVal.type !== "class"){
+        throw new Error(`'${expr.className}' is not a class.`);
+    }
+
+    const obj: ClassObjectValue = {
+        type:"class-obj",
+        className: classVal.name,
+        properties: new Map(),
+    };
+
+    for (const prop of classVal.properties){
+        const initialValue = eval_var_declaration(prop, newerEnv);
+        obj.properties.set(prop.identifier, initialValue);
+    }
+
+    return obj;
 }

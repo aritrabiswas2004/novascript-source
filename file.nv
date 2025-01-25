@@ -1,7 +1,17 @@
-import {square} from "./testing.nv"
+class Sample {
 
-print(square(4))
+    const varDec = 10;
 
-print("helo")
+    func helloWorld(){
+        const return = "njhbjh";
+        return
+    }
+}
 
-print("project has shifted to development run")
+const hey = new Sample();
+const prop = hey.varDec;
+print(prop)
+
+print("hello")
+
+

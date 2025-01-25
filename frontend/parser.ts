@@ -17,6 +17,7 @@ import {
     AssignmentExpr,
     BinaryExpr,
     CallExpr,
+    ClassDeclaration,
     Expr,
     ForStatement,
     FunctionDeclaration,
@@ -24,6 +25,7 @@ import {
     IfStatement,
     ImportStatement,
     MemberExpr,
+    NewExpr,
     NumericLiteral,
     ObjectLiteral,
     Program,
@@ -87,6 +89,8 @@ export default class Parser {
                 return this.parse_var_declaration();
             case TokenType.Fn:
                 return this.parse_fn_declaration();
+            case TokenType.Class:
+                return this.parse_class_declaration();
             case TokenType.If:
                 return this.parse_if_statement();
             case TokenType.While:
@@ -282,6 +286,41 @@ export default class Parser {
         return fn;
     }
 
+    private parse_class_declaration(): Stmt {
+        this.eat(); // class
+
+        const name = this.expect(TokenType.Identifier, "Expected class name after 'class' keyword").value;
+
+        this.expect(TokenType.OpenBrace, "Expected '{' after class name");
+
+        const methods: FunctionDeclaration[] = [];
+        const properties: VarDeclaration[] = [];
+
+        while (this.at().type !== TokenType.CloseBrace) {
+            if (this.at().type === TokenType.Fn) {
+                methods.push(this.parse_fn_declaration() as FunctionDeclaration);
+            } else if (this.at().type === TokenType.Let || this.at().type === TokenType.Const) {
+                properties.push(this.parse_var_declaration() as VarDeclaration);
+            } else {
+                throw new Error(`Unexpected token in class ${this.at()}`)
+            }
+        }
+
+        this.eat();
+
+        return {kind: "ClassDeclaration", name, methods, properties} as ClassDeclaration;
+    }
+
+    private parse_new_expr(): Expr {
+        this.eat(); // new
+
+        const className = this.expect(TokenType.Identifier, "Expected class name after 'new'").value;
+
+        const args = this.parse_args();
+
+        return { kind: "NewExpr", className, args } as NewExpr;
+    }
+
     private parse_var_declaration(): Stmt {
         const isConstant = this.eat().type == TokenType.Const;
         const identifier = this.expect(TokenType.Identifier, "Expected identifier name after let | const keyword.").value;
@@ -321,6 +360,10 @@ export default class Parser {
     }
 
     private parse_object_expr(): Expr {
+        if (this.at().type == TokenType.New){
+            return this.parse_new_expr();
+        }
+
         if (this.at().type !== TokenType.OpenBrace){
             return this.parse_comparison_expr();
         }

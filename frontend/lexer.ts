@@ -30,7 +30,8 @@ export enum TokenType {
     Semicolon,
     String,
     Try, Catch,
-    Import, From
+    Import, From,
+    Class, New
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -45,7 +46,9 @@ const KEYWORDS: Record<string, TokenType> = {
     "try": TokenType.Try,
     "catch": TokenType.Catch,
     "import": TokenType.Import,
-    "from": TokenType.From
+    "from": TokenType.From,
+    "class": TokenType.Class,
+    "new": TokenType.New
 }
 
 const ESCAPED: Record<string, string> = {
