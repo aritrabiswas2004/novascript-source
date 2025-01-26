@@ -57,13 +57,6 @@ export function eval_function_declaration(declaration: FunctionDeclaration, env:
 export function eval_class_declaration(declaration: ClassDeclaration, env: Environment): RuntimeVal {
     const newEnv = new Environment(env);
 
-    for (const method of declaration.methods) {
-        eval_function_declaration(method, newEnv);
-    }
-
-    for (const prop of declaration.properties) {
-        eval_var_declaration(prop, newEnv);
-    }
 
     const cls = {
         type: "class",
