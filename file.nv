@@ -1,17 +1,20 @@
-class Sample {
+class Greeter {
 
-    const varDec = 10;
+    const foo = 34;
 
-    func helloWorld(){
-        const return = "njhbjh";
-        return
+    func sayHello() {
+        const message = "Hello";
+        message
     }
 }
 
-const hey = new Sample();
-const prop = hey.varDec;
-print(prop)
+const greeter = new Greeter();
+const greeting = greeter.foo;
+const hmm = greeter.sayHello();
 
-print("hello")
+// The WOW fix
+print(greeting)
+print(hmm)
+
 
 

@@ -1,13 +1,8 @@
-// empty test
-function quickSort(arr: number[]): number[] {
-    if (arr.length <= 1){
-        return arr;
-    }
+const hello = new Map<string, number>();
 
+hello.set("one", 1);
+hello.set("two", 2);
+
+for (const num in hello){
 
 }
-
-const x = [1,2,3];
-const y = [4,5,6];
-
-console.log(x.sort());

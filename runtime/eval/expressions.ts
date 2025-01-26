@@ -33,7 +33,7 @@ import {
 } from "../../frontend/ast";
 import Environment from "../environment";
 import {evaluate} from "../interpreter";
-import {eval_var_declaration} from "./statements";
+import {eval_function_declaration, eval_var_declaration} from "./statements";
 
 function eval_comparison_binary_expr(lhs: NumberVal, rhs: NumberVal, operator: string): BooleanVal {
     let resultBool: boolean;
@@ -226,6 +226,11 @@ export function eval_new_expr(expr: NewExpr, env: Environment): RuntimeVal {
     for (const prop of classVal.properties){
         const initialValue = eval_var_declaration(prop, newerEnv);
         obj.properties.set(prop.identifier, initialValue);
+    }
+
+    for (const meth of classVal.methods){
+        const initMeth = eval_function_declaration(meth, newerEnv);
+        obj.properties.set(meth.name, initMeth);
     }
 
     return obj;
