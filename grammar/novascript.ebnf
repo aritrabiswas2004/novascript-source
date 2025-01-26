@@ -1,0 +1,49 @@
+identifier    = letter , { letter | digit | "_" } ;
+number        = digit , { digit } ;
+string        = '"' , { any_char - '"' } , '"' ;
+keyword       = "if" | "else" | "while" | "function" | "class" | "return" | "new" ;
+operator      = "+" | "-" | "*" | "/" | "=" | "==" | "!=" | "<" | ">" ;
+punctuation   = "(" | ")" | "{" | "}" | "[" | "]" | ";" | "," ;
+
+program       = { statement } ;
+
+statement     = var_declaration
+              | function_declaration
+              | class_declaration
+              | if_statement
+              | while_statement
+              | for_statement
+              | expression_statement
+              ;
+
+var_declaration = "const" , identifier , "=" , expression , ";" ;
+
+function_declaration = "function" , identifier , "(" , [ parameter_list ] , ")" , block ;
+parameter_list       = identifier , { "," , identifier } ;
+block                = "{" , { statement } , "}" ;
+
+class_declaration = "class" , identifier , "{" , { class_member } , "}" ;
+class_member      = var_declaration | function_declaration ;
+
+if_statement = "if" , "(" , expression , ")" , block , [ "else" , block ] ;
+
+while_statement = "while" , "(" , expression , ")" , block ;
+
+expression_statement = expression , ";" ;
+
+expression     = assignment ;
+assignment     = identifier , "=" , expression | logic_or ;
+logic_or       = logic_and , { "||" , logic_and } ;
+logic_and      = equality , { "&&" , equality } ;
+equality       = comparison , { ( "==" | "!=" ) , comparison } ;
+comparison     = term , { ( ">" | "<" | ">=" | "<=" ) , term } ;
+term           = factor , { ( "+" | "-" ) , factor } ;
+factor         = unary , { ( "*" | "/" ) , unary } ;
+unary          = ( "-" | "!" ) , primary | primary ;
+primary        = number | string | identifier | "(" , expression , ")"
+               | array_literal | object_literal ;
+
+array_literal  = "[" , [ expression , { "," , expression } ] , "]" ;
+object_literal = "{" , [ object_entry , { "," , object_entry } ] , "}" ;
+object_entry   = identifier , ":" , expression ;
+

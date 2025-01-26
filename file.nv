@@ -1,20 +1,16 @@
-class Greeter {
+class cSample {
 
-    const foo = 34;
+    mut num = 0;
 
-    func sayHello() {
-        const message = "Hello";
-        message
+    func setNum(newNum) {
+        num = newNum
+        num
     }
 }
 
-const greeter = new Greeter();
-const greeting = greeter.foo;
-const hmm = greeter.sayHello();
 
-// The WOW fix
-print(greeting)
-print(hmm)
+const Sample = new cSample();
 
-
+Sample.num = Sample.setNum(7)
+print(Sample.num)
 

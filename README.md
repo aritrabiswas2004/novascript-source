@@ -324,9 +324,10 @@ print(squareNum(4)) // 16
 
 ### Classes
 
-> [!NOTE] This portion may be soon moved to a `CLASSES.md` file.
+> [!NOTE] 
+> This portion may be soon moved to a `CLASSES.md` file.
 
-NovaScript now supports limited OOP features, specifically those of classes and its 
+NovaScript now supports limited OOP features, specifically those of classes and its methods &
 properties. Classes are declared by the `class` keyword and contain scoped variables
 (known as properties) and scoped function (known as methods).
 
@@ -337,7 +338,7 @@ class Person {
     const name = "foo";
     
     func sayName(){
-        const internalName = name;
+        const internalName = "fizzbuzz";
         internalName
     }
 }
@@ -345,6 +346,7 @@ class Person {
 const bar = new Person();
 
 print(bar.name); // "foo"
+print(bar.sayName()) // "fizzbuzz"
 ```
 
 ## TODOs
