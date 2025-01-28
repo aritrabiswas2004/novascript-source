@@ -30,6 +30,7 @@ import {
     ObjectLiteral,
     Program,
     Property,
+    ReturnStatement,
     Stmt,
     StringLiteral,
     TryCatchStatement,
@@ -103,9 +104,21 @@ export default class Parser {
                 return this.parse_try_catch_statement();
             case TokenType.Import:
                 return this.parse_import_statement();
+            case TokenType.Return:
+                return this.parse_return_statement();
             default:
                 return this.parse_expr();
         }
+    }
+
+    private parse_return_statement(): Stmt {
+        this.eat();
+
+        const body = this.parse_stmt();
+
+        this.expect(TokenType.Semicolon, "Expected ';' after return statement.");
+
+        return {kind: "ReturnStatement", body} as ReturnStatement;
     }
 
     private parse_import_statement(): Stmt {

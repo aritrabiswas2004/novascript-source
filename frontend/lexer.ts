@@ -31,7 +31,8 @@ export enum TokenType {
     String,
     Try, Catch,
     Import, From,
-    Class, New
+    Class, New,
+    Return
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -48,7 +49,8 @@ const KEYWORDS: Record<string, TokenType> = {
     "import": TokenType.Import,
     "from": TokenType.From,
     "class": TokenType.Class,
-    "new": TokenType.New
+    "new": TokenType.New,
+    "return": TokenType.Return
 }
 
 const ESCAPED: Record<string, string> = {

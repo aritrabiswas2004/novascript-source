@@ -92,6 +92,26 @@ export function eval_identifier(ident: Identifier, env: Environment): RuntimeVal
 }
 
 export function eval_assignment(node: AssignmentExpr, env: Environment): RuntimeVal {
+    if (node.assigne.kind === "MemberExpr"){
+        const member = node.assigne as MemberExpr;
+
+        const object = evaluate(member.object, env);
+
+        if (object.type == "class-obj"){
+            const classObj = object as ClassObjectValue;
+
+            if (classObj.properties.has(member.property)){
+                const value = evaluate(node.value, env);
+                classObj.properties.set(member.property, value);
+                return value;
+            } else {
+                throw new Error(`Property '${member.property}' does not exist on the class object '${classObj.className}'.`);
+            }
+        } else {
+            throw new Error(`Assignment of '${member.property}' to non-class expression`)
+        }
+    }
+
     if (node.assigne.kind !== "Identifier"){
         throw `Cannot assign with LHS invalid assignment expr ${JSON.stringify(node.assigne)}`;
     }

@@ -19,7 +19,7 @@ import {
     BinaryExpr, CallExpr, ClassDeclaration, ForStatement, FunctionDeclaration,
     Identifier, IfStatement, ImportStatement, MemberExpr, NewExpr,
     NumericLiteral, ObjectLiteral,
-    Program,
+    Program, ReturnStatement,
     Stmt, StringLiteral, TryCatchStatement, UntilStatement,
     VarDeclaration, WhileStatement
 } from "../frontend/ast";
@@ -40,7 +40,7 @@ import {
     eval_while_statement,
     eval_for_statement,
     eval_until_statement,
-    eval_try_catch, eval_import_statement, eval_class_declaration
+    eval_try_catch, eval_import_statement, eval_class_declaration, eval_return_statement
 } from "./eval/statements";
 
 
@@ -109,6 +109,9 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
 
         case "NewExpr":
             return eval_new_expr(astNode as NewExpr, env);
+
+        case "ReturnStatement":
+            return eval_return_statement(astNode as ReturnStatement, env);
 
         default:
             console.error("This AST node has not yet been set for interpretation", astNode);

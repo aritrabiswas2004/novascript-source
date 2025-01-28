@@ -33,6 +33,7 @@ export type NodeType =
     | "ImportStatement"
     | "ClassDeclaration"
     | "NewExpr"
+    | "ReturnStatement"
 
 export interface Stmt {
     kind: NodeType
@@ -101,6 +102,11 @@ export interface ImportStatement extends Stmt {
     kind: "ImportStatement";
     names: string[];
     source: string;
+}
+
+export interface ReturnStatement extends Stmt {
+    kind: "ReturnStatement";
+    body: Stmt;
 }
 
 export interface Expr extends Stmt {}

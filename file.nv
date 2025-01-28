@@ -1,16 +1,14 @@
-class cSample {
+class Main {
+    mut hello = 5;
 
-    mut num = 0;
-
-    func setNum(newNum) {
-        num = newNum
-        num
+    func insideExpr(x, y){
+        return x + y;
     }
 }
 
+mut decl = new Main();
 
-const Sample = new cSample();
+decl.hello = decl.insideExpr(1, 100)
 
-Sample.num = Sample.setNum(7)
-print(Sample.num)
+print(decl.hello)
 

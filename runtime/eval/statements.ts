@@ -15,13 +15,24 @@ import {
     ForStatement,
     FunctionDeclaration,
     IfStatement, ImportStatement,
-    Program,
+    Program, ReturnStatement,
     Stmt, TryCatchStatement, UntilStatement,
     VarDeclaration,
     WhileStatement
 } from "../../frontend/ast";
 import Environment from "../environment";
-import {BooleanVal, ClassValue, FunctionValue, MK_NULL, RuntimeVal} from "../values";
+import {
+    ArrayVal,
+    BooleanVal,
+    ClassValue,
+    FunctionValue, MK_ARRAY,
+    MK_BOOL,
+    MK_NULL,
+    MK_NUMBER,
+    MK_STRING, NumberVal,
+    RuntimeVal,
+    StringVal
+} from "../values";
 import {evaluate} from "../interpreter";
 import {eval_assignment} from "./expressions";
 import { resolve, dirname } from "path";
@@ -196,4 +207,23 @@ export function eval_import_statement(node: ImportStatement, env: Environment): 
     }
 
     return MK_NULL();
+}
+
+export function eval_return_statement(declaration: ReturnStatement, env: Environment): RuntimeVal {
+    const rt = evaluate(declaration.body, env);
+
+    switch (rt.type) {
+        case "string":
+            return MK_STRING((rt as StringVal).value);
+        case "boolean":
+            return MK_BOOL((rt as BooleanVal).value);
+        case "number":
+            return MK_NUMBER((rt as NumberVal).value);
+        case "array":
+            return MK_ARRAY((rt as ArrayVal).values);
+        case "null":
+            return MK_NULL();
+        default:
+            return MK_STRING(`<type '${rt.type}'>`);
+    }
 }
