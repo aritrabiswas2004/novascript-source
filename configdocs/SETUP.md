@@ -25,6 +25,41 @@ To set up the Novascript development environment:
 
 ## Encountering Errors
 
-> [!NOTE]
-> This section will soon be updated.
+### Nodejs Runtime Errors
 
+- If you encounter an error thrown from the Nodejs environment which exists in the source
+files,you don't have to worry about anything! Statements like these keep the programmer
+syntax in check.
+  - However, if you notice an error message that could be modified for better understanding
+then please raise an issue and also a relevant pull requests which will later be merged
+if possible.
+
+- If your error doesn't exist in the source files and is a runtime error for the source
+code, then raise an issue immediately
+
+### NovaScript Errors
+
+Error types are not yet a part of NovaScript (but please make it happen!) if you encounter
+an error where the exit pattern is
+
+[See issue #6](https://github.com/Repositoir/novascript-source/issues/6)
+
+```javascript
+console.error("Err msg");
+process.exit(1);
+```
+
+Please change it to throw an error if it makes sense ti catch the thrown error in a 
+NovaScript file
+
+```javascript
+throw new Error("Err msg");
+```
+
+## Security
+
+If you encounter a security flaw please send an email directly to the email address at
+the top of the source file and NOT on a public space.
+
+> [!NOTE]
+> This portion will be expanded when a `SECURITY.md` is added.
