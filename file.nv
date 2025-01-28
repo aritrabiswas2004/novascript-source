@@ -12,3 +12,6 @@ decl.hello = decl.insideExpr(1, 100)
 
 print(decl.hello)
 
+const foo = countChars("to be or not to be");
+print(foo)
+

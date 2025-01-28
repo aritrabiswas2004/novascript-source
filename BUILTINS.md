@@ -180,3 +180,30 @@ print(concat("foo", "bar", 123))
 foobar123
 ```
 
+- ### `splitStr(str, delim)`
+
+Splits `str` by a string delimiter which is also a string.
+An empty string splits by all chars.
+
+```javascript
+print(splitStr("to be or not to be", " "))
+```
+**Output:**
+```text
+["to", "be", "or", "not", "to", "be"]
+```
+
+- ### `countChars(str)`
+
+Accepts only 1 argument: a string whose number of
+characters is to be determined.
+
+```javascript
+const foo = countChars("to be or not to be");
+print(foo)
+```
+**Output:**
+```text
+18
+```
+
