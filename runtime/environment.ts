@@ -13,7 +13,6 @@
 import {MK_BOOL, MK_NATIVE_FN, MK_NULL, MK_NUMBER, MK_OBJECT, MK_STRING, RuntimeVal} from "./values";
 import {
     assertFunction,
-    countCharsFunction,
     floorFunc, lengthFunction, maxFunc, minFunc, openFileFunction,
     powFunction,
     printFunction,
@@ -44,7 +43,6 @@ export function createGlobalEnv() {
     // string
     env.declareVar("splitStr", MK_NATIVE_FN(splitFunction), true);
     env.declareVar("concat", MK_NATIVE_FN(strConcatFunc), true);
-    env.declareVar("countChars", MK_NATIVE_FN(countCharsFunction), true);
     env.declareVar("length", MK_NATIVE_FN(lengthFunction), true);
 
     // array

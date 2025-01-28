@@ -195,15 +195,21 @@ print(splitStr("to be or not to be", " "))
 
 - ### `countChars(str)`
 
-Accepts only 1 argument: a string whose number of
+Accepts only 1 argument, which must be either: 
+
+- A string whose number of
 characters is to be determined.
+- An array of any types inside it.
 
 ```javascript
-const foo = countChars("to be or not to be");
+const foo = length("to be or not to be");
 print(foo)
+const bar = length([1,2,"foobar", [4, 5]]);
+print(bar)
 ```
 **Output:**
 ```text
 18
+4
 ```
 

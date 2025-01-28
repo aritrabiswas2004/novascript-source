@@ -1,17 +1,5 @@
-class Main {
-    mut hello = 5;
-
-    func insideExpr(x, y){
-        return x + y;
-    }
-}
-
-mut decl = new Main();
-
-decl.hello = decl.insideExpr(1, 100)
-
-print(decl.hello)
-
-const foo = countChars("to be or not to be");
+const foo = length("to be or not to be");
 print(foo)
+const bar = length([1,2,"foobar", [4, 5]]);
+print(bar)
 
