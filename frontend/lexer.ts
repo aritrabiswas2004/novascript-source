@@ -138,6 +138,11 @@ export function tokenize(sourceCode: string): Token[] {
             tokens.push(token(src.shift(), TokenType.Colon));
         } else if (src[0] == ','){
             tokens.push(token(src.shift(), TokenType.Comma));
+        } else if (src[0] == '!'){
+            if (src[1] == '=') {
+                const op = src.shift() + src.shift();
+                tokens.push(token(op, TokenType.BinaryOperator));
+            }
         } else if (src[0] == '.') {
             if (!isint(src[1])){
                 tokens.push(token(src.shift(), TokenType.Dot));

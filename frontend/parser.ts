@@ -462,7 +462,7 @@ export default class Parser {
         let left = this.parse_additive_expr();
 
         while (this.at().value == ">" || this.at().value == "<" ||
-        this.at().value == "==" || this.at().value == ">=" || this.at().value == "<="){
+        this.at().value == "==" || this.at().value == ">=" || this.at().value == "<=" || this.at().value == "!="){
             const operator = this.eat().value;
 
             const right = this.parse_additive_expr();

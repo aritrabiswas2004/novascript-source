@@ -79,7 +79,7 @@ and cannot have numeric values or special characters.
 
 ```javascript
 mut foo = 23;
-foo = 91
+foo = 91;
 print(foo); // 91
 ```
 
@@ -88,7 +88,7 @@ print(foo); // 91
 ```javascript
 mut foo;
 foo = 12;
-print(foo) // 12
+print(foo); // 12
 ```
 
 By using the `const` keyword, the variable becomes 
@@ -107,7 +107,7 @@ of `+`, `-`, `*`, `/` and `%`;
 
 ```javascript
 const foo = 12 + 45;
-print(foo) // 57
+print(foo); // 57
 ```
 
 As an extension of Binary Expressions, comparison 
@@ -171,8 +171,8 @@ Expression with a null value returns a null value.
 const foo = null;
 const bar = 2 + foo;
 
-print(foo) // null
-print(bar) // null
+print(foo); // null
+print(bar); // null
 ```
 
 ### Native Functions (Builtins)
@@ -192,7 +192,7 @@ in the last line of the function is enough.
 ```javascript
 func add(x, y) {
     const value = x + y;
-    value // No need for return keyword
+    value; // No need for return keyword
 }
 
 func sub(x, y){
@@ -203,8 +203,8 @@ func sub(x, y){
 const res = add(10, 4);
 const res2 = sub(10, 4);
 
-print(res) // 14
-print(res2) // 6
+print(res); // 14
+print(res2); // 6
 ```
 
 ### Comments
@@ -247,11 +247,11 @@ const foo = 3;
 const bar = 2;
 
 if (foo < bar) {
-    print(100)
+    print(100);
 } else if (foo == bar) {
-    print(300)
+    print(300);
 } else {
-    print(200)
+    print(200);
 }
 
 // Prints 200
@@ -268,10 +268,10 @@ under a while has its own namespace.
 mut foo = 1;
 
 while (foo < 10){
-    foo = foo + 1
+    foo = foo + 1;
 }
 
-print(foo) // 10
+print(foo); // 10
 ```
 
 ### For Loops
@@ -286,7 +286,7 @@ remains true.
 
 ```javascript
 for (mut i = 1; i <= 10; i = i + 1){
-    print(i)
+    print(i);
 }
 
 // Outputs numbers 1 ... 10
@@ -304,8 +304,8 @@ becomes `true`. It is basically the opposite of the
 mut i = 1;
 
 until (i == 10) {
-    print(i)
-    i = i + 1
+    print(i);
+    i = i + 1;
 }
 
 // Prints 1 ... 9
@@ -327,7 +327,7 @@ const foo = "foo";
 const bar = "bar";
 const result = concat(foo, bar);
 
-print(result) // prints "foobar"
+print(result); // prints "foobar"
 ```
 
 > [!CAUTION]
@@ -348,7 +348,7 @@ primary expression values seperated by commas `,`.
 ```javascript
 const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
 
-print(foo) // [1, 2, 3, "bar", ["foobar", "true"], true]
+print(foo); // [1, 2, 3, "bar", ["foobar", "true"], true]
 ```
 Arrays can also be indexed with indexing starting at 0.
 Array indexing can also be used
@@ -357,8 +357,8 @@ simultaneously to access nested literals.
 ```javascript
 const foo = [1, 2, 3, "bar", ["foobar", "true"], true];
 
-print(foo[0]) // 1
-print(foo[4][0]) // "foobar"
+print(foo[0]); // 1
+print(foo[4][0]); // "foobar"
 ```
 
 ### Try-Catch Statements
@@ -372,12 +372,12 @@ compliment each other and cannot be used separately.
 
 ```javascript
 try {
-    print("The code below throws an error")
+    print("The code below throws an error");
     const foo = "foo";
-    foo = "bar"
-    print("this will not get printed")
+    foo = "bar";
+    print("this will not get printed");
 } catch {
-    print("Error occurred, exception thrown")
+    print("Error occurred, exception thrown");
 }
 
 // Output:
@@ -401,7 +401,7 @@ variables and functions from a module NovaScript file.
 ```javascript
 // module.nv
 func squareNum(num){
-    num * num // returns square of a number
+    num * num; // returns square of a number
 }
 ```
 
@@ -409,7 +409,7 @@ func squareNum(num){
 ```javascript
 import {squareNum} from "./path/to/module.nv"
 
-print(squareNum(4)) // 16
+print(squareNum(4)); // 16
 ```
 
 ### Classes
@@ -434,7 +434,7 @@ class Person {
     
     func sayName(){
         const internalName = "fizzbuzz";
-        internalName
+        internalName;
     }
 }
 

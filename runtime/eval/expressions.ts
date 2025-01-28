@@ -48,8 +48,10 @@ function eval_comparison_binary_expr(lhs: NumberVal, rhs: NumberVal, operator: s
         resultBool = lhs.value >= rhs.value;
     } else if (operator == "<="){
         resultBool = lhs.value <= rhs.value;
+    } else if (operator == "!="){
+        resultBool = lhs.value != rhs.value;
     } else {
-        throw "Unrecognised comparison operator";
+        throw new Error(`Unrecognised comparison operator: '${operator}'`);
     }
 
     return MK_BOOL(resultBool);
@@ -79,7 +81,7 @@ export function eval_binary_expr(binop: BinaryExpr, env: Environment): RuntimeVa
 
     if (lhs.type == "number" && rhs.type == "number" && ["+", "-", "*", "/", "%"].includes(binop.operator)){
         return eval_numeric_binary_expr(lhs as NumberVal, rhs as NumberVal, binop.operator);
-    } else if ([">", "<", "==", ">=", "<="].includes(binop.operator)){
+    } else if ([">", "<", "==", ">=", "<=", "!="].includes(binop.operator)){
         return eval_comparison_binary_expr(lhs as NumberVal, rhs as NumberVal, binop.operator);
     }
 
