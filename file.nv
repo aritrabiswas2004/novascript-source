@@ -1,5 +1,6 @@
-const foo = length("to be or not to be");
-print(foo)
-const bar = length([1,2,"foobar", [4, 5]]);
-print(bar)
+const limit = 10;
+
+for (mut i = 0; i < limit; i = i + 1){
+    print(i)
+}
 

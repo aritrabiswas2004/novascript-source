@@ -21,10 +21,12 @@ import {
     sumFunction,
     timeFunction, typeFunction
 } from "./native-builtins";
+// @ts-ignore
+import path from "node:path";
 
 // creating lang bultins
 export function createGlobalEnv() {
-    const env = new Environment(undefined, "C:\\Users\\Aritra\\Desktop\\programming\\interpreted-lisp-ts\\file.nv");
+    const env = new Environment(undefined, path.join(path.join(process.argv[1], ".."), `.\\${process.argv[2]}`));
     env.declareVar("true", MK_BOOL(true), true);
     env.declareVar("false", MK_BOOL(false), true);
     env.declareVar("null", MK_NULL(), true);
@@ -68,11 +70,12 @@ export function createGlobalEnv() {
             .set("read", MK_NATIVE_FN(openFileFunction))
     ), true);
 
-    /*env.declareVar("ml", MK_OBJECT(
+    // convert
+    /*env.declareVar("convert", MK_OBJECT(
         new Map()
-            .set("linearRegression", )
+            .set("toString", MK_NATIVE_FN(toStringFunction))
+            .set("toNumber", MK_NATIVE_FN(toNumberFunction))
     ), true);*/
-
 
     return env;
 }
