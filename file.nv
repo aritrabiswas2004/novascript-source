@@ -1,6 +1,32 @@
+import {OVER} from "./testing.nv";
+
+class BinaryMath {
+    func sumOfTwo(x, y){
+        return x + y;
+    }
+
+    func prodOfTwo(a, b){
+        return a * b;
+    }
+}
+
+const bm = new BinaryMath();
+
+try {
+    print(bm.prodOfTwo(bm.sumOfTwo(1,5), 2));
+} catch {
+    print("Error");
+}
+
+if (OVER == 10){
+    print("It's over");
+} else {
+    print(OVER);
+}
+
 const limit = 10;
 
 for (mut i = 0; i < limit; i = i + 1){
-    print(i)
+    print(i);
 }
 
