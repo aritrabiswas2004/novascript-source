@@ -1,8 +1,4 @@
-const hello = new Map<string, number>();
+const test = 23;
+const str = "1001";
 
-hello.set("one", 1);
-hello.set("two", 2);
-
-for (const num in hello){
-
-}
+console.log(parseFloat(str));
