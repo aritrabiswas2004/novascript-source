@@ -19,6 +19,7 @@ import {
     CallExpr,
     ClassDeclaration,
     Expr,
+    ExpressionStatement,
     ForStatement,
     FunctionDeclaration,
     Identifier,
@@ -107,7 +108,15 @@ export default class Parser {
             case TokenType.Return:
                 return this.parse_return_statement();
             default:
-                return this.parse_expr();
+                const expr = this.parse_expr();
+
+                if (this.at().type === TokenType.Semicolon){
+                    this.eat();
+                } else {
+                    throw new Error("Expected ';' after expression");
+                }
+
+                return {kind: "ExpressionStatement", expr} as ExpressionStatement;
         }
     }
 
@@ -115,8 +124,6 @@ export default class Parser {
         this.eat();
 
         const body = this.parse_stmt();
-
-        this.expect(TokenType.Semicolon, "Expected ';' after return statement.");
 
         return {kind: "ReturnStatement", body} as ReturnStatement;
     }
@@ -147,6 +154,8 @@ export default class Parser {
 
         this.expect(TokenType.From, "Expected 'from' after import identifiers");
         const source = this.expect(TokenType.String, "Expected filename as a 'string'");
+
+        this.expect(TokenType.Semicolon, "Expected ';' to end import statement");
 
         return {
             kind: "ImportStatement",

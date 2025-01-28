@@ -19,8 +19,13 @@ NovaScript has many builtin functions that offer easier usage of general functio
 > hello world
 > ``` 
 > ## How to Change?
-> Modify the `printFunction()` args by uncommenting the first line of the function and subsequently
-> comment the remainder of the function to turn off release print.
+> Modify the `printFunction()` args by uncommenting the
+> first line of the function and subsequently
+> comment the remainder of the function to turn off 
+> release print.
+> 
+> Since NovaScript `v0.2.0` all outputs are in release
+> print.
 
 ---
 

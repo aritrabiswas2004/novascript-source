@@ -277,3 +277,27 @@ export function sortFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal 
 
     return MK_ARRAY(sortedRuntime);
 }
+
+/*export function toStringFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {
+    if (_args.length != 1){
+        throw new Error(`toString() methods expected 1 arg but got ${_args.length}`);
+    }
+
+    if (_args[0].type != "number"){
+        throw new Error(`toString() can only convert number to string. Incorrect type ${_args[0].type}`);
+    }
+
+    return MK_STRING(((_args[0] as NumberVal).value).toString());
+}
+
+export function toNumberFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {
+    if (_args.length != 1){
+        throw new Error(`toNumber() methods expected 1 arg but got ${_args.length}`);
+    }
+
+    if (_args[0].type != "string"){
+        throw new Error(`toNumber() can only convert string to number. Incorrect type ${_args[0].type}`);
+    }
+
+    return MK_NUMBER(parseFloat((_args[0] as StringVal).value));
+}*/

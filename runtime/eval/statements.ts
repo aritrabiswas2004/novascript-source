@@ -11,7 +11,7 @@
  */
 
 import {
-    ClassDeclaration,
+    ClassDeclaration, ExpressionStatement,
     ForStatement,
     FunctionDeclaration,
     IfStatement, ImportStatement,
@@ -226,4 +226,8 @@ export function eval_return_statement(declaration: ReturnStatement, env: Environ
         default:
             return MK_STRING(`<type '${rt.type}'>`);
     }
+}
+
+export function eval_expression_statement(declaration: ExpressionStatement, env: Environment): RuntimeVal{
+    return evaluate(declaration.expr, env);
 }
