@@ -28,7 +28,6 @@ import * as os from "node:os";
 // creating lang bultins
 export function createGlobalEnv() {
     let sourcePath: string;
-    console.log(os.type());
     if (os.type() == "Windows_NT"){
         sourcePath = path.join(path.join(process.argv[1], ".."), `.\\${process.argv[2]}`);
     } else {
