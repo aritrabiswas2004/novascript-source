@@ -112,7 +112,7 @@ print(foo); // 57
 
 As an extension of Binary Expressions, comparison 
 expression are also handled such as
-`==`, `>=`, `<=`, `>`, `<`.
+`==`, `>=`, `<=`, `>`, `<`, `!=`.
 
 ```javascript
 const foo = 1 + 4;
