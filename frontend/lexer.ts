@@ -21,8 +21,7 @@ export enum TokenType {
     OpenBracket, CloseBracket,
     Dot,
     BinaryOperator,
-    Let,
-    Const,
+    Let, Const,
     If, Else,
     While, For, Until,
     Fn,
@@ -32,7 +31,8 @@ export enum TokenType {
     Try, Catch,
     Import, From,
     Class, New,
-    Return
+    Return,
+    Constructor
 }
 
 const KEYWORDS: Record<string, TokenType> = {
@@ -50,7 +50,8 @@ const KEYWORDS: Record<string, TokenType> = {
     "from": TokenType.From,
     "class": TokenType.Class,
     "new": TokenType.New,
-    "return": TokenType.Return
+    "return": TokenType.Return,
+    "construct": TokenType.Constructor
 }
 
 const ESCAPED: Record<string, string> = {
