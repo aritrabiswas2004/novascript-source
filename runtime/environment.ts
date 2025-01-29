@@ -23,10 +23,19 @@ import {
 } from "./native-builtins";
 // @ts-ignore
 import path from "node:path";
+import * as os from "node:os";
 
 // creating lang bultins
 export function createGlobalEnv() {
-    const env = new Environment(undefined, path.join(path.join(process.argv[1], ".."), `.\\${process.argv[2]}`));
+    let sourcePath: string;
+    console.log(os.type());
+    if (os.type() == "Windows_NT"){
+        sourcePath = path.join(path.join(process.argv[1], ".."), `.\\${process.argv[2]}`);
+    } else {
+        sourcePath = path.join(path.join(process.argv[1], ".."), `./${process.argv[2]}`)
+    }
+
+    const env = new Environment(undefined, sourcePath);
     env.declareVar("true", MK_BOOL(true), true);
     env.declareVar("false", MK_BOOL(false), true);
     env.declareVar("null", MK_NULL(), true);

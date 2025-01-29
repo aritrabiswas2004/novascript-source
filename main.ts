@@ -44,7 +44,7 @@ function repl() {
 
     const prompt = promptSync();
 
-    console.log("Repl v0.2.0");
+    console.log("NovaScript Repl v0.2.0");
 
     while (true) {
 
