@@ -2,3 +2,5 @@
 *.md
 LICENSE
 .gitignore
+*.sh
+*.ps1
