@@ -25,7 +25,7 @@ given moment.
 
 ## Running
 
-### **`v0.2.0` now has a public [Docker Image](./configdocs/DOCKER.md)**
+### **`v0.3.0` now has a public [Docker Image](./configdocs/DOCKER.md)**
 
 NovaScript can be explored by two different modes just
 like other interpreted languages like JavaScript using
