@@ -1,5 +1,9 @@
 # Development Setup
 
+This development file contains steps to build NovaScript in a development configuration.
+If you want a quick check + development see [bash run script](../unix/run.sh) for Linux or macOS
+or see the [PowerShell run script](../windows/run.ps1)
+
 To set up the Novascript development environment:
 
 1. Clone the repository.
@@ -25,7 +29,7 @@ To set up the Novascript development environment:
 
 ## Encountering Errors
 
-### Nodejs Runtime Errors
+### Node.js Runtime Errors
 
 - If you encounter an error thrown from the Nodejs environment which exists in the source
 files,you don't have to worry about anything! Statements like these keep the programmer

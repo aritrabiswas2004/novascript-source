@@ -467,10 +467,11 @@ language to increase its support.
 - ✅ Add strings
 - ✅ Add escape sequences for strings.
 - ✅ Try Catch statements.
-- ✅Add array indexing.
-- ✅Add import statements from other NovaScript files.
-- ✅Classes and static properties.
-- ❌ Methods and CallExpr related to classes.
-- 🔥BinaryExpr update for `&&`, `||`, `!`.
+- ✅ Add array indexing.
+- ✅ Add import statements from other NovaScript files.
+- ✅ Classes and static properties.
+- ✅ Methods and CallExpr related to classes.
+- 🔥 Constructors in the OOP paradigm
+- 🔥 BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
 - 🔥 Add statistics and regression function. (Hi Arnav!)
