@@ -1,6 +1,6 @@
 # NovaScript Source
 
-[![Latest Release](https://img.shields.io/badge/latest_release-v0.2.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
+[![Latest Release](https://img.shields.io/badge/latest_release-v0.3.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
 [![version](https://img.shields.io/badge/build-passing-bl)](./CONTRIBUTING.md)
 [![Docker](https://img.shields.io/badge/docker-v0.2.0-bl)](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
 ![version](https://img.shields.io/badge/npm_package-10.8.2-bl)
