@@ -14,8 +14,8 @@ import {
     ArrayVal,
     BooleanVal, ClassObjectValue, ClassValue,
     FunctionValue,
-    MK_BOOL,
-    MK_NULL,
+    MK_BOOL, MK_CLASS_OBJ,
+    MK_NULL, MK_OBJECT,
     NativeFnValue,
     NumberVal,
     ObjectVal,
@@ -253,6 +253,26 @@ export function eval_new_expr(expr: NewExpr, env: Environment): RuntimeVal {
     for (const meth of classVal.methods){
         const initMeth = eval_function_declaration(meth, newerEnv);
         obj.properties.set(meth.name, initMeth);
+    }
+
+    newerEnv.declareVar("this", MK_CLASS_OBJ(obj.className, obj.properties), true);
+
+    const constructorFn = obj.properties.get("constructor");
+    if (constructorFn && constructorFn.type === "function") {
+        const constructorEnv = new Environment(newerEnv);
+
+        const constructorArgs = expr.args.map(arg => evaluate(arg, env));
+        const constructorFnValue = constructorFn as FunctionValue;
+        for (let i = 0; i < constructorFnValue.parameters.length; i++) {
+            const paramName = constructorFnValue.parameters[i];
+            constructorEnv.declareVar(paramName, constructorArgs[i], false);
+        }
+
+        let constructorResult: RuntimeVal = MK_NULL();
+        for (const stmt of constructorFnValue.body) {
+            constructorResult = evaluate(stmt, constructorEnv);
+        }
+
     }
 
     return obj;

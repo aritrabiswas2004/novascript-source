@@ -1,4 +1,26 @@
-if (3 != 2){
-    print("Fgdf");
+class Coordinate {
+    mut x;
+    mut y;
+
+    func constructor(xVal, yVal){
+        this.x = xVal;
+        this.y = yVal;
+    }
+
+    func getX(){
+        return this.x;
+    }
+
+    func getY(){
+        return this.y;
+    }
+
+    func printCoord(){
+        print("(", this.x, this.y, ")");
+    }
 }
 
+mut point = new Coordinate(2, 3);
+print(point.getX());
+print(point.getY());
+print(point.printCoord());

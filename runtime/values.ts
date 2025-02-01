@@ -115,3 +115,7 @@ export interface ClassObjectValue extends RuntimeVal {
     className: string;
     properties: Map<string, RuntimeVal>;
 }
+
+export function MK_CLASS_OBJ(className: string, classObject: Map<string, RuntimeVal>): ClassObjectValue {
+    return {type: "class-obj", className: className, properties: classObject} as ClassObjectValue;
+}

@@ -287,7 +287,15 @@ export default class Parser {
     private parse_fn_declaration(): Stmt {
         this.eat();
 
-        const name = this.expect(TokenType.Identifier, "Expected function name following 'func'").value;
+        // const name = this.expect(TokenType.Identifier, "Expected function name following 'func'").value;
+
+        let token = this.at();
+        if (token.type !== TokenType.Identifier && token.value !== "constructor") {
+            throw new Error("Expected function name following 'func'");
+        }
+
+        const name = token.value;
+        this.eat();
 
         const args = this.parse_args();
         const params: string[] = [];
