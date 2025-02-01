@@ -8,7 +8,7 @@
 
 Inspired by the [XKCD comic 927](https://xkcd.com/927/), NovaScript is a 
 dynamically-typed and interpreted language with support
-for objects creation.
+for object-oriented programming.
 The language interpreter is written in TypeScript. 
 The syntax for NovaScript is similar to JavaScript 
 and is clean and easy to understand and implement.
