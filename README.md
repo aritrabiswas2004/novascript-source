@@ -2,7 +2,7 @@
 
 [![Latest Release](https://img.shields.io/badge/latest_release-v0.3.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
 [![version](https://img.shields.io/badge/build-passing-bl)](./CONTRIBUTING.md)
-[![Docker](https://img.shields.io/badge/docker-v0.2.0-bl)](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
+[![Docker](https://img.shields.io/badge/docker-v0.3.0-bl)](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
 ![version](https://img.shields.io/badge/npm_package-10.8.2-bl)
 [![version](https://img.shields.io/badge/License-Apache_2.0-blue)](./LICENSE)
 
@@ -67,7 +67,7 @@ future are given in a TODO list below.
 > [!WARNING]
 > In NovaScript version v0.1.0, all outputs to the 
 > console print in Debug print. To print in
-> Release print check the [builtins docs](./BUILTINS.md)
+> Release print check the [builtins docs](./documentation/BUILTINS.md)
 > for more information.
 
 ### Variables
@@ -333,7 +333,8 @@ print(result); // prints "foobar"
 > [!CAUTION]
 > Escape sequences only can be observed in Release 
 > print and not Debug print. 
-> See `native-builtins.ts` for more.
+> See [`native-builtins.ts`](./runtime/native-builtins.ts) `printFunction()` for
+> print definition and [`BUILTINS.md`](./documentation/BUILTINS.md) for documentation.
 
 ### Arrays
 
@@ -414,16 +415,14 @@ print(squareNum(4)); // 16
 
 ### Classes
 
-> [!NOTE] 
-> This portion may be soon moved to a `CLASSES.md` 
-> file.
-
 NovaScript now supports limited OOP features, 
 specifically those of classes and its methods &
 properties. Classes are declared by the `class` 
 keyword and contain scoped variables
 (known as properties) and scoped function 
 (known as methods).
+
+See [CLASSES.md](./documentation/CLASSES.md) for all information regarding Classes and OOP.
 
 A new class is always instantiated by the `new` 
 keyword.
@@ -471,7 +470,7 @@ language to increase its support.
 - ✅ Add import statements from other NovaScript files.
 - ✅ Classes and static properties.
 - ✅ Methods and CallExpr related to classes.
-- 🔥 Constructors in the OOP paradigm
+- ✅Constructors in the OOP paradigm
 - 🔥 BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
 - 🔥 Add statistics and regression function. (Hi Arnav!)
