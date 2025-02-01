@@ -65,5 +65,9 @@ throw new Error("Err msg");
 If you encounter a security flaw please send an email directly to the email address at
 the top of the source file and NOT on a public space.
 
+- In the rare event that you encounter an issue with the 
+security related to Node.js directly, please refer to
+official Node.js bug bounty program rules.
+
 > [!NOTE]
 > This portion will be expanded when a `SECURITY.md` is added.
