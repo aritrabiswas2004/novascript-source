@@ -1,50 +1,112 @@
-identifier    = letter , { letter | digit | "_" } ;
-number        = digit , { digit } ;
-string        = '"' , { any_char - '"' } , '"' ;
-keyword       = "if" | "else" | "while" | "function" | "class" | "return" | "new" ;
-operator      = "+" | "-" | "*" | "/" | "=" | "==" | "!=" | "<" | ">" ;
-punctuation   = "(" | ")" | "{" | "}" | "[" | "]" | ";" | "," ;
+Program = { Statement } ;
 
-program       = { statement } ;
+Statement = VarDeclaration
+          | FunctionDeclaration
+          | AssignmentExpr
+          | IfStatement
+          | WhileStatement
+          | ForStatement
+          | UntilStatement
+          | ExpressionStatement
+          | ReturnStatement
+          | ClassDeclaration
+          | ImportStatement
+          | TryCatchStatement ;
 
-statement     = var_declaration
-              | function_declaration
-              | class_declaration
-              | if_statement
-              | while_statement
-              | for_statement
-              | until_statement
-              | expression_statement
-              ;
+VarDeclaration = "mut" Identifier "=" Expression ";"
+               | "const" Identifier "=" Expression ";" ;
 
-var_declaration = "const" , identifier , "=" , expression , ";" ;
+FunctionDeclaration = "func" Identifier "(" [ ParameterList ] ")" Block ;
 
-function_declaration = "function" , identifier , "(" , [ parameter_list ] , ")" , block ;
-parameter_list       = identifier , { "," , identifier } ;
-block                = "{" , { statement } , "}" ;
+ParameterList = Identifier { "," Identifier } ;
 
-class_declaration = "class" , identifier , "{" , { class_member } , "}" ;
-class_member      = var_declaration | function_declaration ;
+AssignmentExpr = Identifier "=" Expression ";" ;
 
-if_statement = "if" , "(" , expression , ")" , block , [ "else" , block ] ;
+IfStatement = "if" "(" Expression ")" Block
+              [ "else if" "(" Expression ")" Block ]
+              [ "else" Block ] ;
 
-while_statement = "while" , "(" , expression , ")" , block ;
-until_statement = "until" , "(" , expression , ")" , block ;
+WhileStatement = "while" "(" Expression ")" Block ;
 
-expression_statement = expression , ";" ;
+ForStatement = "for" "(" VarDeclaration Expression ";" AssignmentExpr ")" Block ;
 
-expression     = assignment ;
-assignment     = identifier , "=" , expression | logic_or ;
-logic_or       = logic_and , { "||" , logic_and } ;
-logic_and      = equality , { "&&" , equality } ;
-equality       = comparison , { ( "==" | "!=" ) , comparison } ;
-comparison     = term , { ( ">" | "<" | ">=" | "<=" ) , term } ;
-term           = factor , { ( "+" | "-" ) , factor } ;
-factor         = primary , { ( "*" | "/" ) , primary } ;
-primary        = number | string | identifier | "(" , expression , ")"
-               | array_literal | object_literal ;
+UntilStatement = "until" "(" Expression ")" Block ;
 
-array_literal  = "[" , [ expression , { "," , expression } ] , "]" ;
-object_literal = "{" , [ object_entry , { "," , object_entry } ] , "}" ;
-object_entry   = identifier , ":" , expression ;
+ExpressionStatement = Expression ";" ;
 
+ReturnStatement = "return" Expression ";" ;
+
+ClassDeclaration = "class" Identifier "{" { ClassMember } "}" ;
+
+ClassMember = VarDeclaration
+            | FunctionDeclaration ;
+
+ImportStatement = "import" StringLiteral ";" ;
+
+TryCatchStatement = "try" Block "catch" "(" Identifier ")" Block ;
+
+Block = "{" { Statement } "}" ;
+
+Expression = BinaryExpr
+           | UnaryExpr
+           | Literal
+           | Identifier
+           | CallExpr
+           | MemberExpr
+           | ArrayIndexExpr
+           | NewExpr
+           | ObjectLiteral
+           | ArrayLiteral ;
+
+BinaryExpr = Expression BinaryOperator Expression ;
+
+BinaryOperator = "+" | "-" | "*" | "/" | ">" | "<" | "==" | "!=" ;
+
+UnaryExpr = UnaryOperator Expression ;
+
+UnaryOperator = "-" | "!" ;
+
+Literal = NumericLiteral
+        | StringLiteral ;
+
+NumericLiteral = Digit { Digit } [ "." Digit { Digit } ] ;
+
+StringLiteral = "\"" { Character } "\"" ;
+
+Identifier = Letter { Letter | Digit | "_" } ;
+
+CallExpr = Identifier "(" [ ArgumentList ] ")" ;
+
+ArgumentList = Expression { "," Expression } ;
+
+MemberExpr = Expression "." Identifier ;
+
+ArrayIndexExpr = Expression "[" Expression "]" ;
+
+NewExpr = "new" Identifier "(" [ ArgumentList ] ")" ;
+
+ObjectLiteral = "{" [ PropertyList ] "}" ;
+
+PropertyList = Property { "," Property } ;
+
+Property = Identifier ":" Expression ;
+
+ArrayLiteral = "[" [ ExpressionList ] "]" ;
+
+ExpressionList = Expression { "," Expression } ;
+
+Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+Letter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j"
+       | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t"
+       | "u" | "v" | "w" | "x" | "y" | "z"
+       | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
+       | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
+       | "U" | "V" | "W" | "X" | "Y" | "Z" ;
+
+Character = Letter | Digit | Symbol ;
+
+Symbol = " " | "!" | "\"" | "#" | "$" | "%" | "&" | "'" | "(" | ")"
+       | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" | "<" | "="
+       | ">" | "?" | "@" | "[" | "\\" | "]" | "^" | "_" | "`" | "{"
+       | "|" | "}" | "~" ;
