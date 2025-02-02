@@ -59,7 +59,6 @@ export function evaluate(astNode: Stmt, env: Environment): RuntimeVal{
             return eval_object_expr(astNode as ObjectLiteral, env);
 
         case "CallExpr":
-            // console.log(astNode);
             return eval_call_expr(astNode as CallExpr, env);
 
         case "AssignmentExpr":

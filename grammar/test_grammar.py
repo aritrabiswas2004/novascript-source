@@ -1,3 +1,14 @@
+from lark import Lark
+
+# Load the grammar from the .lark file
+with open("grammar.lark", "r") as file:
+    grammar = file.read()
+
+# Create a Lark parser
+parser = Lark(grammar, start="program")
+
+# Test code
+test_code = """
 mut varA = 1;
 varA = 1;
 
@@ -30,12 +41,6 @@ until (k == 10){
     print(100 * k);
 }
 
-// this is a single line comment
-
-/(
-THis is a multi line comment
-)
-
 const hello = ["this", "is", "an", "array", [varA, varB], 3.14];
 
 func squareNum(num){
@@ -61,4 +66,13 @@ class Coordinate {
 
 mut point = new Coordinate(12, 34);
 print(point.getXCoord());
+"""
 
+# Parse the test code
+try:
+    tree = parser.parse(test_code)
+    print("Parsing succeeded! Here's the parse tree:")
+    print(tree.pretty())
+except Exception as e:
+    print("Parsing failed with the following error:")
+    print(e)
