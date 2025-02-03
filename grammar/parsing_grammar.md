@@ -46,3 +46,35 @@ STRING: /"[.*?]"/
 ## Contributing to Tests
 
 Please do send us test cases to check the validity of the grammar!
+
+For checking the grammar, utilise the `test_expression`
+function from `test_grammar.py`. The other python files
+are for specific type of grammar tests.
+
+For example, the file `var_testing.py` tests var declarations
+syntax grammar only.
+
+### Definition of Test Function (`test_expression()`)
+
+#### Args
+
+- `statement` - The statement/expression to be tested in string form.
+- `eval` - Boolean (default True) on what result the statement should produce (PASS/FAIL)
+- `showtree` - Show the AST (default False)
+
+#### Example Test Cases
+
+```python
+# Expect a False return due to no semi colon
+test_expression("mut foo = 34", False) 
+
+# Expect a True return due to correct syntax
+test_expression("mut foo = 34;", True)
+```
+
+#### Outputs
+
+```text
+case => 'mut foo = 34' :: eval => False :: PASSED
+case => 'mut foo = 34;' :: eval => True :: PASSED
+```
