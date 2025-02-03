@@ -1,3 +1,17 @@
+"""
+** SPDX-License-Identifier: Apache-2.0 **
+
+NovaScript - Test Grammar
+
+Lark library to test grammar
+
+Copyright (c) 2025 Aritra Biswas
+All Rights Reserved.
+
+Author: Aritra Biswas <aritrabb@gmail.com>
+
+"""
+
 from lark import Lark
 
 with open("grammar.lark", "r") as file:
