@@ -8,9 +8,12 @@ def test_expression(code, eval: bool = True, showtree: bool = False):
 
     try:
         tree = parser.parse(code)
-        print(f"case => '{code}' :: eval => {eval} :: PASSED")
-        if showtree:
-            print(tree.pretty())
+        if eval:
+            print(f"case => '{code}' :: eval => {eval} :: PASSED")
+            if showtree:
+                print(tree.pretty())
+        else:
+            print(f"case => '{code}' :: eval => {eval} :: FAILED")
     except Exception as e:
         if not eval:
             print(f"case => '{code}' :: eval => {eval} :: PASSED")
