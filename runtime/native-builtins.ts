@@ -23,6 +23,9 @@ import {
 } from "./values";
 import Environment from "./environment";
 import * as fs from "node:fs";
+import express from "express";
+// @ts-ignore
+import process from "node:process";
 
 export function printFunction(_args: RuntimeVal[], _env: Environment): RuntimeVal {
     // console.log(..._args); // For debug purposes
@@ -276,6 +279,25 @@ export function sortFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal 
     }
 
     return MK_ARRAY(sortedRuntime);
+}
+
+export function runListener(_args: RuntimeVal[], _env: Environment): RuntimeVal {
+    if (_args.length > 2) throw new Error("Listener expected 2 args got more");
+
+    const app = express();
+
+    const htmlCode = (_args[0] as StringVal).value;
+    const portNum = (_args[1] as NumberVal).value;
+
+    app.get('/', (req, res) =>
+        res.send(htmlCode)
+    );
+
+    const port = process.env.PORT || portNum;
+
+    app.listen(port, () => console.log(`Started server on http://localhost:${port}/`));
+
+    return MK_NULL();
 }
 
 /*export function toStringFunction(_args: RuntimeVal[], _env: Environment):RuntimeVal {

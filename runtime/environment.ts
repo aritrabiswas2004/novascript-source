@@ -16,7 +16,7 @@ import {
     floorFunc, lengthFunction, maxFunc, minFunc, openFileFunction,
     powFunction,
     printFunction,
-    randInt, sortFunction, splitFunction,
+    randInt, runListener, sortFunction, splitFunction,
     strConcatFunc,
     sumFunction,
     timeFunction, typeFunction
@@ -77,6 +77,9 @@ export function createGlobalEnv() {
         new Map()
             .set("read", MK_NATIVE_FN(openFileFunction))
     ), true);
+
+    // hosting
+    env.declareVar("startServer", MK_NATIVE_FN(runListener), true);
 
     // convert
     /*env.declareVar("convert", MK_OBJECT(
