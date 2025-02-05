@@ -82,11 +82,7 @@ export function createGlobalEnv() {
     env.declareVar("startServer", MK_NATIVE_FN(runListener), true);
 
     // convert
-    /*env.declareVar("convert", MK_OBJECT(
-        new Map()
-            .set("toString", MK_NATIVE_FN(toStringFunction))
-            .set("toNumber", MK_NATIVE_FN(toNumberFunction))
-    ), true);*/
+
 
     return env;
 }
