@@ -70,6 +70,12 @@ export function createGlobalEnv() {
             .set("pi", MK_NUMBER(Math.PI))
             .set("e", MK_NUMBER(Math.E))
             .set("nova", MK_STRING("https://xkcd.com/927/"))
+
+            // unsigned ints
+            .set("uint8max", MK_NUMBER(255))
+            .set("uint16max", MK_NUMBER(65535))
+            .set("uint32max", MK_NUMBER(4294967295))
+            .set("uint64max", MK_NUMBER(18446744073709551613))
     ), true);
 
     // file
@@ -133,14 +139,15 @@ export default class Environment {
             return this;
         }
 
+        // More practical in release
         /*if (this.parent == undefined){
             throw `Cannot resolve '${varname}' as this does not exist.`
         }*/
 
         // Alternative
         if (this.parent == undefined){
-            console.error(`Error: The var name '${varname}' cannot be resolved.`)
-            process.exit(1)
+            console.error(`Error: The var name '${varname}' cannot be resolved.`);
+            process.exit(1);
         }
 
         return this.parent.resolve(varname);
