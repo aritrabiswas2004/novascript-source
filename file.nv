@@ -1,4 +1,36 @@
-const const foo = 4;
+print("Hello World!");
 
-print(const);
+class Coordinate {
+    mut xCoord = 0;
+    mut yCoord = 0;
+
+    func constructor(xVal, yVal){
+        this.xCoord = xVal;
+        this.yCoord = yVal;
+    }
+
+    func getX(){
+        return this.xCoord;
+    }
+
+    func getY(){
+        return this.yCoord;
+    }
+
+    func printCoord(){
+        print("(", xCoord, yCoord, ")");
+    }
+}
+
+mut point = new Coordinate(26, 4);
+
+print(point.getX());
+
+mut x = 0;
+until (x == 10){
+    print(x);
+    x = x + 1;
+}
+
+
 

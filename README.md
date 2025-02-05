@@ -443,6 +443,16 @@ print(bar.name); // "foo"
 print(bar.sayName()) // "fizzbuzz"
 ```
 
+### Listeners
+
+NovaScript can now start a listener on a port of your choice.
+You can specify this with the `startServer()` function.
+
+```javascript
+const htmlCode = file.read("index.html");
+startServer(htmlCode, 8080);
+```
+
 ## TODOs
 
 The below items are TODOs that can be added to the 
