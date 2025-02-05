@@ -1,0 +1,28 @@
+{
+  "name": "nv",
+  "displayName": "NovaScript Programming Language",
+  "description": "Syntax highlighting for NovaScript",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "nv",
+        "aliases": ["NovaScript Programming Language", "nv"],
+        "extensions": [".nv"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nv",
+        "scopeName": "source.nv",
+        "path": "./syntaxes/nv.tmLanguage.json"
+      }
+    ]
+  }
+}
+
