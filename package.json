@@ -1,10 +1,12 @@
 {
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "express": "^4.21.2",
     "tsx": "^4.19.2"
   },
   "dependencies": {
     "@types/node": "^22.10.2",
+    "express": "^4.21.2",
     "prompt-sync": "^4.2.0",
     "tsx": "^4.19.2"
   },
