@@ -68,7 +68,13 @@ function token(value = "", type: TokenType): Token {
 }
 
 function isalpha(src: string): boolean {
-    return src.toUpperCase() != src.toLowerCase();
+
+    // isalpha num
+
+    const c = src.charCodeAt(0)
+    const bounds = ['0'.charCodeAt(0), 'z'.charCodeAt(0)]
+
+    return (c >= bounds[0] && c <= bounds[1]);
 }
 
 function isint(str: string){
