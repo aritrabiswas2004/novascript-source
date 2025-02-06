@@ -14,7 +14,7 @@ Author: Aritra Biswas <aritrabb@gmail.com>
 
 from lark import Lark
 
-with open("grammar.lark", "r") as file:
+with open("../grammar.lark", "r") as file:
     grammar = file.read()
 
 def test_expression(code, eval: bool = True, showtree: bool = False):
