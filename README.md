@@ -2,22 +2,21 @@
 
 [![Latest Release](https://img.shields.io/badge/latest_release-v0.3.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
 [![version](https://img.shields.io/badge/build-passing-bl)](./CONTRIBUTING.md)
-[![Docker](https://img.shields.io/badge/docker-v0.3.0-bl)](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
+[![Docker](https://img.shields.io/badge/docker-v0.3.0-bl)](https://hub.docker.com/r/aritrabb/novascript)
 ![version](https://img.shields.io/badge/npm_package-10.8.2-bl)
 [![version](https://img.shields.io/badge/License-Apache_2.0-blue)](./LICENSE)
 
-Inspired by the [XKCD comic 927](https://xkcd.com/927/), NovaScript is a 
-dynamically-typed and interpreted language with support
-for object-oriented programming.
+[NovaScript](https://xkcd.com/927/) is a 
+dynamically-typed, multi-paradigm and interpreted programming language with support
+for both functional and object-oriented programming.
 The language interpreter is written in TypeScript. 
-The syntax for NovaScript is similar to JavaScript 
-and is clean and easy to understand and implement.
+The aim of NovaScript is to do data science and statistical programming in a 
+clean and easy to understand/implement syntax.
 
 This project was done with help from the 
-[Tyler Laceby YouTube tutorial](https://www.youtube.com/watch?v=8VB5TY1sIRo&list=PL_2VhOvlMk4UHGqYCLWc6GO8FaPl8fQTh) on creating a 
-programming language from scratch and also
-the [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main) (yes that's 
-the name of the language).
+[Guide to Interpreters](https://github.com/tlaceby/guide-to-interpreters-series) by Tyler Laceby 
+on creating a programming language from scratch and also
+the comical [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main).
 
 This README file contains documentation for the 
 language and of the extent of its support at a 
