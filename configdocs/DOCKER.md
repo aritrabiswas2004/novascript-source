@@ -5,7 +5,7 @@ to enable cross-platform execution.
 
 --- 
 
-## [v0.3.0 on Docker Hub](https://hub.docker.com/repository/docker/aritrabb/novascript/general)
+## [v0.3.0 on Docker Hub](https://hub.docker.com/r/aritrabb/novascript)
 
 ---
 ## Running the Image
