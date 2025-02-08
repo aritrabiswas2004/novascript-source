@@ -1,3 +1,4 @@
-const hello = constants.uint8max;
+const foo = 2 * 4;
 
-print(hello);
+print(foo);
+
