@@ -16,8 +16,24 @@ executes the equivalent of `npm run dev -- args`.
 ./run.sh
 ```
 
-## Args
+## The Script
 
-> [!NOTE]
-> This section will be expanded
+Running the unix build script is mostly for developers
+looking to develop the project in their own unix machine.
+The script has not undergone rigorous testing and is
+not fully optimised for running the project in a development
+configuration.
 
+For a true development configuration see the [Development
+Guide](../configdocs/SETUP.md). 
+
+### Arguments
+
+- `-h` / `--help`
+  - Prints a help message
+
+- `-o` / `--skip-node`
+  - Skips testing for a valid nodejs version.
+
+- `-p` / `--skip-npm`
+  - Skips checking `npm` on local system
