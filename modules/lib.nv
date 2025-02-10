@@ -1,0 +1,15 @@
+class ML {
+    mut lst = [0];
+
+    func constructor(){
+        print("ML class init");
+    }
+
+    func initData(list){
+        const foo = list;
+    }
+
+    func printData(){
+        print(this.lst);
+    }
+}

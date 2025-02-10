@@ -1,6 +1,5 @@
-import {ML} from "./lib.nv";
+import {ML} from "./modules/lib.nv";
 
-const hlo = new ML();
+mut hlo = new ML();
 
-hlo.printHello();
 
