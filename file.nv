@@ -1,4 +1,6 @@
-const foo = 2 * 4;
+import {ML} from "./lib.nv";
 
-print(foo);
+const hlo = new ML();
+
+hlo.printHello();
 
