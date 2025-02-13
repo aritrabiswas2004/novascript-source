@@ -18,9 +18,19 @@ This project was done with help from the
 on creating a programming language from scratch and also
 the comical [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main).
 
-This README file contains documentation for the 
-language and of the extent of its support at a 
-given moment.
+This README file great information for your first
+experience with NovaScript.
+
+### Documentation Quick Start Guide
+
+- [Development Setup](./configdocs/SETUP.md)
+  - [Unix Development Setup](./unix/unix.md)
+  - [Windows Development Setup (beta)](./windows/windows.md)
+- [NovaScript Linguistics](./grammar/parsing_grammar.md)
+- [Docker Information](./configdocs/DOCKER.md)
+- [Contributing Information](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [License](./LICENSE)
 
 ## Running
 
@@ -479,7 +489,7 @@ language to increase its support.
 - ✅ Add import statements from other NovaScript files.
 - ✅ Classes and static properties.
 - ✅ Methods and CallExpr related to classes.
-- ✅Constructors in the OOP paradigm
+- ✅ Constructors in the OOP paradigm
 - 🔥 BinaryExpr update for `&&`, `||`, `!`.
 - 🔥 Operations on arrays as builtins.
 - 🔥 Add statistics and regression function. (Hi Arnav!)
