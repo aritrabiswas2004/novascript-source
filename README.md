@@ -27,6 +27,8 @@ experience with NovaScript.
   - [Unix Development Setup](./unix/unix.md)
   - [Windows Development Setup (beta)](./windows/windows.md)
 - [NovaScript Linguistics](./grammar/parsing_grammar.md)
+- [NovaScript Builtins](./documentation/BUILTINS.md)
+- [NovaScript Object-Oriented Programming](./documentation/CLASSES.md)
 - [Docker Information](./configdocs/DOCKER.md)
 - [Contributing Information](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
