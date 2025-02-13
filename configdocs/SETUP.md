@@ -1,8 +1,12 @@
 # Development Setup
 
 This development file contains steps to build NovaScript in a development configuration.
-If you want a quick check + development see [bash run script](../unix/run.sh) for Linux or macOS
-or see the [PowerShell run script](../windows/run.ps1)
+
+> [!NOTE]
+> This is the general development guide for execution of NovaScript 0.3.0 or later
+> in any development environments. Please see OS-specific guides like [Unix Development Guide](../unix)
+> or the [Windows Development Guide (beta)](../windows) for more accurate development 
+> instructions.
 
 To set up the Novascript development environment:
 
