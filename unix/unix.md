@@ -9,7 +9,7 @@
 You need a Unix-based OS like macOS, Linux or WSL and the right permissions to run the below
 command.
 
-The file `run.sh` checks if there is a valid version of `node` nad `npm` on your system then
+The file [`run.sh`](./run.sh) checks if there is a valid version of `node` nad `npm` on your system then
 executes the equivalent of `npm run dev -- args`.
 
 ```shell
