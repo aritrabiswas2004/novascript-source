@@ -13,7 +13,7 @@ The file [`run.sh`](./run.sh) checks if there is a valid version of `node` nad `
 executes the equivalent of `npm run dev -- args`.
 
 ```shell
-./run.sh
+./run.sh filename.nv
 ```
 
 ## The Script
