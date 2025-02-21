@@ -15,7 +15,19 @@ have been truly lived to its highest potential.
 As I grow and my attention shifts towards other projects, I will always remember the chance
 at changing the world this language had given me.
 
--- Aritra
+> मैं पल दो पल का शायर हूँ\
+> पल दो पल मेरी कहानी है\
+> पल दो पल मेरी हस्ती है\
+> पल दो पल मेरी जवानी है
+
+> I'm a poet only for a moment or two\
+> My story will last only for a moment or two\
+> My existence will last only for a moment or two\
+> My youth will last only for a moment or two
+> 
+> By Ludhianvi Sahir
+
+### -- Aritra
 
 ## Technical Remarks
 
@@ -24,4 +36,3 @@ at changing the world this language had given me.
 - Please do contact me if you have questions or suggestions, my email is on every source file.
 - The docker image will not go beyond version `0.3.0` unless there is a large bugfix
 or security flaw.
-
