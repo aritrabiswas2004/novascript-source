@@ -15,6 +15,8 @@ have been truly lived to its highest potential.
 As I grow and my attention shifts towards other projects, I will always remember the chance
 at changing the world this language had given me.
 
+### -- Aritra
+
 > मैं पल दो पल का शायर हूँ\
 > पल दो पल मेरी कहानी है\
 > पल दो पल मेरी हस्ती है\
@@ -26,8 +28,6 @@ at changing the world this language had given me.
 > My youth will last only for a moment or two
 > 
 > By Ludhianvi Sahir
-
-### -- Aritra
 
 ## Technical Remarks
 

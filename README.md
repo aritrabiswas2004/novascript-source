@@ -21,6 +21,8 @@ the comical [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree
 This README file great information for your first
 experience with NovaScript.
 
+This project is not being actively maintained anymore, please read the [closing remarks](./configdocs/CLOSING_NOTES.md)
+
 ### Documentation Quick Start Guide
 
 - [Development Setup](./configdocs/SETUP.md)
