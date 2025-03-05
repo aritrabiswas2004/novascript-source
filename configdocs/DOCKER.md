@@ -5,7 +5,7 @@ to enable cross-platform execution.
 
 --- 
 
-## [v0.3.0 on Docker Hub](https://hub.docker.com/r/aritrabb/novascript)
+## [v0.4.0 on Docker Hub](https://hub.docker.com/r/aritrabb/novascript)
 
 ---
 ## Running the Image
@@ -16,7 +16,7 @@ To run the Docker Image ensure you have Docker version
 1. First, pull the image from Docker Hub
 
 ```shell
-docker pull aritrabb/novascript:0.3.0
+docker pull aritrabb/novascript:0.4.0
 ```
 
 > [!CAUTION]
@@ -29,7 +29,7 @@ docker pull aritrabb/novascript:0.3.0
 as a system argument.
 
 ```shell
-docker run aritrabb/novascript:0.3.0 filename.nv
+docker run aritrabb/novascript:0.4.0 filename.nv
 ```
 
 3. Have fun playing with NovaScript!

@@ -20,22 +20,11 @@ one day this would turn out be something bigger than myself.
 
 ### -- Aritra
 
-> मैं पल दो पल का शायर हूँ\
-> पल दो पल मेरी कहानी है\
-> पल दो पल मेरी हस्ती है\
-> पल दो पल मेरी जवानी है
-
-> I'm a poet only for a moment or two\
-> My story will last only for a moment or two\
-> My existence will last only for a moment or two\
-> My youth will last only for a moment or two
-> 
-> By Ludhianvi Sahir
 
 ## Technical Remarks
 
 - This project will not be archived and will still be public.
 - Please feel free to raise some issues or PRs, I will absolutely read all of them.
 - Please do contact me if you have questions or suggestions, my email is on every source file.
-- The docker image will not go beyond version `0.3.0` unless there is a large bugfix
+- The docker image will not go beyond version `0.4.0` unless there is a large code change, bugfix
 or security flaw.

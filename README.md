@@ -1,8 +1,8 @@
 # NovaScript Source
 
-[![Latest Release](https://img.shields.io/badge/latest_release-v0.3.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
-[![version](https://img.shields.io/badge/build-passing-bl)](./CONTRIBUTING.md)
-[![Docker](https://img.shields.io/badge/docker-v0.3.0-bl)](https://hub.docker.com/r/aritrabb/novascript)
+[![Latest Release](https://img.shields.io/badge/latest_release-v0.4.0-bl)](https://github.com/Repositoir/novascript-source/releases/tag/v0.2.0)
+[![NovaScript CI/CD Pipeline](https://github.com/Repositoir/novascript-source/actions/workflows/ci.yml/badge.svg)](https://github.com/Repositoir/novascript-source/actions/workflows/ci.yml)
+[![Docker](https://img.shields.io/badge/docker-v0.4.0-bl)](https://hub.docker.com/r/aritrabb/novascript)
 ![version](https://img.shields.io/badge/npm_package-10.8.2-bl)
 [![version](https://img.shields.io/badge/License-Apache_2.0-blue)](./LICENSE)
 
@@ -38,7 +38,7 @@ This project is not being actively maintained anymore, please read the [closing 
 
 ## Running
 
-### **`v0.3.0` now has a public [Docker Image](./configdocs/DOCKER.md)**
+### **`v0.4.0` now has a public [Docker Image](./configdocs/DOCKER.md)**
 
 NovaScript can be explored by two different modes just
 like other interpreted languages like JavaScript using
