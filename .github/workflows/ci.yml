@@ -62,3 +62,15 @@ jobs:
       - name: Script Execution Tests
         run: npm run dev -- file.nv
 
+  test-docker-script:
+    runs-on: ubuntu-latest
+    needs: test-script-mode
+    steps:
+      - name: Pull NovaScript Docker Image
+        run: docker pull aritrabb/novascript:0.4.0
+
+      - name: Run NovaScript Docker Container with file.nv
+        run: docker run aritrabb/novascript:0.4.0 file.nv
+
+
+
