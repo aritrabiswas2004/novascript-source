@@ -15,8 +15,8 @@ inspiration in writing code with it.
 As I grow and my attention shifts towards other projects, I will always remember 
 that NovaScript
 wasn’t just about writing code; it was about building something that mattered. I will forever remember the happiness when
-the code worked, frustration when the code didn't work and the strange feeling that I
-one day this would be something bigger than myself.
+the code worked, frustration when the code didn't work and the strange feeling that
+one day this would turn out be something bigger than myself.
 
 ### -- Aritra
 
