@@ -68,6 +68,13 @@ function main(){
     if (argv.length != 0){
         run(process.argv.slice(2)[0] as string);
     } else {
-        repl();
+
+        const isCI = process.env.CI === "true";
+
+        if (!isCI){
+            repl();
+        } else {
+            console.log("repl() mode override in CI");
+        }
     }
 }
