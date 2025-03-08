@@ -1,5 +1,10 @@
-const hello = [67];
+class Constants {
+    const pi = 3.14;
+    const e = 2.71;
+}
 
-print(hello);
+mut inst = new Constants();
+
+print(inst.pi);
 
 

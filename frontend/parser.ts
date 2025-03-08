@@ -367,7 +367,7 @@ export default class Parser {
 
         const declaration = {kind: "VarDeclaration", value: this.parse_expr(), identifier, constant: isConstant} as VarDeclaration;
 
-        this.expect(TokenType.Semicolon, "Statements must end with semi-colon ';'")
+        this.expect(TokenType.Semicolon, "Statements must end with semi-colon ';' ")
 
         return declaration;
     }
