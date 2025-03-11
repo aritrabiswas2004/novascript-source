@@ -19,7 +19,7 @@ Radboud University open
 (Chapter 3: Languages). The authors and credits are on the first page of the document.
 
 <!--
-Revised from the original Dutch version of Formeel Denken and translated by Kelley van
+Revised from the original Dutch version of [Formeel Denken](https://www.cs.ru.nl/~freek/courses/fd-2011/public/fd.pdf) and translated by Kelley van
 Evert in the fall of 2016
 -->
 
