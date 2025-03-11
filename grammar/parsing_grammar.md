@@ -11,6 +11,18 @@ hence the `novascrip.ebnf` file contains notation of the grammar making it seem 
 the language uses a context-free grammar but in reality direct implementation of the
 grammar will not work.
 
+## Linguistics Theory
+
+The knowledge of linguistics theory required to create this grammar was acquired from the 
+Radboud University open
+[course notes for Formal Reasoning](https://www.cs.ru.nl/~freek/courses/fr-2020/public/fr.pdf)
+(Chapter 3: Languages). The authors and credits are on the first page of the document.
+
+<!--
+Revised from the original Dutch version of Formeel Denken and translated by Kelley van
+Evert in the fall of 2016
+-->
+
 ## Tests with Lark
 
 Lark is a python library specifically used to test pieces of a language using its

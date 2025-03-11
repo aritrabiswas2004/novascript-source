@@ -1,10 +1,5 @@
-class Constants {
-    const pi = 3.14;
-    const e = 2.71;
-}
+const arr = ["hello", 1, 2, "333"];
 
-mut inst = new Constants();
-
-print(inst.pi);
+print(arr[0]);
 
 
