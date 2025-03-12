@@ -14,14 +14,14 @@ grammar will not work.
 ## Linguistics Theory
 
 The knowledge of linguistics theory required to create this grammar was acquired from the 
-Radboud University open
+Radboud University
 [course notes for Formal Reasoning](https://www.cs.ru.nl/~freek/courses/fr-2020/public/fr.pdf)
 (Chapter 3: Languages). The authors and credits are on the first page of the document.
 
-<!--
+
 Revised from the original Dutch version of [Formeel Denken](https://www.cs.ru.nl/~freek/courses/fd-2011/public/fd.pdf) and translated by Kelley van
-Evert in the fall of 2016
--->
+Evert in the fall of 2016.
+
 
 ## Tests with Lark
 
