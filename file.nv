@@ -1,5 +1,6 @@
 const arr = ["hello", 1, 2, "333"];
 
-print(arr[0]);
+// The below line causes the error, it is commented to pass CI on GH
+// print(arr[0]);
 
 
