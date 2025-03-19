@@ -1,5 +1,5 @@
 const arr = ["hello", 1, 2, "333"];
 
-print(arr);
+print(arr[0]);
 
 

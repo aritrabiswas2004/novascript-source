@@ -1,28 +1,17 @@
-import express from "express";
-// @ts-ignore
-import process from "node:process";
+class Person {
+    private pname = ""
+    private age = 0
 
-export function runListener(msg: string, portNum: number){
-    const app = express();
+    constructor(name: string, age: number) {
+        this.pname = name;
+        this.age = age
+    }
 
-    // @ts-ignore
-    app.get('/', (req, res) =>
-        res.send(msg)
-    );
-
-    const port = process.env.PORT || portNum;
-
-    app.listen(port, () => console.log(`Started server on http://localhost:${port}/`));
+    public get name(){
+        return this.pname;
+    }
 }
 
-const html = "<html>" +
-    "<head>" +
-    "<title>Awesome title</title>" +
-    "</head>" +
-    "<body>" +
-    "<h1 style='color: blueviolet'>Some header 1</h1>" +
-    "<button>Click Me!</button>" +
-    "</body>" +
-    "</html>"
+const student1 = new Person("Aritra", 20);
 
-runListener(html, 8080);
+console.log(student1.name);

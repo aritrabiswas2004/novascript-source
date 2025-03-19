@@ -16,7 +16,8 @@ clean and easy to understand/implement syntax.
 This project was done with help from the 
 [Guide to Interpreters](https://github.com/tlaceby/guide-to-interpreters-series) by Tyler Laceby 
 on creating a programming language from scratch and also
-the comical [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main).
+the comical [Bussin language by Face Dev](https://github.com/face-hh/bussin/tree/main). There is also an honourable mention to
+the [Crafting Interpreters](https://craftinginterpreters.com/) book by Robert Nystrom.
 
 This README file great information for your first
 experience with NovaScript.
