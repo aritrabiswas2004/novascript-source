@@ -192,7 +192,7 @@ print(bar); // null
 ### Native Functions (Builtins)
 
 This documentation for this portion is in the 
-`BUILTINS.md` file which can be found [here](https://github.com/Repositoir/novascript-source/blob/master/BUILTINS.md).
+`BUILTINS.md` file which can be found [here](./configdocs/documentation/BUILTINS.md).
 
 ### User-defined Functions
 
