@@ -333,8 +333,7 @@ length of a string is 2147483647 characters
 (`2^53 - 1`), the same as JavaScript. Strings are 
 declared with the double quotation mark (`"`). Strings
 now also support ASCII escape sequences such as `\n` as 
-newline, `\t` for tab whitespaces and `\r` for end of 
-line.
+newline, `\t` for tab whitespaces and `\r` for carriage return.
 
 ```javascript
 const foo = "foo";
