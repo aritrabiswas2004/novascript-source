@@ -96,5 +96,8 @@ until (x == 10){
 }
 ```
 
+>[!WARNING]
+> Feature rollback expected on OOP and processes until parser code is fixed.
+
 > [!NOTE]
 > This file will be expanded as more features get added.
