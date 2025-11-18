@@ -2,14 +2,12 @@
 
 ## Grammar
 
-NovaScript like most other programming languages does not use [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar)
-and so a CFG parser is not the best choice to parse NovaScript code. Despite this,
-PEG parsers used in languages like Python will work with NovaScript.
+NovaScript, similar to JavaScript, can be described using a [context-free grammars](https://en.wikipedia.org/wiki/Context-free_grammar)
+The `novascript.ebnf` file displays a CFG, but it is currently incomplete and ambiguous
+and so straightforward CFG parsers will not parse NovaScript correctly.
 
-In this project, the parser and evaluator were coded before the grammar was determined
-hence the `novascrip.ebnf` file contains notation of the grammar making it seem like
-the language uses a context-free grammar but in reality direct implementation of the
-grammar will not work.
+In this project, the interpreter was implemented before the formal grammar was written, 
+so the current EBNF is more of a piece of documentation than as a parser-ready grammar.
 
 ## Linguistics Theory
 
